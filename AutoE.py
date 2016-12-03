@@ -38,17 +38,23 @@ def doTrain(para, data):
 
 	with tf.Session() as sess:
 		sess.run(init)
-		total_batch = int(data["N"] / para.batch_size)
-		for epoch in range(training_epochs):
+		total_batch = int(data["N"] / para["batchSize"])
+		for epoch in range(para["trainingEpochs"]):
+			np.random.shuffle(data["feature"])
 			for i in range(total_batch):
-				batch_xs = data["feature"][i * para.batch_size: (i + 1) * para.batch_size] 
+				batch_xs = data["feature"][i * para["batchSize"]: (i + 1) * para["batchSize"]] 
 				_, c = sess.run([optimizer, cost], feed_dict = {X:batch_xs})
-			if epoch % display_step == 0:
+			if epoch % para["displayStep"] == 0:
 				print("Epoch:", '%04d' % (epoch), "cost=", "{:.9f}".format(c))
 		print("Optimization Finished!")
 
-		#encoder_decode = sess.run(y_pred, feed_dict = {X: })
+		embedding = sess.run(encoderOP, feed_dict = {X: data["feature"]})
 
+	return embedding
+
+def getSimilarity(result, data):
+	print "getting similarity..."
+	return np.dot(result, result.T)
 
 dataSet = "ca-Grqc.txt"
 
@@ -61,7 +67,7 @@ if __name__ == "__main__":
 	X = tf.placeholder("float", [None, n_input])
 	weights = {
 		"encoder_h1" : tf.Variable(tf.random_normal([n_input, n_hidden_1])),
-		"decoder_h1" : tf.Variable(tf.random_normal([n_hidden_1], n_input))
+		"decoder_h1" : tf.Variable(tf.random_normal([n_hidden_1, n_input]))
 	}
 	biases = {
 		"encoder_b1" : tf.Variable(tf.random_normal([n_hidden_1])),
@@ -74,6 +80,21 @@ if __name__ == "__main__":
 	y_true = X
 
 	cost = tf.reduce_mean(tf.pow(y_true - y_pred, 2))
-	optimizer = tf.train.RMSProOptimizer(para.learning_rate).minimize(cost)
+	optimizer = tf.train.RMSPropOptimizer(para["learningRate"]).minimize(cost)
 
-	dotrain(para, data)
+	embedding = doTrain(para, data)
+	similarity = getSimilarity(embedding, data).reshape(-1)
+	print "sorting..."
+	sortedInd = np.argsort(similarity)
+	print "get precisionK..."
+	precisionK = []
+	cur = 0
+	count = 0
+	for ind in sortedInd:
+		x = ind / data['N']
+		y = ind % data['N']
+		count += 1
+		if (data["feature"][x][y] == 1):
+			cur += 1 
+		precisionK.append(1.0 * cur / count)
+	
