@@ -23,10 +23,11 @@ def setPara():
 	para["displayStep"] = 1
 	para["examplesToShow"] = 10
 	para["n_hidden_1"] = 256
+	para["beta"] = 10
 	return para
 
 def encoder(x):
-	layer_1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["encoder_h1"]), biases["encoder_b1"]))
+	r1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["encoder_h1"]), biases["encoder_b1"]))
 	return layer_1
 
 def decoder(x):
@@ -56,15 +57,25 @@ def getSimilarity(result, data):
 	print "getting similarity..."
 	return np.dot(result, result.T)
 
+def get1stCost(X1, X2, Sij):
+	return tf.reduce_sum(Sij * tf.pow(X1 - X2, 2))
+
+def get2ndCost(X, newX):
+	B = X * (para['beta'] - 1) + 1
+	return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 dataSet = "ca-Grqc.txt"
 
 if __name__ == "__main__":
 	data = preprocess(dataSet)
 	para = setPara()
-	# make network
+	# network structure
 	n_input = data["N"]
 	n_hidden_1 = para["n_hidden_1"]
-	X = tf.placeholder("float", [None, n_input])
+
+	X1 = tf.placeholder("float", [None, n_input])
+	X2 = tf.placeholder("float", [None, n_input])
+	Sij = tf.placeholder("bool", [None])
+	
 	weights = {
 		"encoder_h1" : tf.Variable(tf.random_normal([n_input, n_hidden_1])),
 		"decoder_h1" : tf.Variable(tf.random_normal([n_hidden_1, n_input]))
@@ -73,13 +84,15 @@ if __name__ == "__main__":
 		"encoder_b1" : tf.Variable(tf.random_normal([n_hidden_1])),
 		"decoder_b1" : tf.Variable(tf.random_normal([n_input])),
 	}
-	encoderOP = encoder(X)
-	decoderOP = decoder(encoderOP)
+	encoderOP1 = encoder(X1)
+	encoderOP2 = encoder(X2)
 
-	y_pred = decoderOP
-	y_true = X
+	decoderOP1 = decoder(encoderOP1)
+	decoderOP2 = decoder(encoderOP2)
 
-	cost = tf.reduce_mean(tf.pow(y_true - y_pred, 2))
+	#cost function
+	cost2nd = get2ndCost(X1, decoderOP1) + get2ndCost(X2, decoderOP2)
+	cost1st = get1stCost(X1, X2, Sij)
 	optimizer = tf.train.RMSPropOptimizer(para["learningRate"]).minimize(cost)
 
 	embedding = doTrain(para, data)
