@@ -63,6 +63,12 @@ def get1stCost(X1, X2, Sij):
 def get2ndCost(X, newX):
 	B = X * (para['beta'] - 1) + 1
 	return tf.reduce_sum(tf.pow((newX - X)* B, 2))
+
+def getRegCost(weight, biases):
+	ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itemsvalue()])
+	ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itemsvalue()])
+	return ret
+
 dataSet = "ca-Grqc.txt"
 
 if __name__ == "__main__":
@@ -93,6 +99,8 @@ if __name__ == "__main__":
 	#cost function
 	cost2nd = get2ndCost(X1, decoderOP1) + get2ndCost(X2, decoderOP2)
 	cost1st = get1stCost(X1, X2, Sij)
+	costReg = getRegCost(weights, biases)
+	cost = cost1st + n_input * (para['alpha'] * cost2nd + para['v'] * costReg)
 	optimizer = tf.train.RMSPropOptimizer(para["learningRate"]).minimize(cost)
 
 	embedding = doTrain(para, data)
