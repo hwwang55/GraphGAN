@@ -9,11 +9,17 @@ def preprocess(fileName):
 	N = int(firstLine[0])
 	E = int(firstLine[1])
 	print N, E
-	edge = np.zeros([N, N], np.int8)
+	edges = np.zeros([N, N], np.int8)
+	links = np.zeros([E,2], np.int8)
+	count = 0
 	for line in fin.readlines():
 		line = line.strip().split(' ')
 		edge[int(line[0]),int(line[1])] += 1
-	return {"N":N, "E":E, "feature":edge}
+		edge[int(line[1]),int(line[0])] += 1
+		links[count][0] = int(line[0])
+		links[count][1] = int(line[1])
+		count += 1
+	return {"N":N, "E":E, "feature":edge, "links": links}
 
 def setPara():
 	para = {}
@@ -41,10 +47,7 @@ def doTrain(para, data):
 
 	with tf.Session() as sess:
 		sess.run(init)
-		total_batch = int(data["N"]
-		
-		
-		/ para["batchSize"])
+		total_batch = int(data["N"] / para["batchSize"])
 		for epoch in range(para["trainingEpochs"]):
 			np.random.shuffle(data["feature"])
 			for i in range(total_batch):
