@@ -24,22 +24,27 @@ def setPara():
 	para["examplesToShow"] = 10
 	para["n_hidden_1"] = 256
 	para["beta"] = 10
+	para["alpha"] = 1
+	para['v'] = 0.0001
 	return para
 
 def encoder(x):
-	r1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["encoder_h1"]), biases["encoder_b1"]))
-	return layer_1
+	l1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["encoder_h1"]), biases["encoder_b1"]))
+	return l1
 
 def decoder(x):
-	layer_1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["decoder_h1"]), biases["decoder_b1"]))
-	return layer_1
+	l1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["decoder_h1"]), biases["decoder_b1"]))
+	return l1
 
 def doTrain(para, data):
 	init = tf.initialize_all_variables()
 
 	with tf.Session() as sess:
 		sess.run(init)
-		total_batch = int(data["N"] / para["batchSize"])
+		total_batch = int(data["N"]
+		
+		
+		/ para["batchSize"])
 		for epoch in range(para["trainingEpochs"]):
 			np.random.shuffle(data["feature"])
 			for i in range(total_batch):
@@ -58,15 +63,15 @@ def getSimilarity(result, data):
 	return np.dot(result, result.T)
 
 def get1stCost(X1, X2, Sij):
-	return tf.reduce_sum(Sij * tf.pow(X1 - X2, 2))
+	return tf.reduce_sum(Sij * tf.reduce_sum(tf.pow(X1 - X2, 2), 1))
 
 def get2ndCost(X, newX):
 	B = X * (para['beta'] - 1) + 1
 	return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
 def getRegCost(weight, biases):
-	ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itemsvalue()])
-	ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itemsvalue()])
+	ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itervalues()])
+	ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itervalues()])
 	return ret
 
 dataSet = "ca-Grqc.txt"
