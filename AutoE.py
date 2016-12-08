@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-
+import time
 
 def preprocess(fileName):
 	fin = open(fileName, "r")
@@ -53,6 +53,7 @@ def doTrain(para, data):
 		total_batch = int(data["E"] / para["batchSize"])
 		for epoch in range(para["trainingEpochs"]):
 			#np.random.shuffle(data["links"])
+			stT = time.time()
 			for i in range(total_batch):
 				st = i * para["batchSize"]
 				en =(i+1) * para["batchSize"]
@@ -61,8 +62,8 @@ def doTrain(para, data):
 				batchX2 = data["feature"][index[:,1]]
 				_, c = sess.run([optimizer, cost], feed_dict = {X1:batchX1, X2:batchX2})
 			if epoch % para["displayStep"] == 0:
-				print("Epoch:", '%04d' % (epoch), "cost=", "{:.9f}".format(c))
-		print("Optimization Finished!")
+				print "Epoch:", '%04d' % (epoch), "cost=", "{:.9f}".format(c), "%.3f" % (time.time() - stT)
+		print "Optimization Finished!"
 
 		embedding = sess.run(encoderOP1, feed_dict = {X1: data["feature"]})
 
@@ -119,8 +120,8 @@ if __name__ == "__main__":
 	cost2nd = get2ndCost(X1, decoderOP1) + get2ndCost(X2, decoderOP2)
 	cost1st = get1stCost(encoderOP1, encoderOP2)
 	costReg = getRegCost(weights, biases)
-	#cost = cost1st + para['alpha'] * cost2nd + para['v'] * costReg
-	cost = cost2nd
+	cost = cost1st + para['alpha'] * cost2nd + para['v'] * costReg
+	#cost = cost2nd
 	optimizer = tf.train.RMSPropOptimizer(para["learningRate"]).minimize(cost)
 
 	embedding = doTrain(para, data)
