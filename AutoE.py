@@ -19,79 +19,139 @@ def getData(fileName):
 		links[count][0] = int(line[0])
 		links[count][1] = int(line[1])
 		count += 1
+	fin.close()
 	return {"N":N, "E":E, "feature":edges, "links": links}
 
-def setPara():
-	para = {}
-	para["learningRate"] = 0.01
-	para["trainingEpochs"] = 50
-	para["batchSize"] = 256
-	para["displayStep"] = 1
-	para["examplesToShow"] = 10
-	para["n_hidden_1"] = 500
-	para["n_hidden_2"] = 100
-	para["beta"] = 10
-	para["alpha"] = 1
-	para['v'] = 0.0001
-	return para
+class AutoE:
+	def __init__(self, shape, para, data):
+		self.layers = len(shape)
+		self.para = para
+		self.sess = tf.Session()
+		self.isInit = False
+		self.data = data
+		self.W = {}
+		self.b = {}
+		for i in range(len(shape) - 1):
+			name = "encoder" + str(i)
+			self.W[name] = tf.Variable(tf.random_normal([shape[i], shape[i+1]]), name = name)
+			self.b[name] = tf.Variable(tf.zeros([shape[i+1]]), name = name)
+		shape.reverse()
+		for i in range(len(shape) - 1):
+			name = "decoder" + str(i)
+			self.W[name] = tf.Variable(tf.random_normal([shape[i], shape[i+1]]), name = name)
+			self.b[name] = tf.Variable(tf.zeros([shape[i+1]]), name = name)
+		
+		# input
+		self.X1 = tf.placeholder("float", [None, para["M"]])
+		self.X2 = tf.placeholder("float", [None, para["M"]])
+		self.Sij = tf.placeholder("bool", [None])
+		
+		self.makeStructure()
+		self.cost = self.makeCost()
+		
+		#optimizer
+		self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
+	
+	def makeStructure(self):
+		#network structure
+		self.encoderOP1 = self.encoder(self.X1)
+		self.encoderOP2 = self.encoder(self.X2)
 
-def encoder(x):
-	l1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["encoder_h1"]), biases["encoder_b1"]))
-	l2 = tf.nn.sigmoid(tf.add(tf.matmul(l1, weights["encoder_h2"]), biases["encoder_b2"]))
-	return l2
+		self.decoderOP1 = self.decoder(self.encoderOP1)
+		self.decoderOP2 = self.decoder(self.encoderOP2)
+	
+	def encoder(self, x):
+		for i in range(self.layers - 1):
+			name = "encoder" + str(i)
+			x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
+		return x
 
-def decoder(x):
-	l1 = tf.nn.sigmoid(tf.add(tf.matmul(x, weights["decoder_h1"]), biases["decoder_b1"]))
-	l2 = tf.nn.sigmoid(tf.add(tf.matmul(l1, weights["decoder_h2"]), biases["decoder_b2"]))
-	return l2
+	def decoder(self, x):
+		for i in range(self.layers - 1):
+			name = "decoder" + str(i)
+			x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
+		return x
+		
+	def makeCost(self):
+		#cost function
+		self.cost2nd = self.get2ndCost(self.X1, self.decoderOP1) + self.get2ndCost(self.X2, self.decoderOP2)
+		self.cost1st = self.get1stCost(self.encoderOP1, self.encoderOP2)
+		self.costReg = self.getRegCost(self.W, self.b)
+		return self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
+	
+	def get1stCost(self, Y1, Y2):
+		return tf.reduce_sum(tf.pow(Y1 - Y2, 2))
 
-def doTrain(para, data):
-	init = tf.global_variables_initializer()
-	global cc		
-	sess.run(init)
-	total_batch = int(data["E"] / para["batchSize"])
-	for epoch in range(para["trainingEpochs"]):
-		np.random.shuffle(data["links"])
-		stT = time.time()
-		for i in range(total_batch):
-			st = i * para["batchSize"]
-			en =(i+1) * para["batchSize"]
-			index = data["links"][st:en]
-			batchX1 = data["feature"][index[:,0]]
-			batchX2 = data["feature"][index[:,1]]
-			_, c = sess.run([optimizer, cost], feed_dict = {X1:batchX1, X2:batchX2})
-		cc = sess.run(cost, feed_dict = {X1 : data["feature"][data["links"][:,0]], X2 : data["feature"][data["links"][:,1]]})
-		if epoch % para["displayStep"] == 0:
-			print "Epoch:", '%04d' % (epoch), 
-			print "cost=", "{:.9f}".format(cc), 
-			print "time : %.3fs" % (time.time() - stT)
-	print "Optimization Finished!"
+	def get2ndCost(self, X, newX):
+		B = X * (para['beta'] - 1) + 1
+		return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
-	embedding = sess.run(encoderOP1, feed_dict = {X1: data["feature"]})
+	def getRegCost(self, weight, biases):
+		ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itervalues()])
+		ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itervalues()])
+		return ret
 
-	return embedding
+	def save(self, path):
+		saver = tf.train.Saver()
+		saver.save(self.sess, path)
+	def restore(self, path):
+		saver = tf.train.Saver()
+		saver.restore(self.sess, path)
+		self.isInit = True
 
-def getSimilarity(result, data):
+	def getCost(self):	
+		return self.sess.run([self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : self.data["feature"][data["links"][:,0]], self.X2 : self.data["feature"][data["links"][:,1]]})
+	
+	def displayResult(self, epoch, stTime):
+		print "Epoch:", '%04d' % (epoch),
+		costTotal = self.getCost()
+		print "cost=", costTotal, 
+		print "time : %.3fs" % (time.time() - stTime)
+	
+	def doInit(self): 
+		init = tf.global_variables_initializer()		
+		self.sess.run(init)
+		self.isInit = True
+
+	def doTrain(self):
+		para = self.para
+		data = self.data
+		if (not self.isInit):
+			self.doInit()
+		total_batch = int(data["E"] / para["batchSize"])
+		for epoch in range(para["trainingEpochs"]):
+			np.random.shuffle(data["links"])
+			stT = time.time()
+			for i in range(total_batch):
+				st = i * para["batchSize"]
+				en =(i+1) * para["batchSize"]
+				index = data["links"][st:en]
+				batchX1 = data["feature"][index[:,0]]
+				batchX2 = data["feature"][index[:,1]]
+				_ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.X2:batchX2})
+			self.displayResult(epoch, stT)
+		print "Optimization Finished!"
+	
+	def getEmbedding(self, data):
+		return  self.sess.run(self.encoderOP1, feed_dict = {self.X1: data})
+
+	def close(self):
+		self.sess.close()
+
+def getSimilarity(result):
 	print "getting similarity..."
 	return np.dot(result, result.T)
 
-def get1stCost(Y1, Y2):
-	return tf.reduce_sum(tf.pow(Y1 - Y2, 2))
 
-def get2ndCost(X, newX):
-	B = X * (para['beta'] - 1) + 1
-	return tf.reduce_sum(tf.pow((newX - X)* B, 2))
-
-def getRegCost(weight, biases):
-	ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itervalues()])
-	ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itervalues()])
-	return ret
-
-def getPrecisionK(sortedInd, data):
+def getPrecisionK(embedding, data):
+	print "get precisionK..."
+	similarity = getSimilarity(embedding).reshape(-1)
+	sortedInd = np.argsort(similarity)
 	cur = 0
 	count = 0
 	precisionK = []
-	for ind in sortedInd[::-1]:
+	sortedInd = sortedInd[::-1]
+	for ind in sortedInd[0:10000]:
 		x = ind / data['N']
 		y = ind % data['N']
 		if (x == y):
@@ -102,64 +162,28 @@ def getPrecisionK(sortedInd, data):
 		precisionK.append(1.0 * cur / count)
 	return precisionK
 
+
+def setPara():
+	para = {}
+	para["learningRate"] = 0.01
+	para["trainingEpochs"] = 20
+	para["batchSize"] = 64
+	para["beta"] = 10
+	para["alpha"] = 1
+	para['v'] = 0.0001
+	return para
+
 dataSet = "ca-Grqc.txt"
 
+data = getData(dataSet)
+para = setPara()
+para["M"] = data["N"]
 
 if __name__ == "__main__":
-	data = getData(dataSet)
-	para = setPara()
-	n_input = data["N"]
-	n_hidden_1 = para["n_hidden_1"]
-	n_hidden_2 = para["n_hidden_2"]
-	
-	# input
-	X1 = tf.placeholder("float", [None, n_input])
-	X2 = tf.placeholder("float", [None, n_input])
-	Sij = tf.placeholder("bool", [None])
-	
-	# parameter
-	weights = {
-		"encoder_h1" : tf.Variable(tf.random_normal([n_input, n_hidden_1])),
-		"encoder_h2" : tf.Variable(tf.random_normal([n_hidden_1, n_hidden_2])),
-		"decoder_h1" : tf.Variable(tf.random_normal([n_hidden_2, n_hidden_1])),
-		"decoder_h2" : tf.Variable(tf.random_normal([n_hidden_1, n_input]))
-	}
-	biases = {
-		"encoder_b1" : tf.Variable(tf.zeros([n_hidden_1])),
-		"encoder_b2" : tf.Variable(tf.zeros([n_hidden_2])),
-		"decoder_b1" : tf.Variable(tf.zeros([n_hidden_1])),
-		"decoder_b2" : tf.Variable(tf.zeros([n_input])),
-	}
-
-	#network structure
-	encoderOP1 = encoder(X1)
-	encoderOP2 = encoder(X2)
-
-	decoderOP1 = decoder(encoderOP1)
-	decoderOP2 = decoder(encoderOP2)
-
-	#cost function
-	cost2nd = get2ndCost(X1, decoderOP1) + get2ndCost(X2, decoderOP2)
-	cost1st = get1stCost(encoderOP1, encoderOP2)
-	costReg = getRegCost(weights, biases)
-	cost = cost1st + para['alpha'] * cost2nd + para['v'] * costReg
-	
-	#optimizer
-	optimizer = tf.train.RMSPropOptimizer(para["learningRate"]).minimize(cost)
-
-	sess = tf.Session()
-	costTotal = 0
-	embedding = doTrain(para, data)
-
-	format = "%Hh-%Mm-"
-	TT = time.strftime(format, time.localtime(time.time()))
-	saver = tf.train.Saver()
-	saver.save(sess, "./model/" + TT + "cost-" + str(int(costTotal)))
-	similarity = getSimilarity(embedding, data).reshape(-1)
-	print "sorting..."
-	sortedInd = np.argsort(similarity)
-	print "get precisionK..."
-	precisonK = getPrecisionK(sortedInd, data)
+	myAE = AutoE([data["N"],500,100], para, data)	
+	myAE.doTrain()
+	embedding = myAE.getEmbedding(data["feature"])
+	precisionK = getPrecisionK(embedding, data)
 	
 	print precisionK[2000]
 
