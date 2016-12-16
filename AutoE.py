@@ -1,7 +1,20 @@
 import numpy as np
 import tensorflow as tf
 import time
+import random
 
+def negativeSample(ngSample, links, count, edges, N):
+	size = 0
+	while (size < ngSample):
+		xx = random.randint(0, N-1)
+		yy = random.randint(0, N-1)
+		if (xx == yy or edges[xx][yy] != 0):
+			continue
+		edges[xx][yy] = -1
+		edges[yy][xx] = -1
+		links[size + count] = [xx, yy, -1]
+		size += 1
+	
 def getData(fileName):
 	fin = open(fileName, "r")
 	print "preprocessing...."
@@ -9,8 +22,9 @@ def getData(fileName):
 	N = int(firstLine[0])
 	E = int(firstLine[1])
 	print N, E
-	edges = np.zeros([N, N], np.int8)
-	links = np.zeros([E,2], np.int8)
+	ngSample = 0
+	edges = np.zeros([N, N], np.int_)
+	links = np.zeros([E + ngSample,3], np.int_)
 	count = 0
 	for line in fin.readlines():
 		line = line.strip().split(' ')
@@ -18,8 +32,10 @@ def getData(fileName):
 		edges[int(line[1]),int(line[0])] += 1
 		links[count][0] = int(line[0])
 		links[count][1] = int(line[1])
+		links[count][2] = 1
 		count += 1
 	fin.close()
+	negativeSample(ngSample, links, count, edges.copy(), N)
 	return {"N":N, "E":E, "feature":edges, "links": links}
 
 class AutoE:
@@ -135,6 +151,10 @@ class AutoE:
 	def getEmbedding(self, data):
 		return  self.sess.run(self.encoderOP1, feed_dict = {self.X1: data})
 
+	def getW(self):
+		return self.sess.run(self.W)
+	def getB(self):
+		return self.sess.run(self.b)
 	def close(self):
 		self.sess.close()
 
@@ -178,9 +198,9 @@ dataSet = "ca-Grqc.txt"
 data = getData(dataSet)
 para = setPara()
 para["M"] = data["N"]
+myAE = AutoE([data["N"],500,100], para, data)	
 
 if __name__ == "__main__":
-	myAE = AutoE([data["N"],500,100], para, data)	
 	myAE.doTrain()
 	embedding = myAE.getEmbedding(data["feature"])
 	precisionK = getPrecisionK(embedding, data)
