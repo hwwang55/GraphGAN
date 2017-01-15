@@ -41,7 +41,7 @@ class rbm:
         return self.sess.run([self.W, self.bv, self.bh])
 
 if __name__ == "__main__":
-    data = getData(dataSet)
+    data = getData(dataSet)["feature"]
     myRBM = rbm([data.shape[0], 200], {"batch_size": 64, "learning_rate":0.001}, data)
     myRBM.doTrain()
     W, bv, bh = myRBM.getWb()
