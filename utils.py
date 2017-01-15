@@ -1,3 +1,4 @@
+import numpy as np
 def negativeSample(ngSample, links, count, edges, N):
     size = 0
     while (size < ngSample):
