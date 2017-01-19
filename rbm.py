@@ -19,14 +19,14 @@ class rbm:
         print "rbm init completely"
         pass
     def buildModel(self):
-        h = self.sample(tf.sigmoid(tf.matmul(self.v, self.W) + self.bh))
+        self.h = self.sample(tf.sigmoid(tf.matmul(self.v, self.W) + self.bh))
         #gibbs_sample
-        v_sample = self.sample(tf.sigmoid(tf.matmul(h, tf.transpose(self.W)) + self.bv))
+        v_sample = self.sample(tf.sigmoid(tf.matmul(self.h, tf.transpose(self.W)) + self.bv))
         h_sample = self.sample(tf.sigmoid(tf.matmul(v_sample, self.W) + self.bh))
         lr = self.para["learning_rate"] / tf.to_float(self.para["batch_size"])
-        W_adder = self.W.assign_add(lr  * (tf.matmul(tf.transpose(self.v), h) - tf.matmul(tf.transpose(v_sample), h_sample)))
+        W_adder = self.W.assign_add(lr  * (tf.matmul(tf.transpose(self.v), self.h) - tf.matmul(tf.transpose(v_sample), h_sample)))
         bv_adder = self.bv.assign_add(lr * tf.reduce_mean(self.v - v_sample, 0))
-        bh_adder = self.bh.assign_add(lr * tf.reduce_mean(h - h_sample, 0))
+        bh_adder = self.bh.assign_add(lr * tf.reduce_mean(self.h - h_sample, 0))
         self.upt = [W_adder, bv_adder, bh_adder]
         self.error = tf.reduce_sum(tf.pow(self.v - v_sample, 2))
     def doTrain(self):
@@ -38,10 +38,14 @@ class rbm:
             error = self.sess.run(self.error, feed_dict = {self.v : self.data})
             print "epoch : ", epoch, ":", error
         pass
+	def getH(self, data):
+		return self.sess.run(self.h, feed_dict = {self.v : data})
     def sample(self, probs):
         return tf.floor(probs + tf.random_uniform(tf.shape(probs), 0, 1))
     def getWb(self):
         return self.sess.run([self.W, self.bv, self.bh])
+	def close(self):
+		return self.sess.close()
 
 if __name__ == "__main__":
     dataSet = "ca-Grqc.txt"

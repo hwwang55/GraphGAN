@@ -3,6 +3,7 @@ import tensorflow as tf
 import time
 import random
 from utils import getData, getPrecisionK
+from rbm import *
 
 class AutoE:
     def __init__(self, shape, para, data):
@@ -22,7 +23,8 @@ class AutoE:
             name = "decoder" + str(i)
             self.W[name] = tf.Variable(tf.random_normal([shape[i], shape[i+1]]), name = name)
             self.b[name] = tf.Variable(tf.zeros([shape[i+1]]), name = name)
-        
+        shape.reverse()
+        self.shape = shape
         # input
         self.X1 = tf.placeholder("float", [None, para["M"]])
         self.X2 = tf.placeholder("float", [None, para["M"]])
@@ -93,8 +95,26 @@ class AutoE:
     def doInit(self): 
         init = tf.global_variables_initializer()        
         self.sess.run(init)
+        if self.para["dbn_init"]:
+            data = self.data
+            shape = self.shape
+            for i in range(len(shape)):
+                myRBM = rbm([shape[i], shape[i+1]], {"epoch":200, "batch_size": 64, "learning_rate":0.1}, data)
+                myRBM.doTrain()
+                W, bv, bh = myRBM.getWb()
+                name = "encoder" + str(i)
+                self.assign(self.W[name], W)
+                self.assign(self.b[name], bn)
+                name = "decoder" + str(self.layers - i)
+                self.assign(self.W[name], W.transpose())
+                self.assign(self.b[name], bv)
+                data = myRBM.getH(data)
         self.isInit = True
 
+    def assign(self, a, b):
+        op = a.assign(b)
+        self.sess.run(op)
+        
     def doTrain(self):
         para = self.para
         data = self.data
