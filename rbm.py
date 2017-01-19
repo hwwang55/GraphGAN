@@ -44,8 +44,10 @@ class rbm:
         return tf.floor(probs + tf.random_uniform(tf.shape(probs), 0, 1))
     def getWb(self):
         return self.sess.run([self.W, self.bv, self.bh])
-	def close(self):
-		return self.sess.close()
+    def getH(self, data):
+        return self.sess.run(self.h, feed_dict = {self.v : self.data})
+    def close(self):
+        return self.sess.close()
 
 if __name__ == "__main__":
     dataSet = "ca-Grqc.txt"

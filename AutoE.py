@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import time
+import copy
 import random
 from utils import getData, getPrecisionK
 from rbm import *
@@ -96,16 +97,16 @@ class AutoE:
         init = tf.global_variables_initializer()        
         self.sess.run(init)
         if self.para["dbn_init"]:
-            data = self.data
+            data = copy.copy(self.data["feature"])
             shape = self.shape
-            for i in range(len(shape)):
-                myRBM = rbm([shape[i], shape[i+1]], {"epoch":200, "batch_size": 64, "learning_rate":0.1}, data)
+            for i in range(len(shape) - 1):
+                myRBM = rbm([shape[i], shape[i+1]], {"epoch":2, "batch_size": 64, "learning_rate":0.1}, data)
                 myRBM.doTrain()
                 W, bv, bh = myRBM.getWb()
                 name = "encoder" + str(i)
                 self.assign(self.W[name], W)
-                self.assign(self.b[name], bn)
-                name = "decoder" + str(self.layers - i)
+                self.assign(self.b[name], bh)
+                name = "decoder" + str(self.layers - i - 2)
                 self.assign(self.W[name], W.transpose())
                 self.assign(self.b[name], bv)
                 data = myRBM.getH(data)
@@ -152,6 +153,7 @@ def setPara():
     para["beta"] = 10
     para["alpha"] = 1
     para['v'] = 0.0001
+    para["dbn_init"] = True
     return para
 
 dataSet = "ca-Grqc.txt"
