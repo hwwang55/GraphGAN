@@ -48,13 +48,19 @@ class AutoE:
     def encoder(self, x):
         for i in range(self.layers - 1):
             name = "encoder" + str(i)
-            x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
+            if self.para["sparse_dot"]:
+                x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
+            else:
+                x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
         return x
 
     def decoder(self, x):
         for i in range(self.layers - 1):
             name = "decoder" + str(i)
-            x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
+            if self.para["sparse_dot"]:
+                x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
+            else:
+                x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
         return x
         
     def makeCost(self):
@@ -153,7 +159,8 @@ def setPara():
     para["beta"] = 10
     para["alpha"] = 1
     para['v'] = 0.0001
-    para["dbn_init"] = True
+    para["dbn_init"] = False
+    para["sparse_dot"] = True
     return para
 
 dataSet = "ca-Grqc.txt"
