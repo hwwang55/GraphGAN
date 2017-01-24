@@ -90,12 +90,12 @@ class AutoE:
         saver.restore(self.sess, path)
         self.isInit = True
 
-    def getCost(self):    
-        return self.sess.run([self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : self.data["feature"][data["links"][:,0]], self.X2 : self.data["feature"][data["links"][:,1]]})
-    
-    def displayResult(self, epoch, stTime):
+    def getCost(self, X1, X2):    
+        return self.sess.run([self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : X1, self.X2 : X2})
+        #return self.sess.run([self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : self.data["feature"][data["links"][:,0]], self.X2 : self.data["feature"][data["links"][:,1]]})
+    def displayResult(self, epoch, stTime, X1, X2):
         print "Epoch:", '%04d' % (epoch),
-        costTotal = self.getCost()
+        costTotal = self.getCost(X1, X2)
         print "cost=", costTotal, 
         print "time : %.3fs" % (time.time() - stTime)
     
@@ -138,7 +138,7 @@ class AutoE:
                 batchX1 = data["feature"][index[:,0]]
                 batchX2 = data["feature"][index[:,1]]
                 _ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.X2:batchX2})
-            self.displayResult(epoch, stT)
+            self.displayResult(epoch, stT, batchX1, batchX2)
         print "Optimization Finished!"
     
     def getEmbedding(self, data):
@@ -155,7 +155,7 @@ def setPara():
     para = {}
     para["learningRate"] = 0.01
     para["trainingEpochs"] = 20
-    para["batchSize"] = 64
+    para["batchSize"] = 16
     para["beta"] = 10
     para["alpha"] = 1
     para['v'] = 0.0001
@@ -163,12 +163,12 @@ def setPara():
     para["sparse_dot"] = True
     return para
 
-dataSet = "ca-Grqc.txt"
+dataSet = "blogCatalog3.txt"
 
 data = getData(dataSet)
 para = setPara()
 para["M"] = data["N"]
-myAE = AutoE([data["N"],500,100], para, data)    
+myAE = AutoE([data["N"],200,100], para, data)    
 
 if __name__ == "__main__":
     myAE.doTrain()
