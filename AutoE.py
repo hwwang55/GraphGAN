@@ -10,6 +10,8 @@ class AutoE:
     def __init__(self, shape, para, data):
         self.layers = len(shape)
         self.para = para
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
         self.sess = tf.Session()
         self.isInit = False
         self.data = data
@@ -163,7 +165,7 @@ def setPara():
     para["sparse_dot"] = True
     return para
 
-dataSet = "blogCatalog3.txt"
+dataSet = "ca-Grqc.txt"
 
 data = getData(dataSet)
 para = setPara()
