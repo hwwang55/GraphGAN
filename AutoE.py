@@ -76,7 +76,7 @@ class AutoE:
         return tf.reduce_sum(tf.pow(Y1 - Y2, 2))
 
     def get2ndCost(self, X, newX):
-        B = X * (para['beta'] - 1) + 1
+        B = X * (self.para['beta'] - 1) + 1
         return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
     def getRegCost(self, weight, biases):
