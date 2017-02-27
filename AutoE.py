@@ -76,7 +76,7 @@ class AutoE:
         return tf.reduce_sum(tf.pow(Y1 - Y2, 2))
 
     def get2ndCost(self, X, newX):
-        B = X * (para['beta'] - 1) + 1
+        B = X * (self.para['beta'] - 1) + 1
         return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
     def getRegCost(self, weight, biases):
@@ -153,30 +153,5 @@ class AutoE:
     def close(self):
         self.sess.close()
 
-def setPara():
-    para = {}
-    para["learningRate"] = 0.01
-    para["trainingEpochs"] = 20
-    para["batchSize"] = 16
-    para["beta"] = 10
-    para["alpha"] = 1
-    para['v'] = 0.0001
-    para["dbn_init"] = False
-    para["sparse_dot"] = True
-    return para
-
-dataSet = "ca-Grqc.txt"
-
-data = getData(dataSet)
-para = setPara()
-para["M"] = data["N"]
-myAE = AutoE([data["N"],200,100], para, data)    
-
-if __name__ == "__main__":
-    myAE.doTrain()
-    embedding = myAE.getEmbedding(data["feature"])
-    precisionK = getPrecisionK(embedding, data)
-    
-    print precisionK[2000]
 
 
