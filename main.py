@@ -16,7 +16,7 @@ def setPara():
     para["sparse_dot"] = True
     return para
 
-dataSet = "blogCatalog3.txt"
+dataSet = "../NetworkData/blogCatalog3.txt"
 
 data = getData(dataSet)
 para = setPara()
