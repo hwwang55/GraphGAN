@@ -48,7 +48,7 @@ class AutoE_sparseDot:
     def makeStructure(self):
         #network structure
         if self.para["sparse_dot"]:
-			self.encoderOP1 = self.encoder(self.X)
+	    self.encoderOP1 = self.encoder(self.X)
         else:
             self.encoderOP1 = self.encoder(self.X1)
         self.decoderOP1 = self.decoder(self.encoderOP1)
@@ -58,7 +58,7 @@ class AutoE_sparseDot:
             name = "encoder" + str(i)
             if self.para["sparse_dot"] and i == 0:
                 #x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
-				x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(x, self.W[name]) + self.b[name])
+		x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(x, self.W[name]) + self.b[name])
             else:
                 x = tf.nn.sigmoid(tf.matmul(x, self.W[name]) + self.b[name])
         return x
@@ -82,7 +82,7 @@ class AutoE_sparseDot:
         return 2*tf.trace(tf.matmul(tf.matmul(tf.transpose(Y1),L),Y1))
 
     def get2ndCost(self, X, newX):
-        B = X * (para['beta'] - 1) + 1
+        B = X * (self.para['beta'] - 1) + 1
         return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
     def getRegCost(self, weight, biases):

@@ -1,4 +1,5 @@
 from AutoE import *
+from AutoE_sparseDot import *
 from utils import *
 
 
@@ -20,7 +21,7 @@ dataSet = "blogCatalog3.txt"
 data = getData(dataSet)
 para = setPara()
 para["M"] = data["N"]
-myAE = AutoE_sparse([data["N"],1000,100], para, data)    
+myAE = AutoE_sparseDot([data["N"],1000,100], para, data)    
 
 if __name__ == "__main__":
     myAE.doTrain()
