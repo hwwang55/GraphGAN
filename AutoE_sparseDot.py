@@ -149,9 +149,9 @@ class AutoE_sparseDot:
                 batchX1 = data["feature"][index]
                 weight = data["feature"][index][:,index]
                 if self.para["sparse_dot"]:
-                                        x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
-                                        x_shape = np.array(batchX1.shape).astype(np.int64)
-                                        x_val = batchX1[np.where(batchX1)]
+                    x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
+                    x_shape = np.array(batchX1.shape).astype(np.int64)
+                    x_val = batchX1[np.where(batchX1)]
                 stT = time.time()
                 if self.para["sparse_dot"]:
                     _ = self.sess.run(self.optimizer, feed_dict = {self.X_sp_indices: x_ind, self.X_sp_shape: x_shape, self.X_sp_ids_val: x_val, self.X1:batchX1, self.weight: weight})
