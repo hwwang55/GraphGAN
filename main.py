@@ -1,27 +1,28 @@
 from AutoE import *
 from utils import *
 
+
 def setPara():
     para = {}
-    para["learningRate"] = 0.01
-    para["trainingEpochs"] = 20
-    para["batchSize"] = 16
-    para["beta"] = 10
+    para["learningRate"] = 0.001
+    para["trainingEpochs"] = 1000
+    para["batchSize"] = 1000
+    para["beta"] = 15
     para["alpha"] = 1
-    para['v'] = 0.0001
-    para["dbn_init"] = False
+    para["gamma"] = 5
+    para['v'] = 0.1
+    para["dbn_init"] = True
     para["sparse_dot"] = True
     return para
-    
+
+dataSet = "blogCatalog3.txt"
+
+data = getData(dataSet)
+para = setPara()
+para["M"] = data["N"]
+myAE = AutoE_sparse([data["N"],1000,100], para, data)    
+
 if __name__ == "__main__":
-    dataSet = "ca-Grqc.txt"
-    data = getData(dataSet)
-    para = setPara()
-    para["M"] = data["N"]
-    myAE = AutoE([data["N"],200,100], para, data)
-    
     myAE.doTrain()
     embedding = myAE.getEmbedding(data["feature"])
-    precisionK = getPrecisionK(embedding, data)
-    
-    print precisionK[2000]
+    sio.savemat('embedding.mat',{'embedding':embedding})
