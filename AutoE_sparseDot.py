@@ -13,7 +13,8 @@ class AutoE_sparseDot:
         self.para = para
         config = tf.ConfigProto() 
         config.gpu_options.allow_growth = True 
-        self.sess = tf.Session(config = config)
+        #self.sess = tf.Session(config = config)
+        self.sess = tf.Session()
         self.isInit = False
         self.data = data
         self.W = {}
@@ -57,6 +58,7 @@ class AutoE_sparseDot:
         for i in range(self.layers - 1):
             name = "encoder" + str(i)
             if self.para["sparse_dot"] and i == 0:
+                #another way to do sparseDot
                 #x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
                 x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(x, self.W[name]) + self.b[name])
             else:
@@ -74,6 +76,9 @@ class AutoE_sparseDot:
         self.cost2nd = self.get2ndCost(self.X1, self.decoderOP1)
         self.cost1st = self.get1stCost(self.encoderOP1, self.weight)
         self.costReg = self.getRegCost(self.W, self.b)
+        
+        #deleting the 2ndcost get no speeding up
+        #return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
         return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
     
     def get1stCost(self, Y1, weight):
@@ -98,8 +103,8 @@ class AutoE_sparseDot:
         saver.restore(self.sess, path)
         self.isInit = True
 
-    def getCost(self):    
-        return self.sess.run([self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : self.data["feature"][data["links"][:,0]], self.X2 : self.data["feature"][data["links"][:,1]]})
+    def getCost(self, X1, weight):    
+        return self.sess.run([self.cost, self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : X1, self.weight : weight})
     
     def displayResult(self, epoch, stTime):
         print "Epoch:", '%04d' % (epoch),
@@ -137,6 +142,7 @@ class AutoE_sparseDot:
             self.doInit()
         total_batch = int(data["N"] / para["batchSize"])
         print total_batch
+        initT = time.time()
         for epoch in range(para["trainingEpochs"]):
             order = np.arange(data["N"])
             np.random.shuffle(order)
@@ -158,8 +164,8 @@ class AutoE_sparseDot:
                 else:
                     _ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.weight: weight})
                 all_time = all_time + time.time() - stT
-            print " time : %.3fs" % all_time
-            #self.displayResult(epoch, stT)
+            #print " time : %.3fs" % all_time
+            print time.time()-initT, self.getCost(batchX1, weight)
         print "Optimization Finished!"
     
     def getEmbedding(self, data):

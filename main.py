@@ -12,8 +12,8 @@ def setPara():
     para["alpha"] = 1
     para["gamma"] = 5
     para['v'] = 0.1
-    para["dbn_init"] = True
-    para["sparse_dot"] = True
+    para["dbn_init"] = False
+    para["sparse_dot"] = False
     return para
 
 dataSet = "../NetworkData/blogCatalog3.txt"
