@@ -44,7 +44,17 @@ class AutoE_sparseDot:
         self.cost = self.makeCost()
         
         #optimizer
-        self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
+        self.optimizer = tf.train.GradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdadeltaOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradDAOOptimizer(self.para["learningRate"]).minimize(self.cost) 
+        #self.optimizer = tf.train.MomentumOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdamOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.FtrlOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalGradientOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalAdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
+
     
     def makeStructure(self):
         #network structure
@@ -102,9 +112,7 @@ class AutoE_sparseDot:
         saver = tf.train.Saver()
         saver.restore(self.sess, path)
         self.isInit = True
-
-    def getCost(self, X1, weight):    
-        return self.sess.run([self.cost, self.cost1st, self.cost2nd, self.costReg], feed_dict = {self.X1 : X1, self.weight : weight})
+ 
     
     def displayResult(self, epoch, stTime):
         print "Epoch:", '%04d' % (epoch),
@@ -165,7 +173,11 @@ class AutoE_sparseDot:
                     _ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.weight: weight})
                 all_time = all_time + time.time() - stT
             #print " time : %.3fs" % all_time
-            print time.time()-initT, self.getCost(batchX1, weight)
+            if self.para["sparse_dot"]:
+                feed_dict = {self.X_sp_indices: x_ind, self.X_sp_shape:x_shape, self.X_sp_ids_val: x_val, self.X1: batchX1, self.weight: weight}
+            else:
+                feed_dict = {self.X1: batchX1, self.weight: weight}
+            print time.time() - initT, self.sess.run([self.cost, self.cost1st, self.cost2nd, self.costReg], feed_dict = feed_dict)
         print "Optimization Finished!"
     
     def getEmbedding(self, data):
