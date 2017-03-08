@@ -44,16 +44,19 @@ class AutoE_sparseDot:
         self.cost = self.makeCost()
         
         #optimizer
-        self.optimizer = tf.train.GradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.GradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
         #self.optimizer = tf.train.AdadeltaOptimizer(self.para["learningRate"]).minimize(self.cost)
         #self.optimizer = tf.train.AdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.AdagradDAOOptimizer(self.para["learningRate"]).minimize(self.cost) 
+        
+        #need another parameter
+        #self.optimizer = tf.train.AdagradDAOptimizer(self.para["learningRate"]).minimize(self.cost) 
         #self.optimizer = tf.train.MomentumOptimizer(self.para["learningRate"]).minimize(self.cost)
+        
         #self.optimizer = tf.train.AdamOptimizer(self.para["learningRate"]).minimize(self.cost)
         #self.optimizer = tf.train.FtrlOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.ProximalGradientOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalGradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
         #self.optimizer = tf.train.ProximalAdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
+        self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
 
     
     def makeStructure(self):
