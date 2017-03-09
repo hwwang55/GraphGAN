@@ -1,5 +1,6 @@
 import numpy as np
 def negativeSample(ngSample, links, count, edges, N):
+    print "negative Sampling"
     size = 0
     while (size < ngSample):
         xx = random.randint(0, N-1)
@@ -10,6 +11,7 @@ def negativeSample(ngSample, links, count, edges, N):
         edges[yy][xx] = -1
         links[size + count] = [xx, yy, -1]
         size += 1
+    print "negative Sampling done"
 
 def getData(fileName):
     fin = open(fileName, "r")
@@ -32,6 +34,7 @@ def getData(fileName):
         count += 1
     fin.close()
     negativeSample(ngSample, links, count, edges.copy(), N)
+    print "getData done"
     return {"N":N, "E":E, "feature":edges, "links": links}
 	
 	
