@@ -17,8 +17,15 @@ def comparison(data, para):
     total_batch = int(data["N"] / para["batchSize"])
     print total_batch
     wholetime = 0
-    W = tf.random_normal([para["M"], 1000])
-    b = tf.zeros([1000])
+    W = tf.Variable(tf.random_normal([para["M"], 1000]))
+    b = tf.Variable(tf.zeros([1000]))
+    x_sp_ind = tf.placeholder(tf.int64)
+    x_sp_ids = tf.placeholder(tf.float32)
+    x_sp_shape = tf.placeholder(tf.int64)
+    X_sp = tf.SparseTensor(x_sp_ind, x_sp_ids, x_sp_shape)
+    z_sp = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(X_sp, W) + b)
+    X = tf.placeholder("float", [None, para['M']])
+    z = tf.nn.sigmoid(tf.matmul(X, W) + b)
     sess = tf.Session()
     init = tf.global_variables_initializer()
     sess.run(init)
@@ -39,15 +46,11 @@ def comparison(data, para):
                 x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
                 x_shape = np.array(batchX1.shape).astype(np.int64)
                 x_val = batchX1[np.where(batchX1)]
-                tensor = tf.SparseTensor(x_ind, x_val, x_shape)
-                x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(tensor, W) + b)
-                print "setting time: %.3fs" % (time.time() - stT)
-                _ = sess.run(x)
+                print "sparse setting time: %.3fs" % (time.time() - stT)
+                _ = sess.run(z_sp, feed_dict = {x_sp_ind: x_ind, x_sp_ids : x_val, x_sp_shape : x_shape})
             else:
-                tensor = tf.constant(batchX1)
-                x = tf.nn.sigmoid(tf.matmul(tensor, W) + b)
-                print "setting time: %.3fs" % (time.time() - stT)
-                _ = sess.run(x)
+                print "origin setting time: %.3fs" % (time.time() - stT)
+                _ = sess.run(z, feed_dict = {X : batchX1})
             mini_time = time.time() - stT
             all_time = all_time + mini_time
             print "minibatch time: %.3fs" % mini_time 

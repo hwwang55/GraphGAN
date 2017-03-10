@@ -13,15 +13,15 @@ def setPara():
     para["gamma"] = 5
     para['v'] = 0.1
     para["dbn_init"] = False
-    para["sparse_dot"] = False
+    para["sparse_dot"] = True
     return para
 
-dataSet = "../NetworkData/blogCatalog3.txt"
+dataSet = "../NetworkData/flickr.txt"
 
 data = getData(dataSet)
 para = setPara()
 para["M"] = data["N"]
-myAE = AutoE_sparseDot([data["N"],1000,100], para, data)    
+myAE = AutoE_sparseDot([data["N"],1000, 100], para, data)    
 
 if __name__ == "__main__":
     myAE.doTrain()

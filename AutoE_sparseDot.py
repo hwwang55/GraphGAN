@@ -91,8 +91,8 @@ class AutoE_sparseDot:
         self.costReg = self.getRegCost(self.W, self.b)
         
         #deleting the 2ndcost get no speeding up
-        #return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
-        return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
+        return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
+        #return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
     
     def get1stCost(self, Y1, weight):
         D = tf.diag(tf.reduce_sum(weight,1))
@@ -156,9 +156,9 @@ class AutoE_sparseDot:
         initT = time.time()
         for epoch in range(para["trainingEpochs"]):
             order = np.arange(data["N"])
+            feed_dict = {}
             np.random.shuffle(order)
             all_time = 0 
-            print "epoch",epoch,
             for i in range(total_batch):
                 st = i * para["batchSize"]
                 en =(i+1) * para["batchSize"]
@@ -169,18 +169,14 @@ class AutoE_sparseDot:
                     x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
                     x_shape = np.array(batchX1.shape).astype(np.int64)
                     x_val = batchX1[np.where(batchX1)]
-                stT = time.time()
-                if self.para["sparse_dot"]:
-                    _ = self.sess.run(self.optimizer, feed_dict = {self.X_sp_indices: x_ind, self.X_sp_shape: x_shape, self.X_sp_ids_val: x_val, self.X1:batchX1, self.weight: weight})
+                    feed_dict = {self.X_sp_indices: x_ind, self.X_sp_shape:x_shape, self.X_sp_ids_val: x_val, self.weight : weight}
                 else:
-                    _ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.weight: weight})
+                    feed_dict = {self.X1: batchX1, self.weight: weight}
+                stT = time.time()
+                _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
                 all_time = all_time + time.time() - stT
-            #print " time : %.3fs" % all_time
-            if self.para["sparse_dot"]:
-                feed_dict = {self.X_sp_indices: x_ind, self.X_sp_shape:x_shape, self.X_sp_ids_val: x_val, self.X1: batchX1, self.weight: weight}
-            else:
-                feed_dict = {self.X1: batchX1, self.weight: weight}
-            print time.time() - initT, self.sess.run([self.cost, self.cost1st, self.cost2nd, self.costReg], feed_dict = feed_dict)
+                print "mini batch %d time : %.3fs" % (i, all_time)
+            print "epoch: %d time : %.3fs, cost: %.3f" % (epoch, time.time() - initT, self.sess.run(self.cost, feed_dict = feed_dict))
         print "Optimization Finished!"
     
     def getEmbedding(self, data):
