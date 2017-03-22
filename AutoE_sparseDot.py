@@ -152,7 +152,7 @@ class AutoE_sparseDot:
         if (not self.isInit):
             self.doInit()
         total_batch = int(data["N"] / para["batchSize"])
-        print total_batch
+        print "Total_batch:", total_batch
         initT = time.time()
         for epoch in range(para["trainingEpochs"]):
             order = np.arange(data["N"])

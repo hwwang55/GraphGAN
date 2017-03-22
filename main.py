@@ -14,12 +14,13 @@ def setPara():
     para['v'] = 0.1
     para["dbn_init"] = False
     para["sparse_dot"] = True
+    para["ngSampleRatio"] = 0
     return para
 
 dataSet = "../NetworkData/flickr.txt"
 
-data = getData(dataSet)
 para = setPara()
+data = getData(dataSet, para["ngSampleRatio"])
 para["M"] = data["N"]
 myAE = AutoE_sparseDot([data["N"],1000, 100], para, data)    
 

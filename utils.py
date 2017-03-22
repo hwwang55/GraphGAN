@@ -13,14 +13,14 @@ def negativeSample(ngSample, links, count, edges, N):
         size += 1
     print "negative Sampling done"
 
-def getData(fileName):
+def getData(fileName, ngSampleRatio):
     fin = open(fileName, "r")
     print "preprocessing...."
     firstLine = fin.readline().strip().split(" ")
     N = int(firstLine[0])
     E = int(firstLine[1])
     print N, E
-    ngSample = 0
+    ngSample = int(ngSampleRatio * E)
     edges = np.zeros([N, N], np.int_)
     links = np.zeros([E + ngSample,3], np.int_)
     count = 0
@@ -33,7 +33,8 @@ def getData(fileName):
         links[count][2] = 1
         count += 1
     fin.close()
-    negativeSample(ngSample, links, count, edges.copy(), N)
+    if (ngSample > 0):
+        negativeSample(ngSample, links, count, edges.copy(), N)
     print "getData done"
     return {"N":N, "E":E, "feature":edges, "links": links}
 	
