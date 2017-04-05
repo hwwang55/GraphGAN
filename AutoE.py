@@ -139,17 +139,20 @@ class AutoE:
         if (not self.isInit):
             self.doInit()
         total_batch = int(data["E"] / para["batchSize"])
+        initT = time.time()
         for epoch in range(para["trainingEpochs"]):
             np.random.shuffle(data["links"])
-            stT = time.time()
             for i in range(total_batch):
                 st = i * para["batchSize"]
                 en =(i+1) * para["batchSize"]
                 index = data["links"][st:en]
                 batchX1 = data["feature"][index[:,0]]
                 batchX2 = data["feature"][index[:,1]]
+                stT = time.time()
                 _ = self.sess.run(self.optimizer, feed_dict = {self.X1:batchX1, self.X2:batchX2})
-            self.displayResult(epoch, stT, batchX1, batchX2)
+                #print "mini batch %d time :%.3fs" % (i, time.time() - stT)
+            #self.displayResult(epoch, stT, batchX1, batchX2)
+            print "epoch %d time : %.3f s" % (epoch, time.time() - initT)
         print "Optimization Finished!"
     
     def getEmbedding(self, data):

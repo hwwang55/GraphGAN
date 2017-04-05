@@ -13,12 +13,11 @@ def setPara():
     para["gamma"] = 5
     para['v'] = 0.1
     para["dbn_init"] = False
-    para["sparse_dot"] = True
+    para["sparse_dot"] = False
     para["ngSampleRatio"] = 0
     return para
 
-dataSet = "../NetworkData/flickr.txt"
-
+dataSet = "../NetworkData/blogCatalog.txt"
 para = setPara()
 data = getData(dataSet, para["ngSampleRatio"])
 para["M"] = data["N"]

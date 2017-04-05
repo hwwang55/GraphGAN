@@ -91,8 +91,8 @@ class AutoE_sparseDot:
         self.costReg = self.getRegCost(self.W, self.b)
         
         #deleting the 2ndcost get no speeding up
-        return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
-        #return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
+        #return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
+        return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
     
     def get1stCost(self, Y1, weight):
         D = tf.diag(tf.reduce_sum(weight,1))
@@ -140,7 +140,22 @@ class AutoE_sparseDot:
                 self.assign(self.W[name], W.transpose())
                 self.assign(self.b[name], bv)
                 data = myRBM.getH(data)
+        self.cost = 0
+        self.countCvg = 0
         self.isInit = True
+    
+    def checkStop(self, cur_cost):
+        if (self.cost == 0):
+            self.cost = min(cur_cost, self.cost)
+            return False
+        if (abs(self.cost - cur_cost) < 0.01 * self.cost):
+            self.countCvg += 1
+            if (self.countCvg > 3):
+                return True
+            else:
+                return False
+        self.cost = min(cur_cost, self.cost)
+        return False
 
     def assign(self, a, b):
         op = a.assign(b)
@@ -154,7 +169,9 @@ class AutoE_sparseDot:
         total_batch = int(data["N"] / para["batchSize"])
         print "Total_batch:", total_batch
         initT = time.time()
-        for epoch in range(para["trainingEpochs"]):
+        totalEpoch = para["trainingEpochs"]
+        epoch = 0
+        while (epoch < totalEpoch):
             order = np.arange(data["N"])
             feed_dict = {}
             np.random.shuffle(order)
@@ -175,8 +192,11 @@ class AutoE_sparseDot:
                 stT = time.time()
                 _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
                 all_time = all_time + time.time() - stT
-                print "mini batch %d time : %.3fs" % (i, all_time)
-            print "epoch: %d time : %.3fs, cost: %.3f" % (epoch, time.time() - initT, self.sess.run(self.cost, feed_dict = feed_dict))
+                #print "mini batch %d time : %.3fs" % (i, all_time)
+            cur_Cost = self.sess.run(self.cost, feed_dict = feed_dict)
+            print "epoch: %d time : %.3fs, cost: %.3f" % (epoch, time.time() - initT, cur_cost)
+            if (self.checkStop(cur_cost)):
+                break
         print "Optimization Finished!"
     
     def getEmbedding(self, data):
