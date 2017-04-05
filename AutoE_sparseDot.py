@@ -140,21 +140,21 @@ class AutoE_sparseDot:
                 self.assign(self.W[name], W.transpose())
                 self.assign(self.b[name], bv)
                 data = myRBM.getH(data)
-        self.cost = 0
+        self.lastCost = 0
         self.countCvg = 0
         self.isInit = True
     
     def checkStop(self, cur_cost):
-        if (self.cost == 0):
-            self.cost = min(cur_cost, self.cost)
+        if (self.lastCost == 0):
+            self.lastCost = min(cur_cost, self.lastCost)
             return False
-        if (abs(self.cost - cur_cost) < 0.01 * self.cost):
+        if (self.lastCost - cur_cost) < 0.01 * self.lastCost):
             self.countCvg += 1
             if (self.countCvg > 3):
                 return True
             else:
                 return False
-        self.cost = min(cur_cost, self.cost)
+        self.lastCost = min(cur_cost, self.lastCost)
         return False
 
     def assign(self, a, b):
@@ -193,7 +193,8 @@ class AutoE_sparseDot:
                 _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
                 all_time = all_time + time.time() - stT
                 #print "mini batch %d time : %.3fs" % (i, all_time)
-            cur_Cost = self.sess.run(self.cost, feed_dict = feed_dict)
+            cur_cost = self.sess.run(self.cost, feed_dict = feed_dict)
+            epoch += 1
             print "epoch: %d time : %.3fs, cost: %.3f" % (epoch, time.time() - initT, cur_cost)
             if (self.checkStop(cur_cost)):
                 break
