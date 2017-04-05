@@ -1,4 +1,16 @@
 import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.metrics import f1_score
+def doClassification(X, Y, ratio):
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
+    clf = svm.LinearSVC()
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(y_train)
+    print "macro-f1:", f1_score(y_test, y_pred, average = "macro")
+    print "micro-f1:", f1_score(y_test, y_pred, average = "micro")
+
+
 def negativeSample(ngSample, links, count, edges, N):
     print "negative Sampling"
     size = 0
