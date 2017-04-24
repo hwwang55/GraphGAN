@@ -21,7 +21,7 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser(description="Run SDNE.")
 
-    parser.add_argument('--input', nargs='?', default='Graph/ca-Grqc.txt',
+    parser.add_argument('--input', nargs='?', default='../Graph/ca-Grqc.txt',
                         help='Input graph path')
 
     parser.add_argument('--output', nargs='?', default='emb/karate.emb',
@@ -64,9 +64,9 @@ def parse_args():
 
 if __name__ == "__main__":
     para = parse_args()
-    data = getData(dataSet, para["ngSampleRatio"])
-    para["M"] = data["N"]
-    myAE = AutoE_sparseDot([data["N"],1000, 100], para, data)    
+    data = getData(para.input, para.ngSampleRatio)
+    para.M = data["N"]
+    myAE = AutoE_sparseDot([para.M,1000, 100], para, data)    
     myAE.doTrain()
     embedding = myAE.getEmbedding(data["feature"])
     sio.savemat('embedding.mat',{'embedding':embedding})
