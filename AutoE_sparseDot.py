@@ -10,7 +10,6 @@ import scipy.io as sio
 class AutoE_sparseDot:
     def __init__(self, shape, para, data):
         self.layers = len(shape)
-        self.para = para
         config = tf.ConfigProto() 
         config.gpu_options.allow_growth = True 
         #self.sess = tf.Session(config = config)
@@ -33,7 +32,7 @@ class AutoE_sparseDot:
         # input
                 
         self.weight = tf.placeholder("float", [None, None])
-        if self.para.sparse_dot:
+        if para.sparse_dot:
             self.X_sp_indices = tf.placeholder(tf.int64)
             self.X_sp_ids_val = tf.placeholder(tf.float32)
             self.X_sp_shape = tf.placeholder(tf.int64)
@@ -44,24 +43,24 @@ class AutoE_sparseDot:
         self.cost = self.makeCost()
         
         #optimizer
-        #self.optimizer = tf.train.GradientDescentOptimizer(self.para.learningRate).minimize(self.cost)
-        #self.optimizer = tf.train.AdadeltaOptimizer(self.para.learningRate).minimize(self.cost)
-        #self.optimizer = tf.train.AdagradOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.GradientDescentOptimizer(para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdadeltaOptimizer(para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradOptimizer(para.learningRate).minimize(self.cost)
         
         #need another parameter
-        #self.optimizer = tf.train.AdagradDAOptimizer(self.para.learningRate).minimize(self.cost) 
-        #self.optimizer = tf.train.MomentumOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradDAOptimizer(para.learningRate).minimize(self.cost) 
+        #self.optimizer = tf.train.MomentumOptimizer(para.learningRate).minimize(self.cost)
         
-        #self.optimizer = tf.train.AdamOptimizer(self.para.learningRate).minimize(self.cost)
-        #self.optimizer = tf.train.FtrlOptimizer(self.para.learningRate).minimize(self.cost)
-        #self.optimizer = tf.train.ProximalGradientDescentOptimizer(self.para.learningRate).minimize(self.cost)
-        #self.optimizer = tf.train.ProximalAdagradOptimizer(self.para.learningRate).minimize(self.cost)
-        self.optimizer = tf.train.RMSPropOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdamOptimizer(para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.FtrlOptimizer(para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalGradientDescentOptimizer(para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalAdagradOptimizer(para.learningRate).minimize(self.cost)
+        self.optimizer = tf.train.RMSPropOptimizer(para.learningRate).minimize(self.cost)
 
     
     def makeStructure(self):
         #network structure
-        if self.para.sparse_dot:
+        if para.sparse_dot:
             self.encoderOP1 = self.encoder(self.X)
         else:
             self.encoderOP1 = self.encoder(self.X1)
@@ -70,7 +69,7 @@ class AutoE_sparseDot:
     def encoder(self, x):
         for i in range(self.layers - 1):
             name = "encoder" + str(i)
-            if self.para.sparse_dot and i == 0:
+            if para.sparse_dot and i == 0:
                 #another way to do sparseDot
                 #x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
                 x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(x, self.W[name]) + self.b[name])
@@ -91,8 +90,8 @@ class AutoE_sparseDot:
         self.costReg = self.getRegCost(self.W, self.b)
         
         #deleting the 2ndcost get no speeding up
-        #return self.para['gamma'] * self.cost1st + self.para['v'] * self.costReg
-        return self.para['gamma'] * self.cost1st + self.para['alpha'] * self.cost2nd + self.para['v'] * self.costReg
+        #return para['gamma'] * self.cost1st + para['v'] * self.costReg
+        return para['gamma'] * self.cost1st + para['alpha'] * self.cost2nd + para['v'] * self.costReg
     
     def get1stCost(self, Y1, weight):
         D = tf.diag(tf.reduce_sum(weight,1))
@@ -100,7 +99,7 @@ class AutoE_sparseDot:
         return 2*tf.trace(tf.matmul(tf.matmul(tf.transpose(Y1),L),Y1))
 
     def get2ndCost(self, X, newX):
-        B = X * (self.para['beta'] - 1) + 1
+        B = X * (para['beta'] - 1) + 1
         return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
     def getRegCost(self, weight, biases):
@@ -126,7 +125,7 @@ class AutoE_sparseDot:
     def doInit(self): 
         init = tf.global_variables_initializer()        
         self.sess.run(init)
-        if self.para.dbn_init:
+        if para.dbn_init:
             data = copy.copy(self.data.feature)
             shape = self.shape
             for i in range(len(shape) - 1):
@@ -162,7 +161,7 @@ class AutoE_sparseDot:
         self.sess.run(op)
         
     def doTrain(self):
-        para = self.para
+        para = para
         data = self.data
         if (not self.isInit):
             self.doInit()
@@ -182,7 +181,7 @@ class AutoE_sparseDot:
                 index = order[st:en]
                 batchX1 = data["feature"][index]
                 weight = data["feature"][index][:,index]
-                if self.para.sparse_dot:
+                if para.sparse_dot:
                     x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
                     x_shape = np.array(batchX1.shape).astype(np.int64)
                     x_val = batchX1[np.where(batchX1)]
