@@ -33,35 +33,35 @@ class AutoE_sparseDot:
         # input
                 
         self.weight = tf.placeholder("float", [None, None])
-        if self.para["sparse_dot"]:
+        if self.para.sparse_dot:
             self.X_sp_indices = tf.placeholder(tf.int64)
             self.X_sp_ids_val = tf.placeholder(tf.float32)
             self.X_sp_shape = tf.placeholder(tf.int64)
             self.X = tf.SparseTensor(self.X_sp_indices, self.X_sp_ids_val, self.X_sp_shape)
-        self.X1 = tf.placeholder("float", [None, para["M"]])
+        self.X1 = tf.placeholder("float", [None, para.M])
         
         self.makeStructure()
         self.cost = self.makeCost()
         
         #optimizer
-        #self.optimizer = tf.train.GradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.AdadeltaOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.AdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.GradientDescentOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdadeltaOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradOptimizer(self.para.learningRate).minimize(self.cost)
         
         #need another parameter
-        #self.optimizer = tf.train.AdagradDAOptimizer(self.para["learningRate"]).minimize(self.cost) 
-        #self.optimizer = tf.train.MomentumOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdagradDAOptimizer(self.para.learningRate).minimize(self.cost) 
+        #self.optimizer = tf.train.MomentumOptimizer(self.para.learningRate).minimize(self.cost)
         
-        #self.optimizer = tf.train.AdamOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.FtrlOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.ProximalGradientDescentOptimizer(self.para["learningRate"]).minimize(self.cost)
-        #self.optimizer = tf.train.ProximalAdagradOptimizer(self.para["learningRate"]).minimize(self.cost)
-        self.optimizer = tf.train.RMSPropOptimizer(self.para["learningRate"]).minimize(self.cost)
+        #self.optimizer = tf.train.AdamOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.FtrlOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalGradientDescentOptimizer(self.para.learningRate).minimize(self.cost)
+        #self.optimizer = tf.train.ProximalAdagradOptimizer(self.para.learningRate).minimize(self.cost)
+        self.optimizer = tf.train.RMSPropOptimizer(self.para.learningRate).minimize(self.cost)
 
     
     def makeStructure(self):
         #network structure
-        if self.para["sparse_dot"]:
+        if self.para.sparse_dot:
             self.encoderOP1 = self.encoder(self.X)
         else:
             self.encoderOP1 = self.encoder(self.X1)
@@ -70,7 +70,7 @@ class AutoE_sparseDot:
     def encoder(self, x):
         for i in range(self.layers - 1):
             name = "encoder" + str(i)
-            if self.para["sparse_dot"] and i == 0:
+            if self.para.sparse_dot and i == 0:
                 #another way to do sparseDot
                 #x = tf.nn.sigmoid(tf.matmul(x, self.W[name], a_is_sparse = True) + self.b[name])
                 x = tf.nn.sigmoid(tf.sparse_tensor_dense_matmul(x, self.W[name]) + self.b[name])
@@ -126,8 +126,8 @@ class AutoE_sparseDot:
     def doInit(self): 
         init = tf.global_variables_initializer()        
         self.sess.run(init)
-        if self.para["dbn_init"]:
-            data = copy.copy(self.data["feature"])
+        if self.para.dbn_init:
+            data = copy.copy(self.data.feature)
             shape = self.shape
             for i in range(len(shape) - 1):
                 myRBM = rbm([shape[i], shape[i+1]], {"epoch":0, "batch_size": 64, "learning_rate":0.1}, data)
@@ -166,10 +166,10 @@ class AutoE_sparseDot:
         data = self.data
         if (not self.isInit):
             self.doInit()
-        total_batch = int(data["N"] / para["batchSize"])
+        total_batch = int(data["N"] / para.batchSize)
         print "Total_batch:", total_batch
         initT = time.time()
-        totalEpoch = para["trainingEpochs"]
+        totalEpoch = para.trainingEpochs
         epoch = 0
         while (epoch < totalEpoch):
             order = np.arange(data["N"])
@@ -177,12 +177,12 @@ class AutoE_sparseDot:
             np.random.shuffle(order)
             all_time = 0 
             for i in range(total_batch):
-                st = i * para["batchSize"]
-                en =(i+1) * para["batchSize"]
+                st = i * para.batchSize
+                en =(i+1) * para.batchSize
                 index = order[st:en]
                 batchX1 = data["feature"][index]
                 weight = data["feature"][index][:,index]
-                if self.para["sparse_dot"]:
+                if self.para.sparse_dot:
                     x_ind = np.vstack(np.where(batchX1)).astype(np.int64).T
                     x_shape = np.array(batchX1.shape).astype(np.int64)
                     x_val = batchX1[np.where(batchX1)]
