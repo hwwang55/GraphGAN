@@ -148,7 +148,7 @@ class AutoE_sparseDot:
         if (self.lastCost == 0):
             self.lastCost = min(cur_cost, self.lastCost)
             return False
-        if (self.lastCost - cur_cost) < 0.01 * self.lastCost):
+        if (self.lastCost - cur_cost) < 0.01 * self.lastCost:
             self.countCvg += 1
             if (self.countCvg > 3):
                 return True
