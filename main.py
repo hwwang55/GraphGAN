@@ -17,6 +17,7 @@ Knowledge Discovery and Data Mining (KDD), 2016
 from config import Config
 from graph import Graph
 from sdne import SDNE
+from utils import *
 import time
 
 if __name__ == "__main__":
@@ -40,13 +41,17 @@ if __name__ == "__main__":
         if graph_data.is_epoch_end:
             epochs += 1
             loss = 0
+            embedding = []
             while (True):
-                mini_batch = graph_data.sample(config.batch_size)
+                mini_batch = graph_data.sample(config.batch_size, do_shuffle = False)
                 loss += model.get_loss(mini_batch)
+                embedding.append(model.get_embedding(mini_batch))
                 if graph_data.is_epoch_end:
                     break
             
             print "Epoch : %d Loss : %.3f, Train time_consumed : %.3fs" % (epochs, loss, time_consumed)
+            check_link_reconstruction(embedding, graph_data)
+
             #TODO
             # if (last_Loss - Loss) < :
                 # print "model converge terminating"
