@@ -54,7 +54,7 @@ class Graph(object):
             if do_shuffle:
                 np.random.shuffle(self.__order)
             else:
-                np.sort(self.__order)
+                self.__order = np.sort(self.__order)
             self.st = 0
             self.is_epoch_end = False 
         

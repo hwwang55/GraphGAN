@@ -4,16 +4,16 @@ class Config(object):
         self.file_path = "../Graph/ca-Grqc.txt"
         
         ## hyperparameter
-        self.struct = [None, 1000, 100]
+        self.struct = [None, 500, 100]
         ## the loss func is  // gamma * L1 + alpha * L2 + reg * regularTerm // 
-        self.alpha = 5
-        self.gamma = 5
-        self.reg = 5
+        self.alpha = 1
+        self.gamma = 1
+        self.reg = 1
         ## the weight balanced value to reconstruct non-zero element more.
-        self.beta = 1
+        self.beta = 15
         
         ## para for training
-        self.batch_size = 5242
+        self.batch_size = 128
         self.epochs_limit = 1000
         self.learning_rate = 0.001
         
