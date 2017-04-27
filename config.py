@@ -1,7 +1,7 @@
 class Config(object):
     def __init__(self):
         ## graph data
-        self.file_path = ""
+        self.file_path = "../Graph/ca-Grqc.txt"
         
         ## hyperparameter
         self.struct = [None, 1000, 100]
