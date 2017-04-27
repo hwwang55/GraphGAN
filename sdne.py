@@ -7,7 +7,7 @@ import random
 class SDNE:
     def __init__(self, config):
     
-        self.is_variable_init = False
+        self.is_variables_init = False
     
         ######### not running out gpu sources ##########
         tf_config = tf.ConfigProto()
@@ -17,7 +17,7 @@ class SDNE:
         ############ define variables ##################
         self.layers = len(config.struct)
         self.struct = config.struct
-        self.sparse_dot = config.sparse_ot
+        self.sparse_dot = config.sparse_dot
         self.W = {}
         self.b = {}
         struct = self.struct
@@ -30,6 +30,7 @@ class SDNE:
             name = "decoder" + str(i)
             self.W[name] = tf.Variable(tf.random_normal([struct[i], struct[i+1]]), name = name)
             self.b[name] = tf.Variable(tf.zeros([struct[i+1]]), name = name)
+        self.struct.reverse()
         ###############################################
         ############## define input ###################
                 
@@ -44,8 +45,8 @@ class SDNE:
         
         ###############################################
         self.__make_compute_graph()
-        self.Loss = self.__make_Loss(config)
-        self.optimizer = tf.train.RMSPropOptimizer(config.learningRate).minimize(self.Loss)
+        self.loss = self.__make_loss(config)
+        self.optimizer = tf.train.RMSPropOptimizer(config.learning_rate).minimize(self.loss)
         
 
     
@@ -75,31 +76,31 @@ class SDNE:
             self.H = encoder_sp(self.X_sp)
         else:
             self.H = encoder(self.X)
-        self.X_reconstruct = self.decoder(self.H)
+        self.X_reconstruct = decoder(self.H)
     
 
         
-    def __make_Loss(self, config):
-        def get_1st_Loss(H, adj_mini_batch):
+    def __make_loss(self, config):
+        def get_1st_loss(H, adj_mini_batch):
             D = tf.diag(tf.reduce_sum(adj_mini_batch,1))
             L = D - adj_mini_batch ## L is laplation-matriX
             return 2*tf.trace(tf.matmul(tf.matmul(tf.transpose(H),L),H))
 
-        def get_2nd_Loss(X, newX, beta):
+        def get_2nd_loss(X, newX, beta):
             B = X * (beta - 1) + 1
             return tf.reduce_sum(tf.pow((newX - X)* B, 2))
 
-        def get_reg_Loss(weight, biases):
-            ret = tf.add_n([tf.nn.l2_Loss(w) for w in weight.itervalues()])
-            ret = ret + tf.add_n([tf.nn.l2_Loss(b) for b in biases.itervalues()])
+        def get_reg_loss(weight, biases):
+            ret = tf.add_n([tf.nn.l2_loss(w) for w in weight.itervalues()])
+            ret = ret + tf.add_n([tf.nn.l2_loss(b) for b in biases.itervalues()])
             return ret
             
         #Loss function
-        self.Loss2nd = get2ndCost(self.X, self.X_reconstruct, config.beta)
-        self.Loss1st = get1stCost(self.H, self.adjacent_matriX)
-        self.LossReg = getRegCost(self.W, self.b)
+        self.loss_2nd = get_2nd_loss(self.X, self.X_reconstruct, config.beta)
+        self.loss_1st = get_1st_loss(self.H, self.adjacent_matriX)
+        self.loss_reg = get_reg_loss(self.W, self.b)
         
-        return config.gamma * self.Loss1st + config.alpha * self.Loss2nd + config.reg * self.LossReg
+        return config.gamma * self.loss_1st + config.alpha * self.loss_2nd + config.reg * self.loss_reg
    
 
     def save_model(self, path):
@@ -111,13 +112,14 @@ class SDNE:
         saver.restore(self.sess, path)
         self.is_Init = True
     
-    def do_variable_init(self, DBN_init = 0):
+    def do_variables_init(self, DBN_init = 0):
         def __assign(a, b):
             op = a.assign(b)
             self.sess.run(op)
         init = tf.global_variables_initializer()        
         self.sess.run(init)
         if DBN_init:
+            pass
             ## TODO
             # data = copy.copy(self.data["feature"])
             # shape = self.shape
@@ -134,7 +136,7 @@ class SDNE:
                 # data = myRBM.getH(data)
         self.is_Init = True
 
-    def __get_feed_dict(data):
+    def __get_feed_dict(self, data):
         X = data.X
         if self.sparse_dot:
             X_ind = np.vstack(np.where(X)).astype(np.int64).T
@@ -147,17 +149,24 @@ class SDNE:
     def fit(self, data):
         if (not self.is_Init):
             print "Warning: the model isn't initialized, and will be initialized randomly"
-            self.do_variable_init()
-        feed_dict = self._get_feed_dict(data):
+            self.do_variables_init()
+        feed_dict = self.__get_feed_dict(data)
         _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
     
-    def getEmbedding(self, data):
+    def get_loss(self, data):
+        if (not self.is_Init):
+            print "Warning: the model isn't initialized, and will be initialized randomly"
+            self.do_variables_init()
+        feed_dict = self.__get_feed_dict(data)
+        return self.sess.run(self.loss, feed_dict = feed_dict)
+
+    def get_embedding(self, data):
         return self.sess.run(self.H, feed_dict = self.__get_feed_dict(data))
 
-    def getW(self):
+    def get_W(self):
         return self.sess.run(self.W)
         
-    def getB(self):
+    def get_B(self):
         return self.sess.run(self.b)
         
     def close(self):
