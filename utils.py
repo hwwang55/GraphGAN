@@ -2,6 +2,13 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import f1_score
+
+class Dotdict(dict):
+    """dot.notation access to dictionary attributes"""
+    __getattr__ = dict.get
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
+
 def doClassification(X, Y, ratio):
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
     clf = svm.LinearSVC()
