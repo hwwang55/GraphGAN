@@ -1,6 +1,5 @@
 import numpy as np
-from utils import Dotdict
-
+from utils.utils import *
 
 class Graph(object):
     def __init__(self, file_path, ng_sample_ratio):

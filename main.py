@@ -1,7 +1,7 @@
 '''
 Reference implementation of SDNE
 
-Author: Xuanrong Yao, Daixin Wang
+Author: Xuanrong Yao, Daixin wang
 
 for more detail, refer to the paper:
 SDNE : structral deep network embedding
@@ -16,8 +16,8 @@ Knowledge Discovery and Data Mining (KDD), 2016
 
 from config import Config
 from graph import Graph
-from sdne import SDNE
-from utils import *
+from model.sdne import SDNE
+from utils.utils import *
 import time
 
 if __name__ == "__main__":
@@ -68,5 +68,4 @@ if __name__ == "__main__":
             last_loss = loss
         
     
-    ##embedding = model.getEmbedding(graph_data.get_all())
-    ##sio.savemat('embedding.mat',{'embedding':embedding})
+    sio.savemat(config.embedding_filename + '_embedding.mat',{'embedding':embedding})

@@ -1,8 +1,9 @@
 class Config(object):
     def __init__(self):
         ## graph data
-        self.file_path = "../Graph/ca-Grqc.txt"
-        
+        self.file_path = "GraphData/ca-Grqc.txt"
+        ## embedding data
+        self.embedding_filename = "ca-Grac" 
         ## hyperparameter
         self.struct = [None, 500, 100]
         ## the loss func is  // gamma * L1 + alpha * L2 + reg * regularTerm // 
