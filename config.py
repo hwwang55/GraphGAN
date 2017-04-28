@@ -1,7 +1,7 @@
 class Config(object):
     def __init__(self):
         ## graph data
-        self.file_path = "GraphData/ca-Grqc.txt"
+        self.file_path = "./GraphData/ca-Grqc.txt"
         ## embedding data
         self.embedding_filename = "ca-Grac" 
         ## hyperparameter
@@ -14,7 +14,7 @@ class Config(object):
         self.beta = 15
         
         ## para for training
-        self.batch_size = 128
+        self.batch_size = 1024
         self.epochs_limit = 1000
         self.learning_rate = 0.001
         
