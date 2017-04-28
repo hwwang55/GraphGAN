@@ -25,7 +25,7 @@ the txt file should be **edgelist** and **the first line** should be **N** , the
 	...
 	4525 4526
 
-> noted: The nodeID start from 0
+> noted: The nodeID start from 0.<br>
 > noted: The graph should be an undirected graph, so if (I  J) exist in the Input file, (J  I) should not.
 ### Citing
 If you find *SDNE* useful in your research, we ask that you cite the following paper:
