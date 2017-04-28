@@ -8,8 +8,25 @@ This repository provides a reference implementation of *SDNE* as described in th
 The *SDNE* algorithm learns a representations for nodes in a graph. Please check the [paper](http://www.kdd.org/kdd2016/subtopic/view/structural-deep-network-embedding) for more details. 
 
 ### Basic Usage
-incoming
+```
+$ python main.py
+```
+After execute the above command, You will get a embedding file named "xxx_embedding.mat"
+>noted: your can just checkout and modify config.py or main.py to get what you want.
+### Input
+Your input graph data should be a **txt** file and be under **GraphData folder** 
+#### file format
+the txt file should be **edgelist** and **the first line** should be **N** , the number of vertexes and **E**, the number of edges
+#### A sample
+	5242 14496
+	0 1
+	0 2
+	4 9
+	...
+	4525 4526
 
+> noted: The nodeID start from 0
+> noted: The graph should be an undirected graph, so if (I  J) exist in the Input file, (J  I) should not.
 ### Citing
 If you find *SDNE* useful in your research, we ask that you cite the following paper:
 
