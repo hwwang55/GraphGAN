@@ -18,6 +18,7 @@ from config import Config
 from graph import Graph
 from model.sdne import SDNE
 from utils.utils import *
+import scipy.io as sio
 import time
 
 if __name__ == "__main__":
@@ -33,12 +34,14 @@ if __name__ == "__main__":
     converge_count = 0
     time_consumed = 0
     epochs = 0
+    batch_n = 0
     while (True):
         mini_batch = graph_data.sample(config.batch_size)
         st_time = time.time()
         model.fit(mini_batch)
+        batch_n += 1
         time_consumed += time.time() - st_time
-        
+        print "Mini-batch : %d fit time: %.2f" % (batch_n, time_consumed) 
         if graph_data.is_epoch_end:
             epochs += 1
             loss = 0
