@@ -47,7 +47,15 @@ class Graph(object):
             size += 1
         print "negative Sampling done"
         
-        
+    def load_label_data(self, filename):
+        self.label = np.zeros([self.N], np.int_)
+        with open(filename,"r") as fin:
+            lines = fin.readlines()
+            for line in lines:
+                line = line.strip().split()
+                self.label[int(line[0])] = int(line[1])
+
+    
     def sample(self, batch_size, do_shuffle = True):
         if self.is_epoch_end:
             if do_shuffle:

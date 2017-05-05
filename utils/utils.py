@@ -9,13 +9,6 @@ class Dotdict(dict):
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
 
-def doClassification(X, Y, ratio):
-    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
-    clf = svm.LinearSVC()
-    clf.fit(x_train, y_train)
-    y_pred = clf.predict(y_train)
-    print "macro-f1:", f1_score(y_test, y_pred, average = "macro")
-    print "micro-f1:", f1_score(y_test, y_pred, average = "micro")
 
 
 def negativeSample(ngSample, links, count, edges, N):
@@ -87,4 +80,11 @@ def check_link_reconstruction(embedding, graph_data, check_index):
     for index in check_index:
         print "precisonK[%d] %.2f" % (index, precisionK[index - 1])
 
+def check_classification(X, Y, ratio):
+    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
+    clf = svm.LinearSVC()
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(y_train)
+    print "macro-f1:", f1_score(y_test, y_pred, average = "macro")
+    print "micro-f1:", f1_score(y_test, y_pred, average = "micro")
     #############################################

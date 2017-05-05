@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
             if (loss > last_loss):
                 converge_count += 1
-                if converge_count > 10:
+                if converge_count > 50:
                     print "model converge terminating"
                     check_link_reconstruction(embedding, graph_data, [1000,3000,5000,7000,9000,10000])
                     break
