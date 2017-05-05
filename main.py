@@ -20,6 +20,7 @@ from model.sdne import SDNE
 from utils.utils import *
 import scipy.io as sio
 import time
+import scipy.io as sio
 
 if __name__ == "__main__":
     config = Config()
@@ -61,9 +62,9 @@ if __name__ == "__main__":
 
             if (loss > last_loss):
                 converge_count += 1
-                if converge_count > 5:
+                if converge_count > 10:
                     print "model converge terminating"
-                    check_link_reconstruction(embedding, graph_data, [1,100,1000,10000])
+                    check_link_reconstruction(embedding, graph_data, [1000,3000,5000,7000,9000,10000])
                     break
             if epochs > config.epochs_limit:
                 print "exceed epochs limit terminating"
