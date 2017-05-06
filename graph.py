@@ -56,7 +56,7 @@ class Graph(object):
                 self.label[int(line[0])] = int(line[1])
 
     
-    def sample(self, batch_size, do_shuffle = True):
+    def sample(self, batch_size, do_shuffle = True, with_label = False):
         if self.is_epoch_end:
             if do_shuffle:
                 np.random.shuffle(self.__order)
@@ -70,6 +70,8 @@ class Graph(object):
         index = self.__order[self.st:en]
         mini_batch.X = self.adj_matrix[index]
         mini_batch.adjacent_matriX = self.adj_matrix[index][:,index]
+        if with_label:
+            mini_batch.label = self.label[index]
         if (en == self.N):
             en = 0
             self.is_epoch_end = True

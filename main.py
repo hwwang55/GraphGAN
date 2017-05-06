@@ -59,12 +59,14 @@ if __name__ == "__main__":
                     break
             
             print "Epoch : %d Loss : %.3f, Train time_consumed : %.3fs" % (epochs, loss, time_consumed)
-
+            if epochs % 10 == 0:
+                check_link_reconstruction(embedding, graph_data, [10000,30000,50000,70000,90000,100000])
+                data = graph_data.sample(graph_data.N, with_label = True)
+                check_classification(model.get_embedding(data.adj_matrix), graph_data.label, 0.1)
             if (loss > last_loss):
                 converge_count += 1
-                if converge_count > 50:
+                if converge_count > 500:
                     print "model converge terminating"
-                    check_link_reconstruction(embedding, graph_data, [1000,3000,5000,7000,9000,10000])
                     break
             if epochs > config.epochs_limit:
                 print "exceed epochs limit terminating"
