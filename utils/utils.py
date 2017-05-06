@@ -81,10 +81,17 @@ def check_link_reconstruction(embedding, graph_data, check_index):
         print "precisonK[%d] %.2f" % (index, precisionK[index - 1])
 
 def check_classification(X, Y, test_ratio):
-    x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
-    clf = svm.LinearSVC()
-    clf.fit(x_train, y_train)
-    y_pred = clf.predict(x_test)
-    print "macro-f1:", f1_score(y_test, y_pred, average = "macro")
-    print "micro-f1:", f1_score(y_test, y_pred, average = "micro")
+    macro_f1 = []
+    micro_f1 = []
+    for ratio in test_ratio:
+        x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
+        clf = svm.LinearSVC()
+        clf.fit(x_train, y_train)
+        y_pred = clf.predict(x_test)
+        macro_f1.append(f1_score(y_test, y_pred, average = "macro"))
+        micro_f1.append(f1_score(y_test, y_pred, average = "micro"))
+    for ratio, score in zip(test_ratio, macro_f1):
+        print "macro_f1: test ratio %.1f : %.2f" % (ratio, score)
+    for ratio, score in zip(test_ratio, micro_f1):
+        print "micro_f1: test ratio %.1f : %.2f" % (ratio, score)
     #############################################

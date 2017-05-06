@@ -26,6 +26,7 @@ if __name__ == "__main__":
     config = Config()
     
     graph_data = Graph(config.file_path, config.ng_sample_ratio)
+    graph_data.load_label_data(config.label_file_path)
     config.struct[0] = graph_data.N
     
     model = SDNE(config)    
@@ -59,10 +60,10 @@ if __name__ == "__main__":
                     break
             
             print "Epoch : %d Loss : %.3f, Train time_consumed : %.3fs" % (epochs, loss, time_consumed)
-            if epochs % 10 == 0:
+            if epochs % 50 == 0:
                 check_link_reconstruction(embedding, graph_data, [10000,30000,50000,70000,90000,100000])
                 data = graph_data.sample(graph_data.N, with_label = True)
-                check_classification(model.get_embedding(data.adj_matrix), graph_data.label, 0.1)
+                check_classification(model.get_embedding(data), data.label, test_ratio = [0.9, 0.7, 0.5, 0.3, 0.1])
             if (loss > last_loss):
                 converge_count += 1
                 if converge_count > 500:
