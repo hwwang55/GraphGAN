@@ -1,6 +1,6 @@
 import numpy as np
 from utils.utils import *
-
+import random
 class Graph(object):
     def __init__(self, file_path, ng_sample_ratio):
         suffix = file_path.split('.')[-1]
@@ -13,7 +13,7 @@ class Graph(object):
             self.E = int(firstLine[1])
             self.__is_epoch_end = False
             self.adj_matrix = np.zeros([self.N, self.N], np.int_)
-            self.__links = np.zeros([self.E + ng_sample_ratio*self.N,3], np.int_)
+            self.__links = np.zeros([self.E + int(ng_sample_ratio*self.N) , 3], np.int_)
             count = 0
             for line in fin.readlines():
                 line = line.strip().split(' ')
@@ -25,7 +25,7 @@ class Graph(object):
                 count += 1
             fin.close()
             if (ng_sample_ratio > 0):
-                self.__negativeSample(ng_sample_ratio * self.N, count, edges.copy())
+                self.__negativeSample(int(ng_sample_ratio*self.N), count, self.adj_matrix.copy())
             self.__order = np.arange(self.N)
             print "getData done"
             print "Vertexes : %d  Edges : %d ngSampleRatio: %f" % (self.N, self.E, ng_sample_ratio)
@@ -43,7 +43,7 @@ class Graph(object):
                 continue
             edges[xx][yy] = -1
             edges[yy][xx] = -1
-            self.links[size + count] = [xx, yy, -1]
+            self.__links[size + count] = [xx, yy, -1]
             size += 1
         print "negative Sampling done"
         

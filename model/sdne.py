@@ -98,10 +98,12 @@ class SDNE:
         #Loss function
         self.loss_2nd = get_2nd_loss(self.X, self.X_reconstruct, config.beta)
         self.loss_1st = get_1st_loss(self.H, self.adjacent_matriX)
-        self.loss_reg = get_reg_loss(self.W, self.b)
         
-        return config.gamma * self.loss_1st + config.alpha * self.loss_2nd + config.reg * self.loss_reg
-   
+        # we don't need the regularizer term, since we have nagetive sampling.
+        #self.loss_reg = get_reg_loss(self.W, self.b) 
+        #return config.gamma * self.loss_1st + config.alpha * self.loss_2nd + config.reg * self.loss_reg
+        
+        return config.gamma * self.loss_1st + config.alpha * self.loss_2nd
 
     def save_model(self, path):
         saver = tf.train.Saver()

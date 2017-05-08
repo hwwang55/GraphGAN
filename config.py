@@ -21,6 +21,6 @@ class Config(object):
         
         self.DBN_init = False
         self.sparse_dot = False
-        self.ng_sample_ratio = 0 # negative sample ratio
+        self.ng_sample_ratio = 0.1 # negative sample ratio
         
         
