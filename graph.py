@@ -48,12 +48,15 @@ class Graph(object):
         print "negative Sampling done"
         
     def load_label_data(self, filename):
-        self.label = np.zeros([self.N], np.int_)
         with open(filename,"r") as fin:
+            firstLine = fin.readline().strip().split()
+            self.label = np.zeros(self.N * int(firstLine[1]), np.bool)
             lines = fin.readlines()
             for line in lines:
-                line = line.strip().split()
-                self.label[int(line[0])] = int(line[1])
+                line = line.strip().split(' : ')
+                labels = line[1].split()
+                for label in labels:
+                    self.label[int(line[0])][int(label)] = True
 
     
     def sample(self, batch_size, do_shuffle = True, with_label = False):

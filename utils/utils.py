@@ -2,6 +2,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import f1_score
+from sklearn.multiclass import OneVsRestClassifier
+
 
 class Dotdict(dict):
     """dot.notation access to dictionary attributes"""
@@ -10,46 +12,6 @@ class Dotdict(dict):
     __delattr__ = dict.__delitem__
 
 
-
-def negativeSample(ngSample, links, count, edges, N):
-    print "negative Sampling"
-    size = 0
-    while (size < ngSample):
-        xx = random.randint(0, N-1)
-        yy = random.randint(0, N-1)
-        if (xx == yy or edges[xx][yy] != 0):
-            continue
-        edges[xx][yy] = -1
-        edges[yy][xx] = -1
-        links[size + count] = [xx, yy, -1]
-        size += 1
-    print "negative Sampling done"
-
-def getData(fileName, ngSampleRatio):
-    fin = open(fileName, "r")
-    print "preprocessing...."
-    firstLine = fin.readline().strip().split(" ")
-    N = int(firstLine[0])
-    E = int(firstLine[1])
-    print N, E
-    ngSample = int(ngSampleRatio * E)
-    edges = np.zeros([N, N], np.int_)
-    links = np.zeros([E + ngSample,3], np.int_)
-    count = 0
-    for line in fin.readlines():
-        line = line.strip().split(' ')
-        edges[int(line[0]),int(line[1])] += 1
-        edges[int(line[1]),int(line[0])] += 1
-        links[count][0] = int(line[0])
-        links[count][1] = int(line[1])
-        links[count][2] = 1
-        count += 1
-    fin.close()
-    if (ngSample > 0):
-        negativeSample(ngSample, links, count, edges.copy(), N)
-    print "getData done"
-    return {"N":N, "E":E, "feature":edges, "links": links}
-	
 def getSimilarity(result):
     print "getting similarity..."
     return np.dot(result, result.T)
@@ -85,11 +47,12 @@ def check_classification(X, Y, test_ratio):
     micro_f1 = []
     for ratio in test_ratio:
         x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = ratio)
-        clf = svm.LinearSVC()
+        clf = OneVsRestClassifier(svm.LinearSVC())
         clf.fit(x_train, y_train)
-        y_pred = clf.predict(x_test)
-        macro_f1.append(f1_score(y_test, y_pred, average = "macro"))
-        micro_f1.append(f1_score(y_test, y_pred, average = "micro"))
+        y_pred = clf.predict_proba(x_test)
+        macro_f1_label, micro_f1_label = get_F1_score(y_test, y_pred)
+        macro_f1.append(macro_f1_label.mean())
+        micro_fi.append(micro_f1_label.mean())
     for ratio, score in zip(test_ratio, macro_f1):
         print "macro_f1: test ratio %.1f : %.2f" % (ratio, score)
     for ratio, score in zip(test_ratio, micro_f1):
