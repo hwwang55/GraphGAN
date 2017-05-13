@@ -43,7 +43,6 @@ if __name__ == "__main__":
         model.fit(mini_batch)
         batch_n += 1
         time_consumed += time.time() - st_time
-        print "Mini-batch : %d fit time: %.2f" % (batch_n, time_consumed) 
         if graph_data.is_epoch_end:
             epochs += 1
             loss = 0
@@ -60,10 +59,10 @@ if __name__ == "__main__":
                     break
             
             print "Epoch : %d Loss : %.3f, Train time_consumed : %.3fs" % (epochs, loss, time_consumed)
-            if epochs % 50 == 0:
-                check_link_reconstruction(embedding, graph_data, [10000,30000,50000,70000,90000,100000])
+            if epochs % 5 == 0:
+                #check_link_reconstruction(embedding, graph_data, [10000,30000,50000,70000,90000,100000])
                 data = graph_data.sample(graph_data.N, with_label = True)
-                check_classification(model.get_embedding(data), data.label, test_ratio = [0.9, 0.7, 0.5, 0.3, 0.1])
+                check_multi_label_classification(model.get_embedding(data), data.label)
             if (loss > last_loss):
                 converge_count += 1
                 if converge_count > 500:

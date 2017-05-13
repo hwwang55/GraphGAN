@@ -50,7 +50,7 @@ class Graph(object):
     def load_label_data(self, filename):
         with open(filename,"r") as fin:
             firstLine = fin.readline().strip().split()
-            self.label = np.zeros(self.N * int(firstLine[1]), np.bool)
+            self.label = np.zeros([self.N, int(firstLine[1])], np.bool)
             lines = fin.readlines()
             for line in lines:
                 line = line.strip().split(' : ')
