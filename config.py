@@ -12,7 +12,7 @@ class Config(object):
         self.gamma = 1
         self.reg = 1
         ## the weight balanced value to reconstruct non-zero element more.
-        self.beta = 15
+        self.beta = 20
         
         ## para for training
         self.batch_size = 1000
@@ -21,6 +21,6 @@ class Config(object):
         
         self.DBN_init = False
         self.sparse_dot = False
-        self.ng_sample_ratio = 0.1 # negative sample ratio
+        self.ng_sample_ratio = 0.3 # negative sample ratio
         
         

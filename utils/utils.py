@@ -42,10 +42,10 @@ def check_link_reconstruction(embedding, graph_data, check_index):
     for index in check_index:
         print "precisonK[%d] %.2f" % (index, precisionK[index - 1])
 
-def check_multi_label_classification(X, Y, test_ratio = 0.5):
+def check_multi_label_classification(X, Y, test_ratio = 0.9):
     def small_trick(y_test, y_pred):
         y_pred_new = np.zeros(y_pred.shape,np.bool)
-        sort_index = np.argsort(y_pred, axis = 1)[::-1]
+        sort_index = np.flip(np.argsort(y_pred, axis = 1), 1)
         for i in range(y_test.shape[0]):
             num = sum(y_test[i])
             for j in range(num):
