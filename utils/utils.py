@@ -52,30 +52,6 @@ def check_multi_label_classification(X, Y, test_ratio = 0.9):
                 y_pred_new[i][sort_index[i][j]] = True
         return y_pred_new
         
-    def get_F1_score(Y, pred):
-        tmp = Y & pred
-        num_correct = tmp.sum(0)
-        num_true = Y.sum(0)
-        num_pred  = pred.sum(0)
-
-        # the precision/recall/F1 for each label
-        precision = 1.0 * num_correct / num_pred
-        recall = 1.0 * num_correct / num_true
-        F1 = (2.0 * num_correct) / (num_true+num_pred)
-
-        # precision(num_correct==0)=0;
-        # recall(num_correct==0)=0;
-        # F1(num_correct==0)=0;
-
-        macro_precision = precision.mean()
-        macro_recall = recall.mean()
-        macro_F1 = F1.mean()
-
-        micro_precision = 1.0 * sum(num_correct) /  sum(num_pred)
-        micro_recall = 1.0 * sum(num_correct) / sum(num_true)
-        micro_F1 = 2.0 * sum(num_correct)/(sum(num_true) + sum(num_pred))
-        
-        return macro_F1, micro_F1
     x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = test_ratio)
     clf = OneVsRestClassifier(LogisticRegression())
     clf.fit(x_train, y_train)
@@ -84,9 +60,10 @@ def check_multi_label_classification(X, Y, test_ratio = 0.9):
     ## small trick : we assume that we know how many label to predict
     y_pred = small_trick(y_test, y_pred)
     
-    macro_f1, micro_f1 = get_F1_score(y_test, y_pred)
-    print "macro_f1: %.4f" % (macro_f1)
-    print "micro_f1: %.4f" % (micro_f1)
+    micro = f1_score(y_test, y_pred, average = "micro")
+    macro = f1_score(y_test, y_pred, average = "macro")
+    print "micro_f1: %.4f" % (micro)
+    print "macro_f1: %.4f" % (macro)
     #############################################
 
 
