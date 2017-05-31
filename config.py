@@ -18,7 +18,7 @@ class Config(object):
         #self.rN = 0.9
         self.batch_size = 1000
         self.epochs_limit = 1000
-        self.learning_rate = 0.01
+        self.learning_rate = 0.001
         
         self.DBN_init = False
         self.sparse_dot = False

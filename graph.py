@@ -57,7 +57,6 @@ class Graph(object):
                 labels = line[1].split()
                 for label in labels:
                     self.label[int(line[0])][int(label)] = True
-                    self.rLabel[int(label)].append(int(line[0]))
 
     
     def sample(self, batch_size, do_shuffle = True, with_label = False):
@@ -71,7 +70,7 @@ class Graph(object):
         
         mini_batch = Dotdict()
         en = min(self.N, self.st + batch_size)
-        
+        index = self.__order[self.st:en]     
         mini_batch.X = self.adj_matrix[index]
         mini_batch.adjacent_matriX = self.adj_matrix[index][:,index]
         if with_label:
