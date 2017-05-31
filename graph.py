@@ -13,15 +13,15 @@ class Graph(object):
             self.E = int(firstLine[1])
             self.__is_epoch_end = False
             self.adj_matrix = np.zeros([self.N, self.N], np.int_)
-            self.__links = np.zeros([self.E + int(ng_sample_ratio*self.N) , 3], np.int_)
+            self.links = np.zeros([self.E + int(ng_sample_ratio*self.N) , 3], np.int_)
             count = 0
             for line in fin.readlines():
                 line = line.strip().split(' ')
                 self.adj_matrix[int(line[0]),int(line[1])] += 1
                 self.adj_matrix[int(line[1]),int(line[0])] += 1
-                self.__links[count][0] = int(line[0])
-                self.__links[count][1] = int(line[1])
-                self.__links[count][2] = 1
+                self.links[count][0] = int(line[0])
+                self.links[count][1] = int(line[1])
+                self.links[count][2] = 1
                 count += 1
             fin.close()
             if (ng_sample_ratio > 0):
@@ -43,7 +43,7 @@ class Graph(object):
                 continue
             edges[xx][yy] = -1
             edges[yy][xx] = -1
-            self.__links[size + count] = [xx, yy, -1]
+            self.links[size + count] = [xx, yy, -1]
             size += 1
         print "negative Sampling done"
         
@@ -57,12 +57,13 @@ class Graph(object):
                 labels = line[1].split()
                 for label in labels:
                     self.label[int(line[0])][int(label)] = True
+                    self.rLabel[int(label)].append(int(line[0]))
 
     
     def sample(self, batch_size, do_shuffle = True, with_label = False):
         if self.is_epoch_end:
             if do_shuffle:
-                np.random.shuffle(self.__order)
+                np.random.shuffle(self.__order[0:self.N])
             else:
                 self.__order = np.sort(self.__order)
             self.st = 0
@@ -70,7 +71,7 @@ class Graph(object):
         
         mini_batch = Dotdict()
         en = min(self.N, self.st + batch_size)
-        index = self.__order[self.st:en]
+        
         mini_batch.X = self.adj_matrix[index]
         mini_batch.adjacent_matriX = self.adj_matrix[index][:,index]
         if with_label:

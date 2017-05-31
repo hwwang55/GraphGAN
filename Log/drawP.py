@@ -1,12 +1,27 @@
 import os
-import matplotlib as plt
-cwd = os.getcwd()
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib import cm
 
 
 
-for rt, dirs, files in os.walk(root):
-    for file in files:
-        x, y = get_data(file)
-        plt.plot(x, y)
+def get_data(file):
+    fin = open(file)
+    x = []
+    y = []
+    for line in fin.readlines():
+        line = line.strip().split(': ')
+        if line[0] == "micro_f1":
+            y.append(float(line[1]))
+            x.append(len(y))
+    return x, y
 
-plt.savefig("TimeCompar.jpg")
+if __name__ == "__main__":
+    
+    x, y = get_data("rn0.9.txt")
+    plt.plot(x, y)
+    plt.legend()
+    plt.ylabel("cost")
+    plt.xlabel("time(s)")
+    #plt.show()
+    plt.savefig("picture" + os.sep + "point.png")

@@ -1,0 +1,1406 @@
+negative Sampling
+negative Sampling done
+getData done
+Vertexes : 10312  Edges : 333983 ngSampleRatio: 0.300000
+Epoch : 1 Loss : 2424183262912.000, Train time_consumed : 0.302s
+Epoch : 2 Loss : 2263015351872.000, Train time_consumed : 0.346s
+Epoch : 3 Loss : 2136859783552.000, Train time_consumed : 0.391s
+Epoch : 4 Loss : 2043709861888.000, Train time_consumed : 0.433s
+Epoch : 5 Loss : 1960659560768.000, Train time_consumed : 0.476s
+micro_f1: 0.1483
+macro_f1: 0.0545
+Epoch : 6 Loss : 1932187253568.000, Train time_consumed : 0.518s
+Epoch : 7 Loss : 1884290267520.000, Train time_consumed : 0.559s
+Epoch : 8 Loss : 1860309634432.000, Train time_consumed : 0.599s
+Epoch : 9 Loss : 1799197822976.000, Train time_consumed : 0.641s
+Epoch : 10 Loss : 1772207818752.000, Train time_consumed : 0.682s
+micro_f1: 0.1540
+macro_f1: 0.0501
+Epoch : 11 Loss : 1752946975296.000, Train time_consumed : 0.731s
+Epoch : 12 Loss : 1727070698240.000, Train time_consumed : 0.779s
+Epoch : 13 Loss : 1691447595712.000, Train time_consumed : 0.829s
+Epoch : 14 Loss : 1661882573568.000, Train time_consumed : 0.879s
+Epoch : 15 Loss : 1626773826112.000, Train time_consumed : 0.924s
+micro_f1: 0.1682
+macro_f1: 0.0541
+Epoch : 16 Loss : 1613990598464.000, Train time_consumed : 0.975s
+Epoch : 17 Loss : 1588875269952.000, Train time_consumed : 1.023s
+Epoch : 18 Loss : 1562542267968.000, Train time_consumed : 1.073s
+Epoch : 19 Loss : 1554333671936.000, Train time_consumed : 1.126s
+Epoch : 20 Loss : 1501636234688.000, Train time_consumed : 1.172s
+micro_f1: 0.1539
+macro_f1: 0.0396
+Epoch : 21 Loss : 1482112454400.000, Train time_consumed : 1.213s
+Epoch : 22 Loss : 1484759235968.000, Train time_consumed : 1.262s
+Epoch : 23 Loss : 1436256452160.000, Train time_consumed : 1.309s
+Epoch : 24 Loss : 1397013310400.000, Train time_consumed : 1.356s
+Epoch : 25 Loss : 1360657666112.000, Train time_consumed : 1.408s
+micro_f1: 0.1679
+macro_f1: 0.0495
+Epoch : 26 Loss : 1354533935808.000, Train time_consumed : 1.451s
+Epoch : 27 Loss : 1347549059072.000, Train time_consumed : 1.498s
+Epoch : 28 Loss : 1311809947712.000, Train time_consumed : 1.549s
+Epoch : 29 Loss : 1285634341696.000, Train time_consumed : 1.599s
+Epoch : 30 Loss : 1292403263936.000, Train time_consumed : 1.650s
+micro_f1: 0.1645
+macro_f1: 0.0515
+Epoch : 31 Loss : 1256723072256.000, Train time_consumed : 1.695s
+Epoch : 32 Loss : 1210938465088.000, Train time_consumed : 1.746s
+Epoch : 33 Loss : 1221167597760.000, Train time_consumed : 1.801s
+Epoch : 34 Loss : 1205841894144.000, Train time_consumed : 1.854s
+Epoch : 35 Loss : 1165561698112.000, Train time_consumed : 1.903s
+micro_f1: 0.1690
+macro_f1: 0.0468
+Epoch : 36 Loss : 1152941292864.000, Train time_consumed : 1.956s
+Epoch : 37 Loss : 1144568121408.000, Train time_consumed : 2.004s
+Epoch : 38 Loss : 1119089943296.000, Train time_consumed : 2.058s
+Epoch : 39 Loss : 1098364360128.000, Train time_consumed : 2.105s
+Epoch : 40 Loss : 1103468783776.000, Train time_consumed : 2.153s
+micro_f1: 0.1675
+macro_f1: 0.0472
+Epoch : 41 Loss : 1069837981440.000, Train time_consumed : 2.204s
+Epoch : 42 Loss : 1051146904320.000, Train time_consumed : 2.249s
+Epoch : 43 Loss : 1016889504608.000, Train time_consumed : 2.304s
+Epoch : 44 Loss : 1027553470368.000, Train time_consumed : 2.353s
+Epoch : 45 Loss : 1012784862816.000, Train time_consumed : 2.400s
+micro_f1: 0.1721
+macro_f1: 0.0518
+Epoch : 46 Loss : 995763198272.000, Train time_consumed : 2.451s
+Epoch : 47 Loss : 936185957216.000, Train time_consumed : 2.501s
+Epoch : 48 Loss : 960111798784.000, Train time_consumed : 2.548s
+Epoch : 49 Loss : 938348798144.000, Train time_consumed : 2.597s
+Epoch : 50 Loss : 894151990144.000, Train time_consumed : 2.650s
+micro_f1: 0.1691
+macro_f1: 0.0500
+Epoch : 51 Loss : 896518678112.000, Train time_consumed : 2.695s
+Epoch : 52 Loss : 917884799680.000, Train time_consumed : 2.741s
+Epoch : 53 Loss : 866536272032.000, Train time_consumed : 2.787s
+Epoch : 54 Loss : 894046031424.000, Train time_consumed : 2.839s
+Epoch : 55 Loss : 862423460384.000, Train time_consumed : 2.892s
+micro_f1: 0.1624
+macro_f1: 0.0475
+Epoch : 56 Loss : 836912320768.000, Train time_consumed : 2.937s
+Epoch : 57 Loss : 822470762368.000, Train time_consumed : 2.979s
+Epoch : 58 Loss : 818005589312.000, Train time_consumed : 3.031s
+Epoch : 59 Loss : 845786641248.000, Train time_consumed : 3.079s
+Epoch : 60 Loss : 811966218688.000, Train time_consumed : 3.128s
+micro_f1: 0.1659
+macro_f1: 0.0511
+Epoch : 61 Loss : 818215341984.000, Train time_consumed : 3.174s
+Epoch : 62 Loss : 829216552896.000, Train time_consumed : 3.223s
+Epoch : 63 Loss : 796703846880.000, Train time_consumed : 3.278s
+Epoch : 64 Loss : 792419769184.000, Train time_consumed : 3.332s
+Epoch : 65 Loss : 785462983104.000, Train time_consumed : 3.383s
+micro_f1: 0.1710
+macro_f1: 0.0500
+Epoch : 66 Loss : 767601735040.000, Train time_consumed : 3.430s
+Epoch : 67 Loss : 767531468512.000, Train time_consumed : 3.478s
+Epoch : 68 Loss : 756857402752.000, Train time_consumed : 3.528s
+Epoch : 69 Loss : 741065196480.000, Train time_consumed : 3.583s
+Epoch : 70 Loss : 724689828560.000, Train time_consumed : 3.631s
+micro_f1: 0.1608
+macro_f1: 0.0524
+Epoch : 71 Loss : 700769795952.000, Train time_consumed : 3.677s
+Epoch : 72 Loss : 734741591744.000, Train time_consumed : 3.730s
+Epoch : 73 Loss : 738566365376.000, Train time_consumed : 3.776s
+Epoch : 74 Loss : 783025136224.000, Train time_consumed : 3.819s
+Epoch : 75 Loss : 725978118624.000, Train time_consumed : 3.866s
+micro_f1: 0.1653
+macro_f1: 0.0542
+Epoch : 76 Loss : 753851878912.000, Train time_consumed : 3.916s
+Epoch : 77 Loss : 733527282016.000, Train time_consumed : 3.960s
+Epoch : 78 Loss : 745874390304.000, Train time_consumed : 4.005s
+Epoch : 79 Loss : 675630938112.000, Train time_consumed : 4.052s
+Epoch : 80 Loss : 694303881088.000, Train time_consumed : 4.096s
+micro_f1: 0.1671
+macro_f1: 0.0512
+Epoch : 81 Loss : 674135199968.000, Train time_consumed : 4.140s
+Epoch : 82 Loss : 651660694112.000, Train time_consumed : 4.181s
+Epoch : 83 Loss : 647948245728.000, Train time_consumed : 4.222s
+Epoch : 84 Loss : 631035917552.000, Train time_consumed : 4.270s
+Epoch : 85 Loss : 666927273632.000, Train time_consumed : 4.317s
+micro_f1: 0.1634
+macro_f1: 0.0510
+Epoch : 86 Loss : 674072112592.000, Train time_consumed : 4.361s
+Epoch : 87 Loss : 684461350352.000, Train time_consumed : 4.405s
+Epoch : 88 Loss : 634978774656.000, Train time_consumed : 4.445s
+Epoch : 89 Loss : 633944891440.000, Train time_consumed : 4.495s
+Epoch : 90 Loss : 609045437856.000, Train time_consumed : 4.547s
+micro_f1: 0.1689
+macro_f1: 0.0515
+Epoch : 91 Loss : 594921739696.000, Train time_consumed : 4.596s
+Epoch : 92 Loss : 573134884768.000, Train time_consumed : 4.642s
+Epoch : 93 Loss : 610080937472.000, Train time_consumed : 4.684s
+Epoch : 94 Loss : 614913992464.000, Train time_consumed : 4.733s
+Epoch : 95 Loss : 661972116512.000, Train time_consumed : 4.784s
+micro_f1: 0.1671
+macro_f1: 0.0513
+Epoch : 96 Loss : 694307998496.000, Train time_consumed : 4.828s
+Epoch : 97 Loss : 598955532496.000, Train time_consumed : 4.876s
+Epoch : 98 Loss : 600019005616.000, Train time_consumed : 4.923s
+Epoch : 99 Loss : 580856020464.000, Train time_consumed : 4.976s
+Epoch : 100 Loss : 606779153248.000, Train time_consumed : 5.024s
+micro_f1: 0.1705
+macro_f1: 0.0526
+Epoch : 101 Loss : 582818783504.000, Train time_consumed : 5.079s
+Epoch : 102 Loss : 680293170800.000, Train time_consumed : 5.126s
+Epoch : 103 Loss : 688196471296.000, Train time_consumed : 5.169s
+Epoch : 104 Loss : 625474474016.000, Train time_consumed : 5.217s
+Epoch : 105 Loss : 686680191008.000, Train time_consumed : 5.265s
+micro_f1: 0.1710
+macro_f1: 0.0574
+Epoch : 106 Loss : 640269470368.000, Train time_consumed : 5.315s
+Epoch : 107 Loss : 654962674240.000, Train time_consumed : 5.362s
+Epoch : 108 Loss : 738597299136.000, Train time_consumed : 5.405s
+Epoch : 109 Loss : 647912237552.000, Train time_consumed : 5.454s
+Epoch : 110 Loss : 619837631088.000, Train time_consumed : 5.506s
+micro_f1: 0.1699
+macro_f1: 0.0603
+Epoch : 111 Loss : 588152818896.000, Train time_consumed : 5.560s
+Epoch : 112 Loss : 589266727296.000, Train time_consumed : 5.608s
+Epoch : 113 Loss : 525098427760.000, Train time_consumed : 5.652s
+Epoch : 114 Loss : 558451743776.000, Train time_consumed : 5.697s
+Epoch : 115 Loss : 506470190720.000, Train time_consumed : 5.744s
+micro_f1: 0.1630
+macro_f1: 0.0510
+Epoch : 116 Loss : 530449829360.000, Train time_consumed : 5.791s
+Epoch : 117 Loss : 543040583728.000, Train time_consumed : 5.838s
+Epoch : 118 Loss : 550728915232.000, Train time_consumed : 5.880s
+Epoch : 119 Loss : 559120184960.000, Train time_consumed : 5.927s
+Epoch : 120 Loss : 494385109328.000, Train time_consumed : 5.974s
+micro_f1: 0.1653
+macro_f1: 0.0528
+Epoch : 121 Loss : 566019054928.000, Train time_consumed : 6.023s
+Epoch : 122 Loss : 545062735296.000, Train time_consumed : 6.065s
+Epoch : 123 Loss : 510928240208.000, Train time_consumed : 6.107s
+Epoch : 124 Loss : 530149690976.000, Train time_consumed : 6.147s
+Epoch : 125 Loss : 574177852224.000, Train time_consumed : 6.199s
+micro_f1: 0.1631
+macro_f1: 0.0491
+Epoch : 126 Loss : 522239504400.000, Train time_consumed : 6.244s
+Epoch : 127 Loss : 559312347968.000, Train time_consumed : 6.287s
+Epoch : 128 Loss : 513073156992.000, Train time_consumed : 6.330s
+Epoch : 129 Loss : 499035984352.000, Train time_consumed : 6.370s
+Epoch : 130 Loss : 536035639312.000, Train time_consumed : 6.417s
+micro_f1: 0.1723
+macro_f1: 0.0535
+Epoch : 131 Loss : 572769474336.000, Train time_consumed : 6.462s
+Epoch : 132 Loss : 520671216736.000, Train time_consumed : 6.511s
+Epoch : 133 Loss : 455970843440.000, Train time_consumed : 6.558s
+Epoch : 134 Loss : 426463700656.000, Train time_consumed : 6.606s
+Epoch : 135 Loss : 438367883920.000, Train time_consumed : 6.654s
+micro_f1: 0.1659
+macro_f1: 0.0541
+Epoch : 136 Loss : 448270733936.000, Train time_consumed : 6.701s
+Epoch : 137 Loss : 475967474592.000, Train time_consumed : 6.746s
+Epoch : 138 Loss : 459784798736.000, Train time_consumed : 6.796s
+Epoch : 139 Loss : 497543241568.000, Train time_consumed : 6.842s
+Epoch : 140 Loss : 511146956592.000, Train time_consumed : 6.890s
+micro_f1: 0.1753
+macro_f1: 0.0546
+Epoch : 141 Loss : 491916247536.000, Train time_consumed : 6.937s
+Epoch : 142 Loss : 437064098288.000, Train time_consumed : 6.985s
+Epoch : 143 Loss : 441718069920.000, Train time_consumed : 7.035s
+Epoch : 144 Loss : 471284408528.000, Train time_consumed : 7.082s
+Epoch : 145 Loss : 430107201968.000, Train time_consumed : 7.133s
+micro_f1: 0.1737
+macro_f1: 0.0584
+Epoch : 146 Loss : 432464641344.000, Train time_consumed : 7.185s
+Epoch : 147 Loss : 454468077920.000, Train time_consumed : 7.239s
+Epoch : 148 Loss : 468492657232.000, Train time_consumed : 7.286s
+Epoch : 149 Loss : 477646475040.000, Train time_consumed : 7.337s
+Epoch : 150 Loss : 453189755008.000, Train time_consumed : 7.387s
+micro_f1: 0.1782
+macro_f1: 0.0628
+Epoch : 151 Loss : 450389073680.000, Train time_consumed : 7.434s
+Epoch : 152 Loss : 411469908864.000, Train time_consumed : 7.483s
+Epoch : 153 Loss : 471960062144.000, Train time_consumed : 7.535s
+Epoch : 154 Loss : 412986041216.000, Train time_consumed : 7.580s
+Epoch : 155 Loss : 409630210496.000, Train time_consumed : 7.620s
+micro_f1: 0.1674
+macro_f1: 0.0503
+Epoch : 156 Loss : 437148296880.000, Train time_consumed : 7.669s
+Epoch : 157 Loss : 399552861696.000, Train time_consumed : 7.721s
+Epoch : 158 Loss : 429318223232.000, Train time_consumed : 7.770s
+Epoch : 159 Loss : 427748385440.000, Train time_consumed : 7.817s
+Epoch : 160 Loss : 494146608160.000, Train time_consumed : 7.861s
+micro_f1: 0.1638
+macro_f1: 0.0552
+Epoch : 161 Loss : 417854442928.000, Train time_consumed : 7.909s
+Epoch : 162 Loss : 411381228608.000, Train time_consumed : 7.961s
+Epoch : 163 Loss : 426603740960.000, Train time_consumed : 8.010s
+Epoch : 164 Loss : 427699625264.000, Train time_consumed : 8.056s
+Epoch : 165 Loss : 481411618592.000, Train time_consumed : 8.114s
+micro_f1: 0.1691
+macro_f1: 0.0549
+Epoch : 166 Loss : 387872906400.000, Train time_consumed : 8.163s
+Epoch : 167 Loss : 418015938464.000, Train time_consumed : 8.214s
+Epoch : 168 Loss : 458015726592.000, Train time_consumed : 8.262s
+Epoch : 169 Loss : 444064351232.000, Train time_consumed : 8.308s
+Epoch : 170 Loss : 459685362720.000, Train time_consumed : 8.359s
+micro_f1: 0.1722
+macro_f1: 0.0572
+Epoch : 171 Loss : 452848817488.000, Train time_consumed : 8.406s
+Epoch : 172 Loss : 451043317616.000, Train time_consumed : 8.452s
+Epoch : 173 Loss : 427455550848.000, Train time_consumed : 8.499s
+Epoch : 174 Loss : 509124947104.000, Train time_consumed : 8.548s
+Epoch : 175 Loss : 420254037840.000, Train time_consumed : 8.599s
+micro_f1: 0.1752
+macro_f1: 0.0583
+Epoch : 176 Loss : 455086800448.000, Train time_consumed : 8.643s
+Epoch : 177 Loss : 457117312544.000, Train time_consumed : 8.692s
+Epoch : 178 Loss : 427768142256.000, Train time_consumed : 8.742s
+Epoch : 179 Loss : 434619524384.000, Train time_consumed : 8.792s
+Epoch : 180 Loss : 418771665264.000, Train time_consumed : 8.842s
+micro_f1: 0.1614
+macro_f1: 0.0537
+Epoch : 181 Loss : 443147539424.000, Train time_consumed : 8.912s
+Epoch : 182 Loss : 500643157760.000, Train time_consumed : 8.960s
+Epoch : 183 Loss : 436565594640.000, Train time_consumed : 9.012s
+Epoch : 184 Loss : 430246801536.000, Train time_consumed : 9.060s
+Epoch : 185 Loss : 416747615040.000, Train time_consumed : 9.104s
+micro_f1: 0.1688
+macro_f1: 0.0549
+Epoch : 186 Loss : 391791556688.000, Train time_consumed : 9.155s
+Epoch : 187 Loss : 393442043232.000, Train time_consumed : 9.205s
+Epoch : 188 Loss : 467627585200.000, Train time_consumed : 9.260s
+Epoch : 189 Loss : 475774308112.000, Train time_consumed : 9.310s
+Epoch : 190 Loss : 492901626752.000, Train time_consumed : 9.352s
+micro_f1: 0.1662
+macro_f1: 0.0576
+Epoch : 191 Loss : 366213140064.000, Train time_consumed : 9.401s
+Epoch : 192 Loss : 397048190512.000, Train time_consumed : 9.454s
+Epoch : 193 Loss : 387335634448.000, Train time_consumed : 9.506s
+Epoch : 194 Loss : 383330432608.000, Train time_consumed : 9.558s
+Epoch : 195 Loss : 382879839984.000, Train time_consumed : 9.602s
+micro_f1: 0.1732
+macro_f1: 0.0598
+Epoch : 196 Loss : 437486626976.000, Train time_consumed : 9.651s
+Epoch : 197 Loss : 452169632672.000, Train time_consumed : 9.698s
+Epoch : 198 Loss : 446087048208.000, Train time_consumed : 9.747s
+Epoch : 199 Loss : 413595172384.000, Train time_consumed : 9.798s
+Epoch : 200 Loss : 436695648192.000, Train time_consumed : 9.854s
+micro_f1: 0.1718
+macro_f1: 0.0593
+Epoch : 201 Loss : 459583399696.000, Train time_consumed : 9.900s
+Epoch : 202 Loss : 485922768000.000, Train time_consumed : 9.953s
+Epoch : 203 Loss : 431414585344.000, Train time_consumed : 10.015s
+Epoch : 204 Loss : 378100623760.000, Train time_consumed : 10.065s
+Epoch : 205 Loss : 336820615264.000, Train time_consumed : 10.116s
+micro_f1: 0.1652
+macro_f1: 0.0557
+Epoch : 206 Loss : 365501704320.000, Train time_consumed : 10.165s
+Epoch : 207 Loss : 374730100672.000, Train time_consumed : 10.220s
+Epoch : 208 Loss : 401048045776.000, Train time_consumed : 10.272s
+Epoch : 209 Loss : 416991266768.000, Train time_consumed : 10.322s
+Epoch : 210 Loss : 341687715680.000, Train time_consumed : 10.373s
+micro_f1: 0.1777
+macro_f1: 0.0636
+Epoch : 211 Loss : 407171038608.000, Train time_consumed : 10.424s
+Epoch : 212 Loss : 340709209488.000, Train time_consumed : 10.476s
+Epoch : 213 Loss : 377706785328.000, Train time_consumed : 10.528s
+Epoch : 214 Loss : 380699907360.000, Train time_consumed : 10.582s
+Epoch : 215 Loss : 361589578416.000, Train time_consumed : 10.646s
+micro_f1: 0.1742
+macro_f1: 0.0581
+Epoch : 216 Loss : 365199038096.000, Train time_consumed : 10.699s
+Epoch : 217 Loss : 394573384016.000, Train time_consumed : 10.755s
+Epoch : 218 Loss : 415032697040.000, Train time_consumed : 10.803s
+Epoch : 219 Loss : 410135306688.000, Train time_consumed : 10.856s
+Epoch : 220 Loss : 439839529888.000, Train time_consumed : 10.905s
+micro_f1: 0.1594
+macro_f1: 0.0547
+Epoch : 221 Loss : 398167746240.000, Train time_consumed : 10.956s
+Epoch : 222 Loss : 408310034496.000, Train time_consumed : 11.010s
+Epoch : 223 Loss : 387363322256.000, Train time_consumed : 11.068s
+Epoch : 224 Loss : 372066100272.000, Train time_consumed : 11.122s
+Epoch : 225 Loss : 357711232144.000, Train time_consumed : 11.172s
+micro_f1: 0.1594
+macro_f1: 0.0484
+Epoch : 226 Loss : 351107745216.000, Train time_consumed : 11.221s
+Epoch : 227 Loss : 354293022800.000, Train time_consumed : 11.294s
+Epoch : 228 Loss : 361508640240.000, Train time_consumed : 11.347s
+Epoch : 229 Loss : 346408134944.000, Train time_consumed : 11.403s
+Epoch : 230 Loss : 367871426176.000, Train time_consumed : 11.461s
+micro_f1: 0.1617
+macro_f1: 0.0510
+Epoch : 231 Loss : 385402895936.000, Train time_consumed : 11.507s
+Epoch : 232 Loss : 314124495920.000, Train time_consumed : 11.558s
+Epoch : 233 Loss : 363833427216.000, Train time_consumed : 11.616s
+Epoch : 234 Loss : 389086081888.000, Train time_consumed : 11.667s
+Epoch : 235 Loss : 311755166992.000, Train time_consumed : 11.720s
+micro_f1: 0.1704
+macro_f1: 0.0562
+Epoch : 236 Loss : 340594208544.000, Train time_consumed : 11.769s
+Epoch : 237 Loss : 320963625408.000, Train time_consumed : 11.818s
+Epoch : 238 Loss : 362855468752.000, Train time_consumed : 11.876s
+Epoch : 239 Loss : 332514955496.000, Train time_consumed : 11.931s
+Epoch : 240 Loss : 331712125696.000, Train time_consumed : 11.982s
+micro_f1: 0.1709
+macro_f1: 0.0548
+Epoch : 241 Loss : 348321018128.000, Train time_consumed : 12.032s
+Epoch : 242 Loss : 388582378496.000, Train time_consumed : 12.089s
+Epoch : 243 Loss : 404250541744.000, Train time_consumed : 12.146s
+Epoch : 244 Loss : 407999365008.000, Train time_consumed : 12.198s
+Epoch : 245 Loss : 355575087296.000, Train time_consumed : 12.251s
+micro_f1: 0.1638
+macro_f1: 0.0554
+Epoch : 246 Loss : 383373549552.000, Train time_consumed : 12.306s
+Epoch : 247 Loss : 387427921824.000, Train time_consumed : 12.361s
+Epoch : 248 Loss : 384890854784.000, Train time_consumed : 12.422s
+Epoch : 249 Loss : 326236083104.000, Train time_consumed : 12.475s
+Epoch : 250 Loss : 351205544320.000, Train time_consumed : 12.523s
+micro_f1: 0.1723
+macro_f1: 0.0529
+Epoch : 251 Loss : 350340166032.000, Train time_consumed : 12.583s
+Epoch : 252 Loss : 368109117120.000, Train time_consumed : 12.636s
+Epoch : 253 Loss : 315358361952.000, Train time_consumed : 12.705s
+Epoch : 254 Loss : 316940966000.000, Train time_consumed : 12.765s
+Epoch : 255 Loss : 335558723136.000, Train time_consumed : 12.818s
+micro_f1: 0.1664
+macro_f1: 0.0515
+Epoch : 256 Loss : 344153849024.000, Train time_consumed : 12.873s
+Epoch : 257 Loss : 327227131760.000, Train time_consumed : 12.925s
+Epoch : 258 Loss : 301513261824.000, Train time_consumed : 12.980s
+Epoch : 259 Loss : 323807184112.000, Train time_consumed : 13.031s
+Epoch : 260 Loss : 282609789552.000, Train time_consumed : 13.081s
+micro_f1: 0.1649
+macro_f1: 0.0571
+Epoch : 261 Loss : 305775063072.000, Train time_consumed : 13.132s
+Epoch : 262 Loss : 288038569744.000, Train time_consumed : 13.181s
+Epoch : 263 Loss : 295022319408.000, Train time_consumed : 13.233s
+Epoch : 264 Loss : 312228001968.000, Train time_consumed : 13.288s
+Epoch : 265 Loss : 293603482080.000, Train time_consumed : 13.333s
+micro_f1: 0.1697
+macro_f1: 0.0558
+Epoch : 266 Loss : 279593437464.000, Train time_consumed : 13.377s
+Epoch : 267 Loss : 311822701664.000, Train time_consumed : 13.423s
+Epoch : 268 Loss : 351195926208.000, Train time_consumed : 13.471s
+Epoch : 269 Loss : 306053473040.000, Train time_consumed : 13.518s
+Epoch : 270 Loss : 297473370272.000, Train time_consumed : 13.567s
+micro_f1: 0.1608
+macro_f1: 0.0523
+Epoch : 271 Loss : 324545509248.000, Train time_consumed : 13.613s
+Epoch : 272 Loss : 301594206816.000, Train time_consumed : 13.665s
+Epoch : 273 Loss : 331058210944.000, Train time_consumed : 13.715s
+Epoch : 274 Loss : 305588598328.000, Train time_consumed : 13.763s
+Epoch : 275 Loss : 325914505808.000, Train time_consumed : 13.809s
+micro_f1: 0.1729
+macro_f1: 0.0549
+Epoch : 276 Loss : 307153548272.000, Train time_consumed : 13.854s
+Epoch : 277 Loss : 346649455744.000, Train time_consumed : 13.904s
+Epoch : 278 Loss : 433250487504.000, Train time_consumed : 13.955s
+Epoch : 279 Loss : 296545556288.000, Train time_consumed : 14.005s
+Epoch : 280 Loss : 317287339200.000, Train time_consumed : 14.048s
+micro_f1: 0.1645
+macro_f1: 0.0582
+Epoch : 281 Loss : 347473244400.000, Train time_consumed : 14.097s
+Epoch : 282 Loss : 318939551120.000, Train time_consumed : 14.148s
+Epoch : 283 Loss : 325669588480.000, Train time_consumed : 14.200s
+Epoch : 284 Loss : 325156577312.000, Train time_consumed : 14.244s
+Epoch : 285 Loss : 299675872288.000, Train time_consumed : 14.286s
+micro_f1: 0.1640
+macro_f1: 0.0631
+Epoch : 286 Loss : 298487905824.000, Train time_consumed : 14.334s
+Epoch : 287 Loss : 314237472848.000, Train time_consumed : 14.388s
+Epoch : 288 Loss : 320012935616.000, Train time_consumed : 14.434s
+Epoch : 289 Loss : 335571601280.000, Train time_consumed : 14.497s
+Epoch : 290 Loss : 319806726776.000, Train time_consumed : 14.546s
+micro_f1: 0.1631
+macro_f1: 0.0506
+Epoch : 291 Loss : 360701783264.000, Train time_consumed : 14.588s
+Epoch : 292 Loss : 391034937504.000, Train time_consumed : 14.638s
+Epoch : 293 Loss : 358008060352.000, Train time_consumed : 14.685s
+Epoch : 294 Loss : 378958389520.000, Train time_consumed : 14.736s
+Epoch : 295 Loss : 324324294992.000, Train time_consumed : 14.787s
+micro_f1: 0.1809
+macro_f1: 0.0599
+Epoch : 296 Loss : 326278193136.000, Train time_consumed : 14.834s
+Epoch : 297 Loss : 297065471744.000, Train time_consumed : 14.885s
+Epoch : 298 Loss : 304803489056.000, Train time_consumed : 14.942s
+Epoch : 299 Loss : 339815113088.000, Train time_consumed : 14.993s
+Epoch : 300 Loss : 320920965152.000, Train time_consumed : 15.038s
+micro_f1: 0.1697
+macro_f1: 0.0529
+Epoch : 301 Loss : 315378240304.000, Train time_consumed : 15.088s
+Epoch : 302 Loss : 323933388696.000, Train time_consumed : 15.140s
+Epoch : 303 Loss : 323631860344.000, Train time_consumed : 15.195s
+Epoch : 304 Loss : 328540573136.000, Train time_consumed : 15.242s
+Epoch : 305 Loss : 294684375864.000, Train time_consumed : 15.286s
+micro_f1: 0.1712
+macro_f1: 0.0585
+Epoch : 306 Loss : 312290013496.000, Train time_consumed : 15.335s
+Epoch : 307 Loss : 319938270072.000, Train time_consumed : 15.385s
+Epoch : 308 Loss : 348411552064.000, Train time_consumed : 15.436s
+Epoch : 309 Loss : 354353436304.000, Train time_consumed : 15.481s
+Epoch : 310 Loss : 351361471984.000, Train time_consumed : 15.523s
+micro_f1: 0.1671
+macro_f1: 0.0614
+Epoch : 311 Loss : 332572764256.000, Train time_consumed : 15.569s
+Epoch : 312 Loss : 297269057408.000, Train time_consumed : 15.617s
+Epoch : 313 Loss : 289138799144.000, Train time_consumed : 15.660s
+Epoch : 314 Loss : 327561594656.000, Train time_consumed : 15.704s
+Epoch : 315 Loss : 317740528720.000, Train time_consumed : 15.751s
+micro_f1: 0.1720
+macro_f1: 0.0584
+Epoch : 316 Loss : 313422295280.000, Train time_consumed : 15.800s
+Epoch : 317 Loss : 358935544960.000, Train time_consumed : 15.847s
+Epoch : 318 Loss : 333849616768.000, Train time_consumed : 15.891s
+Epoch : 319 Loss : 344439410880.000, Train time_consumed : 15.936s
+Epoch : 320 Loss : 318672416136.000, Train time_consumed : 15.986s
+micro_f1: 0.1758
+macro_f1: 0.0545
+Epoch : 321 Loss : 277801145904.000, Train time_consumed : 16.035s
+Epoch : 322 Loss : 302894630528.000, Train time_consumed : 16.097s
+Epoch : 323 Loss : 296751676080.000, Train time_consumed : 16.149s
+Epoch : 324 Loss : 302094180568.000, Train time_consumed : 16.206s
+Epoch : 325 Loss : 274474391456.000, Train time_consumed : 16.252s
+micro_f1: 0.1769
+macro_f1: 0.0554
+Epoch : 326 Loss : 297441244976.000, Train time_consumed : 16.301s
+Epoch : 327 Loss : 339247792992.000, Train time_consumed : 16.353s
+Epoch : 328 Loss : 288894874464.000, Train time_consumed : 16.405s
+Epoch : 329 Loss : 284720241632.000, Train time_consumed : 16.456s
+Epoch : 330 Loss : 307718935312.000, Train time_consumed : 16.502s
+micro_f1: 0.1722
+macro_f1: 0.0595
+Epoch : 331 Loss : 311033678336.000, Train time_consumed : 16.551s
+Epoch : 332 Loss : 255324345472.000, Train time_consumed : 16.604s
+Epoch : 333 Loss : 239192488136.000, Train time_consumed : 16.658s
+Epoch : 334 Loss : 286113415672.000, Train time_consumed : 16.703s
+Epoch : 335 Loss : 252271529784.000, Train time_consumed : 16.746s
+micro_f1: 0.1671
+macro_f1: 0.0550
+Epoch : 336 Loss : 255718027136.000, Train time_consumed : 16.795s
+Epoch : 337 Loss : 292963891648.000, Train time_consumed : 16.845s
+Epoch : 338 Loss : 289664656944.000, Train time_consumed : 16.895s
+Epoch : 339 Loss : 294987723536.000, Train time_consumed : 16.944s
+Epoch : 340 Loss : 335805156560.000, Train time_consumed : 16.991s
+micro_f1: 0.1761
+macro_f1: 0.0578
+Epoch : 341 Loss : 272436164216.000, Train time_consumed : 17.035s
+Epoch : 342 Loss : 284532774024.000, Train time_consumed : 17.082s
+Epoch : 343 Loss : 268143985632.000, Train time_consumed : 17.128s
+Epoch : 344 Loss : 251389274032.000, Train time_consumed : 17.180s
+Epoch : 345 Loss : 261733617408.000, Train time_consumed : 17.231s
+micro_f1: 0.1688
+macro_f1: 0.0591
+Epoch : 346 Loss : 269113710264.000, Train time_consumed : 17.285s
+Epoch : 347 Loss : 287531366240.000, Train time_consumed : 17.331s
+Epoch : 348 Loss : 252634873592.000, Train time_consumed : 17.382s
+Epoch : 349 Loss : 321380541024.000, Train time_consumed : 17.432s
+Epoch : 350 Loss : 296561511880.000, Train time_consumed : 17.480s
+micro_f1: 0.1701
+macro_f1: 0.0589
+Epoch : 351 Loss : 234241915120.000, Train time_consumed : 17.524s
+Epoch : 352 Loss : 294088978096.000, Train time_consumed : 17.587s
+Epoch : 353 Loss : 284701826168.000, Train time_consumed : 17.642s
+Epoch : 354 Loss : 301565730048.000, Train time_consumed : 17.696s
+Epoch : 355 Loss : 301873103320.000, Train time_consumed : 17.744s
+micro_f1: 0.1730
+macro_f1: 0.0553
+Epoch : 356 Loss : 321863708200.000, Train time_consumed : 17.792s
+Epoch : 357 Loss : 306157756552.000, Train time_consumed : 17.846s
+Epoch : 358 Loss : 274661694704.000, Train time_consumed : 17.899s
+Epoch : 359 Loss : 262953130688.000, Train time_consumed : 17.948s
+Epoch : 360 Loss : 339929068720.000, Train time_consumed : 17.996s
+micro_f1: 0.1752
+macro_f1: 0.0539
+Epoch : 361 Loss : 308883930512.000, Train time_consumed : 18.044s
+Epoch : 362 Loss : 311943918520.000, Train time_consumed : 18.092s
+Epoch : 363 Loss : 316909967584.000, Train time_consumed : 18.139s
+Epoch : 364 Loss : 310424747240.000, Train time_consumed : 18.193s
+Epoch : 365 Loss : 259975708288.000, Train time_consumed : 18.245s
+micro_f1: 0.1736
+macro_f1: 0.0557
+Epoch : 366 Loss : 297499798112.000, Train time_consumed : 18.295s
+Epoch : 367 Loss : 255801845928.000, Train time_consumed : 18.354s
+Epoch : 368 Loss : 280211730496.000, Train time_consumed : 18.408s
+Epoch : 369 Loss : 302287541160.000, Train time_consumed : 18.462s
+Epoch : 370 Loss : 297883564896.000, Train time_consumed : 18.512s
+micro_f1: 0.1702
+macro_f1: 0.0583
+Epoch : 371 Loss : 390592548736.000, Train time_consumed : 18.561s
+Epoch : 372 Loss : 310049694256.000, Train time_consumed : 18.609s
+Epoch : 373 Loss : 298290359328.000, Train time_consumed : 18.664s
+Epoch : 374 Loss : 313825181568.000, Train time_consumed : 18.714s
+Epoch : 375 Loss : 314532139712.000, Train time_consumed : 18.758s
+micro_f1: 0.1764
+macro_f1: 0.0520
+Epoch : 376 Loss : 382901466880.000, Train time_consumed : 18.809s
+Epoch : 377 Loss : 297828125056.000, Train time_consumed : 18.873s
+Epoch : 378 Loss : 276265732752.000, Train time_consumed : 18.926s
+Epoch : 379 Loss : 232370253824.000, Train time_consumed : 18.974s
+Epoch : 380 Loss : 263934011224.000, Train time_consumed : 19.041s
+micro_f1: 0.1740
+macro_f1: 0.0589
+Epoch : 381 Loss : 246025944824.000, Train time_consumed : 19.094s
+Epoch : 382 Loss : 278476110912.000, Train time_consumed : 19.144s
+Epoch : 383 Loss : 301828041520.000, Train time_consumed : 19.196s
+Epoch : 384 Loss : 318065665264.000, Train time_consumed : 19.242s
+Epoch : 385 Loss : 299839039104.000, Train time_consumed : 19.293s
+micro_f1: 0.1711
+macro_f1: 0.0576
+Epoch : 386 Loss : 292688748832.000, Train time_consumed : 19.345s
+Epoch : 387 Loss : 295587288056.000, Train time_consumed : 19.397s
+Epoch : 388 Loss : 338008614384.000, Train time_consumed : 19.446s
+Epoch : 389 Loss : 295457316512.000, Train time_consumed : 19.492s
+Epoch : 390 Loss : 277404993624.000, Train time_consumed : 19.541s
+micro_f1: 0.1677
+macro_f1: 0.0584
+Epoch : 391 Loss : 309506635120.000, Train time_consumed : 19.589s
+Epoch : 392 Loss : 267312434608.000, Train time_consumed : 19.645s
+Epoch : 393 Loss : 238631035808.000, Train time_consumed : 19.698s
+Epoch : 394 Loss : 217600215856.000, Train time_consumed : 19.748s
+Epoch : 395 Loss : 305564639888.000, Train time_consumed : 19.798s
+micro_f1: 0.1719
+macro_f1: 0.0561
+Epoch : 396 Loss : 292641515392.000, Train time_consumed : 19.855s
+Epoch : 397 Loss : 254364366432.000, Train time_consumed : 19.908s
+Epoch : 398 Loss : 253461680920.000, Train time_consumed : 19.964s
+Epoch : 399 Loss : 257495422640.000, Train time_consumed : 20.031s
+Epoch : 400 Loss : 318853898608.000, Train time_consumed : 20.083s
+micro_f1: 0.1728
+macro_f1: 0.0597
+Epoch : 401 Loss : 364243867536.000, Train time_consumed : 20.131s
+Epoch : 402 Loss : 324176045296.000, Train time_consumed : 20.184s
+Epoch : 403 Loss : 342108549184.000, Train time_consumed : 20.232s
+Epoch : 404 Loss : 332152271040.000, Train time_consumed : 20.287s
+Epoch : 405 Loss : 298743449168.000, Train time_consumed : 20.350s
+micro_f1: 0.1733
+macro_f1: 0.0575
+Epoch : 406 Loss : 298619571600.000, Train time_consumed : 20.402s
+Epoch : 407 Loss : 349543812128.000, Train time_consumed : 20.450s
+Epoch : 408 Loss : 315865122064.000, Train time_consumed : 20.509s
+Epoch : 409 Loss : 347009041680.000, Train time_consumed : 20.559s
+Epoch : 410 Loss : 305942245200.000, Train time_consumed : 20.611s
+micro_f1: 0.1756
+macro_f1: 0.0589
+Epoch : 411 Loss : 292364859264.000, Train time_consumed : 20.657s
+Epoch : 412 Loss : 314694160888.000, Train time_consumed : 20.703s
+Epoch : 413 Loss : 267443545056.000, Train time_consumed : 20.754s
+Epoch : 414 Loss : 261093795576.000, Train time_consumed : 20.804s
+Epoch : 415 Loss : 258531583936.000, Train time_consumed : 20.850s
+micro_f1: 0.1773
+macro_f1: 0.0581
+Epoch : 416 Loss : 259981679472.000, Train time_consumed : 20.899s
+Epoch : 417 Loss : 232185941000.000, Train time_consumed : 20.949s
+Epoch : 418 Loss : 255970185384.000, Train time_consumed : 21.000s
+Epoch : 419 Loss : 309222011240.000, Train time_consumed : 21.047s
+Epoch : 420 Loss : 290532100400.000, Train time_consumed : 21.098s
+micro_f1: 0.1774
+macro_f1: 0.0578
+Epoch : 421 Loss : 278764381944.000, Train time_consumed : 21.144s
+Epoch : 422 Loss : 269403326792.000, Train time_consumed : 21.196s
+Epoch : 423 Loss : 240266830512.000, Train time_consumed : 21.243s
+Epoch : 424 Loss : 288539759544.000, Train time_consumed : 21.293s
+Epoch : 425 Loss : 229458301304.000, Train time_consumed : 21.336s
+micro_f1: 0.1809
+macro_f1: 0.0572
+Epoch : 426 Loss : 264305092192.000, Train time_consumed : 21.385s
+Epoch : 427 Loss : 293684831920.000, Train time_consumed : 21.432s
+Epoch : 428 Loss : 260743593920.000, Train time_consumed : 21.478s
+Epoch : 429 Loss : 273780598840.000, Train time_consumed : 21.524s
+Epoch : 430 Loss : 257851613208.000, Train time_consumed : 21.568s
+micro_f1: 0.1721
+macro_f1: 0.0604
+Epoch : 431 Loss : 262466571768.000, Train time_consumed : 21.615s
+Epoch : 432 Loss : 295132634680.000, Train time_consumed : 21.673s
+Epoch : 433 Loss : 250361695224.000, Train time_consumed : 21.720s
+Epoch : 434 Loss : 229375777744.000, Train time_consumed : 21.762s
+Epoch : 435 Loss : 250314730896.000, Train time_consumed : 21.802s
+micro_f1: 0.1703
+macro_f1: 0.0550
+Epoch : 436 Loss : 232883389488.000, Train time_consumed : 21.852s
+Epoch : 437 Loss : 251099553384.000, Train time_consumed : 21.897s
+Epoch : 438 Loss : 267394910656.000, Train time_consumed : 21.942s
+Epoch : 439 Loss : 207991833632.000, Train time_consumed : 21.984s
+Epoch : 440 Loss : 252409855224.000, Train time_consumed : 22.034s
+micro_f1: 0.1745
+macro_f1: 0.0564
+Epoch : 441 Loss : 255949029936.000, Train time_consumed : 22.085s
+Epoch : 442 Loss : 267916549184.000, Train time_consumed : 22.133s
+Epoch : 443 Loss : 278287749776.000, Train time_consumed : 22.179s
+Epoch : 444 Loss : 271120016424.000, Train time_consumed : 22.229s
+Epoch : 445 Loss : 260387550832.000, Train time_consumed : 22.274s
+micro_f1: 0.1799
+macro_f1: 0.0578
+Epoch : 446 Loss : 252427958192.000, Train time_consumed : 22.320s
+Epoch : 447 Loss : 239041483256.000, Train time_consumed : 22.365s
+Epoch : 448 Loss : 227279535728.000, Train time_consumed : 22.418s
+Epoch : 449 Loss : 250281107440.000, Train time_consumed : 22.466s
+Epoch : 450 Loss : 311131914592.000, Train time_consumed : 22.516s
+micro_f1: 0.1689
+macro_f1: 0.0561
+Epoch : 451 Loss : 275107726688.000, Train time_consumed : 22.559s
+Epoch : 452 Loss : 243359912312.000, Train time_consumed : 22.611s
+Epoch : 453 Loss : 290009145168.000, Train time_consumed : 22.665s
+Epoch : 454 Loss : 236761346912.000, Train time_consumed : 22.711s
+Epoch : 455 Loss : 233949629448.000, Train time_consumed : 22.768s
+micro_f1: 0.1710
+macro_f1: 0.0612
+Epoch : 456 Loss : 233245993344.000, Train time_consumed : 22.816s
+Epoch : 457 Loss : 245067215152.000, Train time_consumed : 22.865s
+Epoch : 458 Loss : 231635415616.000, Train time_consumed : 22.916s
+Epoch : 459 Loss : 272241734816.000, Train time_consumed : 22.959s
+Epoch : 460 Loss : 257956572576.000, Train time_consumed : 23.003s
+micro_f1: 0.1728
+macro_f1: 0.0570
+Epoch : 461 Loss : 223358776816.000, Train time_consumed : 23.052s
+Epoch : 462 Loss : 226606804936.000, Train time_consumed : 23.108s
+Epoch : 463 Loss : 209209000008.000, Train time_consumed : 23.154s
+Epoch : 464 Loss : 214446860432.000, Train time_consumed : 23.198s
+Epoch : 465 Loss : 251809515248.000, Train time_consumed : 23.249s
+micro_f1: 0.1705
+macro_f1: 0.0575
+Epoch : 466 Loss : 297850125952.000, Train time_consumed : 23.293s
+Epoch : 467 Loss : 252854507760.000, Train time_consumed : 23.339s
+Epoch : 468 Loss : 215077815624.000, Train time_consumed : 23.403s
+Epoch : 469 Loss : 243124623144.000, Train time_consumed : 23.451s
+Epoch : 470 Loss : 220085462312.000, Train time_consumed : 23.498s
+micro_f1: 0.1636
+macro_f1: 0.0521
+Epoch : 471 Loss : 277824347720.000, Train time_consumed : 23.544s
+Epoch : 472 Loss : 277026446232.000, Train time_consumed : 23.591s
+Epoch : 473 Loss : 266706974848.000, Train time_consumed : 23.642s
+Epoch : 474 Loss : 289841049952.000, Train time_consumed : 23.689s
+Epoch : 475 Loss : 268102907336.000, Train time_consumed : 23.737s
+micro_f1: 0.1654
+macro_f1: 0.0557
+Epoch : 476 Loss : 278373043128.000, Train time_consumed : 23.781s
+Epoch : 477 Loss : 265034358112.000, Train time_consumed : 23.830s
+Epoch : 478 Loss : 299491430816.000, Train time_consumed : 23.882s
+Epoch : 479 Loss : 251258257840.000, Train time_consumed : 23.931s
+Epoch : 480 Loss : 271882010816.000, Train time_consumed : 23.975s
+micro_f1: 0.1716
+macro_f1: 0.0560
+Epoch : 481 Loss : 264436772992.000, Train time_consumed : 24.023s
+Epoch : 482 Loss : 257357395216.000, Train time_consumed : 24.072s
+Epoch : 483 Loss : 241242518904.000, Train time_consumed : 24.126s
+Epoch : 484 Loss : 217123810512.000, Train time_consumed : 24.168s
+Epoch : 485 Loss : 278091186440.000, Train time_consumed : 24.213s
+micro_f1: 0.1714
+macro_f1: 0.0557
+Epoch : 486 Loss : 278603286592.000, Train time_consumed : 24.263s
+Epoch : 487 Loss : 277864785872.000, Train time_consumed : 24.311s
+Epoch : 488 Loss : 242720770144.000, Train time_consumed : 24.361s
+Epoch : 489 Loss : 212127378080.000, Train time_consumed : 24.404s
+Epoch : 490 Loss : 236138541408.000, Train time_consumed : 24.448s
+micro_f1: 0.1762
+macro_f1: 0.0611
+Epoch : 491 Loss : 224992268384.000, Train time_consumed : 24.496s
+Epoch : 492 Loss : 250652626160.000, Train time_consumed : 24.539s
+Epoch : 493 Loss : 224682968840.000, Train time_consumed : 24.584s
+Epoch : 494 Loss : 239147125976.000, Train time_consumed : 24.633s
+Epoch : 495 Loss : 257873544336.000, Train time_consumed : 24.677s
+micro_f1: 0.1717
+macro_f1: 0.0573
+Epoch : 496 Loss : 238989160480.000, Train time_consumed : 24.727s
+Epoch : 497 Loss : 272914160736.000, Train time_consumed : 24.777s
+Epoch : 498 Loss : 266218768368.000, Train time_consumed : 24.823s
+Epoch : 499 Loss : 276529156608.000, Train time_consumed : 24.868s
+Epoch : 500 Loss : 281909748112.000, Train time_consumed : 24.911s
+micro_f1: 0.1763
+macro_f1: 0.0563
+Epoch : 501 Loss : 254761340272.000, Train time_consumed : 24.961s
+Epoch : 502 Loss : 306407093456.000, Train time_consumed : 25.006s
+Epoch : 503 Loss : 270172108976.000, Train time_consumed : 25.056s
+Epoch : 504 Loss : 297990305168.000, Train time_consumed : 25.107s
+Epoch : 505 Loss : 233492257264.000, Train time_consumed : 25.151s
+micro_f1: 0.1506
+macro_f1: 0.0538
+Epoch : 506 Loss : 195374255552.000, Train time_consumed : 25.197s
+Epoch : 507 Loss : 202123181040.000, Train time_consumed : 25.244s
+Epoch : 508 Loss : 227005596432.000, Train time_consumed : 25.292s
+Epoch : 509 Loss : 237586509984.000, Train time_consumed : 25.338s
+Epoch : 510 Loss : 262935872520.000, Train time_consumed : 25.388s
+micro_f1: 0.1591
+macro_f1: 0.0531
+Epoch : 511 Loss : 283528889136.000, Train time_consumed : 25.433s
+Epoch : 512 Loss : 311558468112.000, Train time_consumed : 25.482s
+Epoch : 513 Loss : 281064724560.000, Train time_consumed : 25.531s
+Epoch : 514 Loss : 266537718856.000, Train time_consumed : 25.585s
+Epoch : 515 Loss : 232028934000.000, Train time_consumed : 25.630s
+micro_f1: 0.1730
+macro_f1: 0.0574
+Epoch : 516 Loss : 266915398176.000, Train time_consumed : 25.677s
+Epoch : 517 Loss : 281720304432.000, Train time_consumed : 25.726s
+Epoch : 518 Loss : 292030979896.000, Train time_consumed : 25.772s
+Epoch : 519 Loss : 288516895280.000, Train time_consumed : 25.814s
+Epoch : 520 Loss : 267338750160.000, Train time_consumed : 25.856s
+micro_f1: 0.1746
+macro_f1: 0.0585
+Epoch : 521 Loss : 245424457888.000, Train time_consumed : 25.906s
+Epoch : 522 Loss : 253877144456.000, Train time_consumed : 25.953s
+Epoch : 523 Loss : 263066690160.000, Train time_consumed : 26.002s
+Epoch : 524 Loss : 237962027312.000, Train time_consumed : 26.045s
+Epoch : 525 Loss : 222288786576.000, Train time_consumed : 26.095s
+micro_f1: 0.1625
+macro_f1: 0.0541
+Epoch : 526 Loss : 243518227200.000, Train time_consumed : 26.143s
+Epoch : 527 Loss : 206099460824.000, Train time_consumed : 26.189s
+Epoch : 528 Loss : 251183881648.000, Train time_consumed : 26.236s
+Epoch : 529 Loss : 224122596176.000, Train time_consumed : 26.286s
+Epoch : 530 Loss : 239567815824.000, Train time_consumed : 26.335s
+micro_f1: 0.1665
+macro_f1: 0.0555
+Epoch : 531 Loss : 226068120096.000, Train time_consumed : 26.382s
+Epoch : 532 Loss : 225654761712.000, Train time_consumed : 26.430s
+Epoch : 533 Loss : 210556908336.000, Train time_consumed : 26.483s
+Epoch : 534 Loss : 207433397448.000, Train time_consumed : 26.529s
+Epoch : 535 Loss : 196717757696.000, Train time_consumed : 26.576s
+micro_f1: 0.1724
+macro_f1: 0.0557
+Epoch : 536 Loss : 228302373384.000, Train time_consumed : 26.635s
+Epoch : 537 Loss : 207323310240.000, Train time_consumed : 26.682s
+Epoch : 538 Loss : 203625314096.000, Train time_consumed : 26.734s
+Epoch : 539 Loss : 218700085216.000, Train time_consumed : 26.784s
+Epoch : 540 Loss : 221656280128.000, Train time_consumed : 26.829s
+micro_f1: 0.1698
+macro_f1: 0.0618
+Epoch : 541 Loss : 196116349760.000, Train time_consumed : 26.878s
+Epoch : 542 Loss : 214369372400.000, Train time_consumed : 26.926s
+Epoch : 543 Loss : 195940406376.000, Train time_consumed : 26.977s
+Epoch : 544 Loss : 187865166608.000, Train time_consumed : 27.019s
+Epoch : 545 Loss : 223287620976.000, Train time_consumed : 27.063s
+micro_f1: 0.1701
+macro_f1: 0.0576
+Epoch : 546 Loss : 260586979320.000, Train time_consumed : 27.112s
+Epoch : 547 Loss : 243748114536.000, Train time_consumed : 27.162s
+Epoch : 548 Loss : 274093316592.000, Train time_consumed : 27.209s
+Epoch : 549 Loss : 252203142976.000, Train time_consumed : 27.254s
+Epoch : 550 Loss : 232186082312.000, Train time_consumed : 27.305s
+micro_f1: 0.1648
+macro_f1: 0.0560
+Epoch : 551 Loss : 233302435672.000, Train time_consumed : 27.351s
+Epoch : 552 Loss : 248151564920.000, Train time_consumed : 27.397s
+Epoch : 553 Loss : 215835405280.000, Train time_consumed : 27.446s
+Epoch : 554 Loss : 228521072112.000, Train time_consumed : 27.492s
+Epoch : 555 Loss : 233907620832.000, Train time_consumed : 27.540s
+micro_f1: 0.1708
+macro_f1: 0.0583
+Epoch : 556 Loss : 207462972984.000, Train time_consumed : 27.585s
+Epoch : 557 Loss : 248436937332.000, Train time_consumed : 27.637s
+Epoch : 558 Loss : 266585511104.000, Train time_consumed : 27.690s
+Epoch : 559 Loss : 231129159736.000, Train time_consumed : 27.735s
+Epoch : 560 Loss : 233832863624.000, Train time_consumed : 27.782s
+micro_f1: 0.1755
+macro_f1: 0.0590
+Epoch : 561 Loss : 244476868224.000, Train time_consumed : 27.831s
+Epoch : 562 Loss : 260226127984.000, Train time_consumed : 27.880s
+Epoch : 563 Loss : 196601028048.000, Train time_consumed : 27.939s
+Epoch : 564 Loss : 219933811168.000, Train time_consumed : 27.982s
+Epoch : 565 Loss : 239317900184.000, Train time_consumed : 28.027s
+micro_f1: 0.1712
+macro_f1: 0.0584
+Epoch : 566 Loss : 183422818536.000, Train time_consumed : 28.075s
+Epoch : 567 Loss : 200226468800.000, Train time_consumed : 28.121s
+Epoch : 568 Loss : 231074455000.000, Train time_consumed : 28.165s
+Epoch : 569 Loss : 220416566376.000, Train time_consumed : 28.206s
+Epoch : 570 Loss : 253350577432.000, Train time_consumed : 28.250s
+micro_f1: 0.1632
+macro_f1: 0.0597
+Epoch : 571 Loss : 249949981648.000, Train time_consumed : 28.301s
+Epoch : 572 Loss : 229020534560.000, Train time_consumed : 28.346s
+Epoch : 573 Loss : 250633425584.000, Train time_consumed : 28.392s
+Epoch : 574 Loss : 192085346288.000, Train time_consumed : 28.434s
+Epoch : 575 Loss : 241805609752.000, Train time_consumed : 28.485s
+micro_f1: 0.1679
+macro_f1: 0.0585
+Epoch : 576 Loss : 232934825280.000, Train time_consumed : 28.526s
+Epoch : 577 Loss : 219975972824.000, Train time_consumed : 28.574s
+Epoch : 578 Loss : 244519597232.000, Train time_consumed : 28.619s
+Epoch : 579 Loss : 232644685640.000, Train time_consumed : 28.667s
+Epoch : 580 Loss : 261997338848.000, Train time_consumed : 28.717s
+micro_f1: 0.1660
+macro_f1: 0.0569
+Epoch : 581 Loss : 304416668720.000, Train time_consumed : 28.762s
+Epoch : 582 Loss : 265434008288.000, Train time_consumed : 28.808s
+Epoch : 583 Loss : 237656280480.000, Train time_consumed : 28.856s
+Epoch : 584 Loss : 236728676784.000, Train time_consumed : 28.905s
+Epoch : 585 Loss : 262782910176.000, Train time_consumed : 28.956s
+micro_f1: 0.1718
+macro_f1: 0.0598
+Epoch : 586 Loss : 219755672400.000, Train time_consumed : 29.002s
+Epoch : 587 Loss : 201395018912.000, Train time_consumed : 29.053s
+Epoch : 588 Loss : 221189719552.000, Train time_consumed : 29.105s
+Epoch : 589 Loss : 250095325032.000, Train time_consumed : 29.155s
+Epoch : 590 Loss : 296112839568.000, Train time_consumed : 29.197s
+micro_f1: 0.1645
+macro_f1: 0.0615
+Epoch : 591 Loss : 291178162048.000, Train time_consumed : 29.243s
+Epoch : 592 Loss : 256634360848.000, Train time_consumed : 29.288s
+Epoch : 593 Loss : 248186277512.000, Train time_consumed : 29.339s
+Epoch : 594 Loss : 272419358944.000, Train time_consumed : 29.391s
+Epoch : 595 Loss : 292878665776.000, Train time_consumed : 29.436s
+micro_f1: 0.1744
+macro_f1: 0.0635
+Epoch : 596 Loss : 293596246224.000, Train time_consumed : 29.483s
+Epoch : 597 Loss : 224827141920.000, Train time_consumed : 29.532s
+Epoch : 598 Loss : 241560327856.000, Train time_consumed : 29.581s
+Epoch : 599 Loss : 255306343392.000, Train time_consumed : 29.629s
+Epoch : 600 Loss : 202427046488.000, Train time_consumed : 29.676s
+micro_f1: 0.1699
+macro_f1: 0.0593
+Epoch : 601 Loss : 190953831840.000, Train time_consumed : 29.725s
+Epoch : 602 Loss : 187103106272.000, Train time_consumed : 29.777s
+Epoch : 603 Loss : 187871275456.000, Train time_consumed : 29.823s
+Epoch : 604 Loss : 226836801448.000, Train time_consumed : 29.870s
+Epoch : 605 Loss : 191156805224.000, Train time_consumed : 29.921s
+micro_f1: 0.1759
+macro_f1: 0.0619
+Epoch : 606 Loss : 210398860064.000, Train time_consumed : 29.966s
+Epoch : 607 Loss : 222890376096.000, Train time_consumed : 30.012s
+Epoch : 608 Loss : 225711736656.000, Train time_consumed : 30.056s
+Epoch : 609 Loss : 224783669312.000, Train time_consumed : 30.104s
+Epoch : 610 Loss : 174986359232.000, Train time_consumed : 30.154s
+micro_f1: 0.1739
+macro_f1: 0.0628
+Epoch : 611 Loss : 197059565224.000, Train time_consumed : 30.197s
+Epoch : 612 Loss : 188383556184.000, Train time_consumed : 30.251s
+Epoch : 613 Loss : 177177652832.000, Train time_consumed : 30.301s
+Epoch : 614 Loss : 171153988064.000, Train time_consumed : 30.350s
+Epoch : 615 Loss : 186341252704.000, Train time_consumed : 30.395s
+micro_f1: 0.1797
+macro_f1: 0.0654
+Epoch : 616 Loss : 201038570096.000, Train time_consumed : 30.448s
+Epoch : 617 Loss : 198301847768.000, Train time_consumed : 30.499s
+Epoch : 618 Loss : 191861768440.000, Train time_consumed : 30.547s
+Epoch : 619 Loss : 224830342952.000, Train time_consumed : 30.593s
+Epoch : 620 Loss : 245169675464.000, Train time_consumed : 30.641s
+micro_f1: 0.1732
+macro_f1: 0.0581
+Epoch : 621 Loss : 238001000040.000, Train time_consumed : 30.687s
+Epoch : 622 Loss : 247035660896.000, Train time_consumed : 30.732s
+Epoch : 623 Loss : 191002122792.000, Train time_consumed : 30.782s
+Epoch : 624 Loss : 198359510896.000, Train time_consumed : 30.830s
+Epoch : 625 Loss : 217278943016.000, Train time_consumed : 30.877s
+micro_f1: 0.1727
+macro_f1: 0.0585
+Epoch : 626 Loss : 257310877584.000, Train time_consumed : 30.923s
+Epoch : 627 Loss : 258398369608.000, Train time_consumed : 30.968s
+Epoch : 628 Loss : 228218642592.000, Train time_consumed : 31.019s
+Epoch : 629 Loss : 245276609368.000, Train time_consumed : 31.066s
+Epoch : 630 Loss : 243830576232.000, Train time_consumed : 31.114s
+micro_f1: 0.1772
+macro_f1: 0.0590
+Epoch : 631 Loss : 210293867552.000, Train time_consumed : 31.164s
+Epoch : 632 Loss : 238213148784.000, Train time_consumed : 31.215s
+Epoch : 633 Loss : 230606925760.000, Train time_consumed : 31.265s
+Epoch : 634 Loss : 203332554376.000, Train time_consumed : 31.323s
+Epoch : 635 Loss : 246912727624.000, Train time_consumed : 31.366s
+micro_f1: 0.1763
+macro_f1: 0.0635
+Epoch : 636 Loss : 251074051024.000, Train time_consumed : 31.418s
+Epoch : 637 Loss : 266692034856.000, Train time_consumed : 31.467s
+Epoch : 638 Loss : 252996436664.000, Train time_consumed : 31.519s
+Epoch : 639 Loss : 210215875200.000, Train time_consumed : 31.566s
+Epoch : 640 Loss : 194764964032.000, Train time_consumed : 31.611s
+micro_f1: 0.1790
+macro_f1: 0.0639
+Epoch : 641 Loss : 197705031984.000, Train time_consumed : 31.662s
+Epoch : 642 Loss : 220254555096.000, Train time_consumed : 31.713s
+Epoch : 643 Loss : 257779803168.000, Train time_consumed : 31.758s
+Epoch : 644 Loss : 206585510512.000, Train time_consumed : 31.801s
+Epoch : 645 Loss : 222283001960.000, Train time_consumed : 31.847s
+micro_f1: 0.1736
+macro_f1: 0.0564
+Epoch : 646 Loss : 230261465320.000, Train time_consumed : 31.894s
+Epoch : 647 Loss : 220864232408.000, Train time_consumed : 31.943s
+Epoch : 648 Loss : 210982112944.000, Train time_consumed : 31.990s
+Epoch : 649 Loss : 235204703176.000, Train time_consumed : 32.033s
+Epoch : 650 Loss : 216850465960.000, Train time_consumed : 32.080s
+micro_f1: 0.1796
+macro_f1: 0.0599
+Epoch : 651 Loss : 251521887104.000, Train time_consumed : 32.125s
+Epoch : 652 Loss : 246972965664.000, Train time_consumed : 32.171s
+Epoch : 653 Loss : 212739331856.000, Train time_consumed : 32.219s
+Epoch : 654 Loss : 170054366960.000, Train time_consumed : 32.266s
+Epoch : 655 Loss : 176968493264.000, Train time_consumed : 32.317s
+micro_f1: 0.1754
+macro_f1: 0.0635
+Epoch : 656 Loss : 197668705304.000, Train time_consumed : 32.365s
+Epoch : 657 Loss : 224166492464.000, Train time_consumed : 32.410s
+Epoch : 658 Loss : 273904472864.000, Train time_consumed : 32.458s
+Epoch : 659 Loss : 235500167144.000, Train time_consumed : 32.504s
+Epoch : 660 Loss : 238141446088.000, Train time_consumed : 32.553s
+micro_f1: 0.1775
+macro_f1: 0.0617
+Epoch : 661 Loss : 260956057536.000, Train time_consumed : 32.600s
+Epoch : 662 Loss : 216117651616.000, Train time_consumed : 32.649s
+Epoch : 663 Loss : 217304029216.000, Train time_consumed : 32.703s
+Epoch : 664 Loss : 230278528928.000, Train time_consumed : 32.751s
+Epoch : 665 Loss : 240896006512.000, Train time_consumed : 32.798s
+micro_f1: 0.1742
+macro_f1: 0.0614
+Epoch : 666 Loss : 194526959176.000, Train time_consumed : 32.846s
+Epoch : 667 Loss : 216413912728.000, Train time_consumed : 32.898s
+Epoch : 668 Loss : 250653502384.000, Train time_consumed : 32.948s
+Epoch : 669 Loss : 211066758120.000, Train time_consumed : 32.994s
+Epoch : 670 Loss : 242806791800.000, Train time_consumed : 33.037s
+micro_f1: 0.1825
+macro_f1: 0.0661
+Epoch : 671 Loss : 237079668088.000, Train time_consumed : 33.085s
+Epoch : 672 Loss : 250486445352.000, Train time_consumed : 33.132s
+Epoch : 673 Loss : 221678151352.000, Train time_consumed : 33.186s
+Epoch : 674 Loss : 191125694472.000, Train time_consumed : 33.237s
+Epoch : 675 Loss : 229117949936.000, Train time_consumed : 33.278s
+micro_f1: 0.1763
+macro_f1: 0.0619
+Epoch : 676 Loss : 217473386336.000, Train time_consumed : 33.326s
+Epoch : 677 Loss : 213304381904.000, Train time_consumed : 33.378s
+Epoch : 678 Loss : 251005201976.000, Train time_consumed : 33.426s
+Epoch : 679 Loss : 304431032304.000, Train time_consumed : 33.473s
+Epoch : 680 Loss : 246698649408.000, Train time_consumed : 33.521s
+micro_f1: 0.1727
+macro_f1: 0.0604
+Epoch : 681 Loss : 221153943608.000, Train time_consumed : 33.571s
+Epoch : 682 Loss : 213861872360.000, Train time_consumed : 33.621s
+Epoch : 683 Loss : 241956944184.000, Train time_consumed : 33.666s
+Epoch : 684 Loss : 216089672232.000, Train time_consumed : 33.710s
+Epoch : 685 Loss : 254865073200.000, Train time_consumed : 33.762s
+micro_f1: 0.1763
+macro_f1: 0.0623
+Epoch : 686 Loss : 240322499040.000, Train time_consumed : 33.808s
+Epoch : 687 Loss : 242270268344.000, Train time_consumed : 33.854s
+Epoch : 688 Loss : 267096954016.000, Train time_consumed : 33.903s
+Epoch : 689 Loss : 290562325160.000, Train time_consumed : 33.951s
+Epoch : 690 Loss : 265752783208.000, Train time_consumed : 34.000s
+micro_f1: 0.1785
+macro_f1: 0.0604
+Epoch : 691 Loss : 225315282448.000, Train time_consumed : 34.047s
+Epoch : 692 Loss : 239400710264.000, Train time_consumed : 34.099s
+Epoch : 693 Loss : 251234255336.000, Train time_consumed : 34.149s
+Epoch : 694 Loss : 227054685232.000, Train time_consumed : 34.198s
+Epoch : 695 Loss : 220982117256.000, Train time_consumed : 34.250s
+micro_f1: 0.1776
+macro_f1: 0.0626
+Epoch : 696 Loss : 224356025072.000, Train time_consumed : 34.303s
+Epoch : 697 Loss : 260407645024.000, Train time_consumed : 34.351s
+Epoch : 698 Loss : 196791740624.000, Train time_consumed : 34.398s
+Epoch : 699 Loss : 209310568992.000, Train time_consumed : 34.444s
+Epoch : 700 Loss : 170944760680.000, Train time_consumed : 34.485s
+micro_f1: 0.1692
+macro_f1: 0.0558
+Epoch : 701 Loss : 219693437104.000, Train time_consumed : 34.536s
+Epoch : 702 Loss : 219116252568.000, Train time_consumed : 34.587s
+Epoch : 703 Loss : 220003473208.000, Train time_consumed : 34.637s
+Epoch : 704 Loss : 221916553296.000, Train time_consumed : 34.680s
+Epoch : 705 Loss : 187741943136.000, Train time_consumed : 34.725s
+micro_f1: 0.1637
+macro_f1: 0.0567
+Epoch : 706 Loss : 168951524984.000, Train time_consumed : 34.774s
+Epoch : 707 Loss : 209376381152.000, Train time_consumed : 34.827s
+Epoch : 708 Loss : 203127063656.000, Train time_consumed : 34.873s
+Epoch : 709 Loss : 210968623336.000, Train time_consumed : 34.917s
+Epoch : 710 Loss : 240203276736.000, Train time_consumed : 34.966s
+micro_f1: 0.1600
+macro_f1: 0.0567
+Epoch : 711 Loss : 233578383856.000, Train time_consumed : 35.024s
+Epoch : 712 Loss : 215277556608.000, Train time_consumed : 35.070s
+Epoch : 713 Loss : 194418717280.000, Train time_consumed : 35.117s
+Epoch : 714 Loss : 201640472112.000, Train time_consumed : 35.167s
+Epoch : 715 Loss : 228542679160.000, Train time_consumed : 35.211s
+micro_f1: 0.1665
+macro_f1: 0.0530
+Epoch : 716 Loss : 211712302948.000, Train time_consumed : 35.255s
+Epoch : 717 Loss : 234779305112.000, Train time_consumed : 35.305s
+Epoch : 718 Loss : 237233920568.000, Train time_consumed : 35.358s
+Epoch : 719 Loss : 231543322116.000, Train time_consumed : 35.409s
+Epoch : 720 Loss : 204700381992.000, Train time_consumed : 35.458s
+micro_f1: 0.1693
+macro_f1: 0.0574
+Epoch : 721 Loss : 231087784464.000, Train time_consumed : 35.506s
+Epoch : 722 Loss : 205777296456.000, Train time_consumed : 35.557s
+Epoch : 723 Loss : 207861333024.000, Train time_consumed : 35.606s
+Epoch : 724 Loss : 213907666224.000, Train time_consumed : 35.653s
+Epoch : 725 Loss : 218027027032.000, Train time_consumed : 35.704s
+micro_f1: 0.1778
+macro_f1: 0.0586
+Epoch : 726 Loss : 251888643000.000, Train time_consumed : 35.750s
+Epoch : 727 Loss : 244216808008.000, Train time_consumed : 35.802s
+Epoch : 728 Loss : 228702974920.000, Train time_consumed : 35.851s
+Epoch : 729 Loss : 218763269840.000, Train time_consumed : 35.897s
+Epoch : 730 Loss : 197905114640.000, Train time_consumed : 35.939s
+micro_f1: 0.1720
+macro_f1: 0.0530
+Epoch : 731 Loss : 218271464088.000, Train time_consumed : 35.987s
+Epoch : 732 Loss : 230901294256.000, Train time_consumed : 36.034s
+Epoch : 733 Loss : 202394957336.000, Train time_consumed : 36.082s
+Epoch : 734 Loss : 205264616440.000, Train time_consumed : 36.126s
+Epoch : 735 Loss : 209271512704.000, Train time_consumed : 36.170s
+micro_f1: 0.1720
+macro_f1: 0.0539
+Epoch : 736 Loss : 181457058256.000, Train time_consumed : 36.217s
+Epoch : 737 Loss : 208348621528.000, Train time_consumed : 36.268s
+Epoch : 738 Loss : 232983013192.000, Train time_consumed : 36.313s
+Epoch : 739 Loss : 195872595592.000, Train time_consumed : 36.357s
+Epoch : 740 Loss : 177684595496.000, Train time_consumed : 36.404s
+micro_f1: 0.1656
+macro_f1: 0.0563
+Epoch : 741 Loss : 148521545480.000, Train time_consumed : 36.446s
+Epoch : 742 Loss : 161228827888.000, Train time_consumed : 36.490s
+Epoch : 743 Loss : 200551266696.000, Train time_consumed : 36.536s
+Epoch : 744 Loss : 200370174400.000, Train time_consumed : 36.587s
+Epoch : 745 Loss : 177033059736.000, Train time_consumed : 36.636s
+micro_f1: 0.1805
+macro_f1: 0.0625
+Epoch : 746 Loss : 185945057024.000, Train time_consumed : 36.687s
+Epoch : 747 Loss : 192310788472.000, Train time_consumed : 36.734s
+Epoch : 748 Loss : 258104046192.000, Train time_consumed : 36.783s
+Epoch : 749 Loss : 234901936104.000, Train time_consumed : 36.833s
+Epoch : 750 Loss : 235245960688.000, Train time_consumed : 36.880s
+micro_f1: 0.1738
+macro_f1: 0.0600
+Epoch : 751 Loss : 159307862216.000, Train time_consumed : 36.928s
+Epoch : 752 Loss : 167967367824.000, Train time_consumed : 36.974s
+Epoch : 753 Loss : 161367395216.000, Train time_consumed : 37.022s
+Epoch : 754 Loss : 180350713752.000, Train time_consumed : 37.073s
+Epoch : 755 Loss : 186267343456.000, Train time_consumed : 37.120s
+micro_f1: 0.1767
+macro_f1: 0.0604
+Epoch : 756 Loss : 206566010568.000, Train time_consumed : 37.169s
+Epoch : 757 Loss : 230347416488.000, Train time_consumed : 37.216s
+Epoch : 758 Loss : 193864964464.000, Train time_consumed : 37.268s
+Epoch : 759 Loss : 217907392008.000, Train time_consumed : 37.323s
+Epoch : 760 Loss : 251666723584.000, Train time_consumed : 37.369s
+micro_f1: 0.1767
+macro_f1: 0.0592
+Epoch : 761 Loss : 247460096048.000, Train time_consumed : 37.420s
+Epoch : 762 Loss : 188028925888.000, Train time_consumed : 37.473s
+Epoch : 763 Loss : 196712576616.000, Train time_consumed : 37.522s
+Epoch : 764 Loss : 202384311032.000, Train time_consumed : 37.569s
+Epoch : 765 Loss : 208496887104.000, Train time_consumed : 37.614s
+micro_f1: 0.1751
+macro_f1: 0.0574
+Epoch : 766 Loss : 210044243440.000, Train time_consumed : 37.661s
+Epoch : 767 Loss : 190249751448.000, Train time_consumed : 37.706s
+Epoch : 768 Loss : 204224734168.000, Train time_consumed : 37.755s
+Epoch : 769 Loss : 186900337584.000, Train time_consumed : 37.801s
+Epoch : 770 Loss : 192997323224.000, Train time_consumed : 37.853s
+micro_f1: 0.1784
+macro_f1: 0.0638
+Epoch : 771 Loss : 192490144040.000, Train time_consumed : 37.899s
+Epoch : 772 Loss : 221386392616.000, Train time_consumed : 37.943s
+Epoch : 773 Loss : 185784323112.000, Train time_consumed : 37.991s
+Epoch : 774 Loss : 194579865480.000, Train time_consumed : 38.039s
+Epoch : 775 Loss : 203073229200.000, Train time_consumed : 38.087s
+micro_f1: 0.1724
+macro_f1: 0.0618
+Epoch : 776 Loss : 208038469896.000, Train time_consumed : 38.127s
+Epoch : 777 Loss : 226603949544.000, Train time_consumed : 38.176s
+Epoch : 778 Loss : 267988988368.000, Train time_consumed : 38.227s
+Epoch : 779 Loss : 211844568432.000, Train time_consumed : 38.276s
+Epoch : 780 Loss : 188987590376.000, Train time_consumed : 38.329s
+micro_f1: 0.1743
+macro_f1: 0.0606
+Epoch : 781 Loss : 205370783968.000, Train time_consumed : 38.374s
+Epoch : 782 Loss : 212350918472.000, Train time_consumed : 38.426s
+Epoch : 783 Loss : 231532820560.000, Train time_consumed : 38.481s
+Epoch : 784 Loss : 179934444712.000, Train time_consumed : 38.537s
+Epoch : 785 Loss : 232286326416.000, Train time_consumed : 38.587s
+micro_f1: 0.1777
+macro_f1: 0.0593
+Epoch : 786 Loss : 190194637856.000, Train time_consumed : 38.633s
+Epoch : 787 Loss : 195688800448.000, Train time_consumed : 38.684s
+Epoch : 788 Loss : 217869748272.000, Train time_consumed : 38.734s
+Epoch : 789 Loss : 210767213376.000, Train time_consumed : 38.782s
+Epoch : 790 Loss : 174589012408.000, Train time_consumed : 38.834s
+micro_f1: 0.1729
+macro_f1: 0.0621
+Epoch : 791 Loss : 184982315112.000, Train time_consumed : 38.878s
+Epoch : 792 Loss : 201554903984.000, Train time_consumed : 38.924s
+Epoch : 793 Loss : 219334112040.000, Train time_consumed : 38.974s
+Epoch : 794 Loss : 191741266472.000, Train time_consumed : 39.023s
+Epoch : 795 Loss : 198875411472.000, Train time_consumed : 39.073s
+micro_f1: 0.1701
+macro_f1: 0.0543
+Epoch : 796 Loss : 178601877928.000, Train time_consumed : 39.113s
+Epoch : 797 Loss : 163282454896.000, Train time_consumed : 39.161s
+Epoch : 798 Loss : 185742274008.000, Train time_consumed : 39.212s
+Epoch : 799 Loss : 182063608976.000, Train time_consumed : 39.262s
+Epoch : 800 Loss : 164093692760.000, Train time_consumed : 39.314s
+micro_f1: 0.1723
+macro_f1: 0.0624
+Epoch : 801 Loss : 192449601720.000, Train time_consumed : 39.355s
+Epoch : 802 Loss : 188003672512.000, Train time_consumed : 39.404s
+Epoch : 803 Loss : 197829950168.000, Train time_consumed : 39.457s
+Epoch : 804 Loss : 217338502080.000, Train time_consumed : 39.515s
+Epoch : 805 Loss : 226124901736.000, Train time_consumed : 39.565s
+micro_f1: 0.1759
+macro_f1: 0.0621
+Epoch : 806 Loss : 219307415560.000, Train time_consumed : 39.615s
+Epoch : 807 Loss : 189640009424.000, Train time_consumed : 39.666s
+Epoch : 808 Loss : 203424860464.000, Train time_consumed : 39.719s
+Epoch : 809 Loss : 224112410512.000, Train time_consumed : 39.769s
+Epoch : 810 Loss : 273623338800.000, Train time_consumed : 39.817s
+micro_f1: 0.1691
+macro_f1: 0.0587
+Epoch : 811 Loss : 263355392248.000, Train time_consumed : 39.861s
+Epoch : 812 Loss : 213220999912.000, Train time_consumed : 39.905s
+Epoch : 813 Loss : 209657806744.000, Train time_consumed : 39.955s
+Epoch : 814 Loss : 194871822584.000, Train time_consumed : 40.010s
+Epoch : 815 Loss : 191607726024.000, Train time_consumed : 40.060s
+micro_f1: 0.1730
+macro_f1: 0.0625
+Epoch : 816 Loss : 186884863008.000, Train time_consumed : 40.115s
+Epoch : 817 Loss : 186874248112.000, Train time_consumed : 40.159s
+Epoch : 818 Loss : 188131023368.000, Train time_consumed : 40.209s
+Epoch : 819 Loss : 221468408488.000, Train time_consumed : 40.258s
+Epoch : 820 Loss : 180858573392.000, Train time_consumed : 40.304s
+micro_f1: 0.1764
+macro_f1: 0.0611
+Epoch : 821 Loss : 175652890048.000, Train time_consumed : 40.350s
+Epoch : 822 Loss : 223343138056.000, Train time_consumed : 40.397s
+Epoch : 823 Loss : 221351787248.000, Train time_consumed : 40.445s
+Epoch : 824 Loss : 207989767864.000, Train time_consumed : 40.491s
+Epoch : 825 Loss : 211389637184.000, Train time_consumed : 40.541s
+micro_f1: 0.1649
+macro_f1: 0.0620
+Epoch : 826 Loss : 203420001360.000, Train time_consumed : 40.593s
+Epoch : 827 Loss : 209257997776.000, Train time_consumed : 40.642s
+Epoch : 828 Loss : 221812140120.000, Train time_consumed : 40.688s
+Epoch : 829 Loss : 199980430808.000, Train time_consumed : 40.734s
+Epoch : 830 Loss : 213173589608.000, Train time_consumed : 40.782s
+micro_f1: 0.1870
+macro_f1: 0.0597
+Epoch : 831 Loss : 205508838024.000, Train time_consumed : 40.826s
+Epoch : 832 Loss : 204302142832.000, Train time_consumed : 40.869s
+Epoch : 833 Loss : 222971980264.000, Train time_consumed : 40.910s
+Epoch : 834 Loss : 253554687760.000, Train time_consumed : 40.967s
+Epoch : 835 Loss : 220397223552.000, Train time_consumed : 41.017s
+micro_f1: 0.1791
+macro_f1: 0.0617
+Epoch : 836 Loss : 228501129136.000, Train time_consumed : 41.061s
+Epoch : 837 Loss : 214823369224.000, Train time_consumed : 41.106s
+Epoch : 838 Loss : 217723524048.000, Train time_consumed : 41.148s
+Epoch : 839 Loss : 192827440512.000, Train time_consumed : 41.197s
+Epoch : 840 Loss : 214864334384.000, Train time_consumed : 41.251s
+micro_f1: 0.1861
+macro_f1: 0.0634
+Epoch : 841 Loss : 213240022048.000, Train time_consumed : 41.295s
+Epoch : 842 Loss : 207783128304.000, Train time_consumed : 41.343s
+Epoch : 843 Loss : 217238987784.000, Train time_consumed : 41.390s
+Epoch : 844 Loss : 227775284296.000, Train time_consumed : 41.436s
+Epoch : 845 Loss : 246640556496.000, Train time_consumed : 41.484s
+micro_f1: 0.1724
+macro_f1: 0.0621
+Epoch : 846 Loss : 199864388320.000, Train time_consumed : 41.537s
+Epoch : 847 Loss : 196015864752.000, Train time_consumed : 41.587s
+Epoch : 848 Loss : 219373892464.000, Train time_consumed : 41.639s
+Epoch : 849 Loss : 208221503824.000, Train time_consumed : 41.684s
+Epoch : 850 Loss : 208692267952.000, Train time_consumed : 41.729s
+micro_f1: 0.1867
+macro_f1: 0.0619
+Epoch : 851 Loss : 199448532704.000, Train time_consumed : 41.782s
+Epoch : 852 Loss : 194835056120.000, Train time_consumed : 41.832s
+Epoch : 853 Loss : 204289516216.000, Train time_consumed : 41.875s
+Epoch : 854 Loss : 186387344968.000, Train time_consumed : 41.917s
+Epoch : 855 Loss : 196239571936.000, Train time_consumed : 41.962s
+micro_f1: 0.1827
+macro_f1: 0.0666
+Epoch : 856 Loss : 218699785968.000, Train time_consumed : 42.010s
+Epoch : 857 Loss : 193683172432.000, Train time_consumed : 42.053s
+Epoch : 858 Loss : 220096828312.000, Train time_consumed : 42.096s
+Epoch : 859 Loss : 202427451972.000, Train time_consumed : 42.135s
+Epoch : 860 Loss : 197021025780.000, Train time_consumed : 42.184s
+micro_f1: 0.1837
+macro_f1: 0.0612
+Epoch : 861 Loss : 204033402516.000, Train time_consumed : 42.234s
+Epoch : 862 Loss : 189731245076.000, Train time_consumed : 42.277s
+Epoch : 863 Loss : 179116976088.000, Train time_consumed : 42.322s
+Epoch : 864 Loss : 205227773848.000, Train time_consumed : 42.369s
+Epoch : 865 Loss : 186731853000.000, Train time_consumed : 42.418s
+micro_f1: 0.1778
+macro_f1: 0.0595
+Epoch : 866 Loss : 200747922696.000, Train time_consumed : 42.465s
+Epoch : 867 Loss : 224493800656.000, Train time_consumed : 42.508s
+Epoch : 868 Loss : 212595026752.000, Train time_consumed : 42.558s
+Epoch : 869 Loss : 176548210552.000, Train time_consumed : 42.602s
+Epoch : 870 Loss : 215323685216.000, Train time_consumed : 42.651s
+micro_f1: 0.1844
+macro_f1: 0.0644
+Epoch : 871 Loss : 229799402560.000, Train time_consumed : 42.701s
+Epoch : 872 Loss : 230597973728.000, Train time_consumed : 42.751s
+Epoch : 873 Loss : 207191816136.000, Train time_consumed : 42.797s
+Epoch : 874 Loss : 222609307472.000, Train time_consumed : 42.843s
+Epoch : 875 Loss : 203162481936.000, Train time_consumed : 42.888s
+micro_f1: 0.1815
+macro_f1: 0.0625
+Epoch : 876 Loss : 200063420656.000, Train time_consumed : 42.939s
+Epoch : 877 Loss : 193833082856.000, Train time_consumed : 42.988s
+Epoch : 878 Loss : 209339553840.000, Train time_consumed : 43.037s
+Epoch : 879 Loss : 241679065208.000, Train time_consumed : 43.077s
+Epoch : 880 Loss : 217750989256.000, Train time_consumed : 43.124s
+micro_f1: 0.1739
+macro_f1: 0.0601
+Epoch : 881 Loss : 210877784112.000, Train time_consumed : 43.176s
+Epoch : 882 Loss : 216330766232.000, Train time_consumed : 43.221s
+Epoch : 883 Loss : 242130445416.000, Train time_consumed : 43.267s
+Epoch : 884 Loss : 187697842232.000, Train time_consumed : 43.308s
+Epoch : 885 Loss : 185895272720.000, Train time_consumed : 43.357s
+micro_f1: 0.1760
+macro_f1: 0.0647
+Epoch : 886 Loss : 206155270872.000, Train time_consumed : 43.399s
+Epoch : 887 Loss : 215766990504.000, Train time_consumed : 43.444s
+Epoch : 888 Loss : 236234118496.000, Train time_consumed : 43.488s
+Epoch : 889 Loss : 208071457584.000, Train time_consumed : 43.527s
+Epoch : 890 Loss : 168520033696.000, Train time_consumed : 43.572s
+micro_f1: 0.1799
+macro_f1: 0.0661
+Epoch : 891 Loss : 156903936360.000, Train time_consumed : 43.617s
+Epoch : 892 Loss : 155257274424.000, Train time_consumed : 43.661s
+Epoch : 893 Loss : 184488816624.000, Train time_consumed : 43.705s
+Epoch : 894 Loss : 190147208828.000, Train time_consumed : 43.745s
+Epoch : 895 Loss : 176433408616.000, Train time_consumed : 43.790s
+micro_f1: 0.1775
+macro_f1: 0.0611
+Epoch : 896 Loss : 182274200136.000, Train time_consumed : 43.835s
+Epoch : 897 Loss : 154057582904.000, Train time_consumed : 43.877s
+Epoch : 898 Loss : 158681992592.000, Train time_consumed : 43.922s
+Epoch : 899 Loss : 159628900040.000, Train time_consumed : 43.962s
+Epoch : 900 Loss : 160041891424.000, Train time_consumed : 44.007s
+micro_f1: 0.1864
+macro_f1: 0.0663
+Epoch : 901 Loss : 161653800032.000, Train time_consumed : 44.052s
+Epoch : 902 Loss : 218480575272.000, Train time_consumed : 44.096s
+Epoch : 903 Loss : 181652406640.000, Train time_consumed : 44.140s
+Epoch : 904 Loss : 163255613496.000, Train time_consumed : 44.197s
+Epoch : 905 Loss : 198019968480.000, Train time_consumed : 44.236s
+micro_f1: 0.1782
+macro_f1: 0.0657
+Epoch : 906 Loss : 181081562600.000, Train time_consumed : 44.281s
+Epoch : 907 Loss : 194263696440.000, Train time_consumed : 44.325s
+Epoch : 908 Loss : 190913578368.000, Train time_consumed : 44.369s
+Epoch : 909 Loss : 209447509688.000, Train time_consumed : 44.412s
+Epoch : 910 Loss : 237354421040.000, Train time_consumed : 44.451s
+micro_f1: 0.1818
+macro_f1: 0.0624
+Epoch : 911 Loss : 167194751888.000, Train time_consumed : 44.495s
+Epoch : 912 Loss : 188419332120.000, Train time_consumed : 44.541s
+Epoch : 913 Loss : 198217884248.000, Train time_consumed : 44.583s
+Epoch : 914 Loss : 231670212792.000, Train time_consumed : 44.627s
+Epoch : 915 Loss : 182713699704.000, Train time_consumed : 44.665s
+micro_f1: 0.1849
+macro_f1: 0.0678
+Epoch : 916 Loss : 146619844524.000, Train time_consumed : 44.711s
+Epoch : 917 Loss : 146931151480.000, Train time_consumed : 44.756s
+Epoch : 918 Loss : 154949513880.000, Train time_consumed : 44.800s
+Epoch : 919 Loss : 172480184048.000, Train time_consumed : 44.843s
+Epoch : 920 Loss : 185283885696.000, Train time_consumed : 44.881s
+micro_f1: 0.1804
+macro_f1: 0.0614
+Epoch : 921 Loss : 219839122904.000, Train time_consumed : 44.925s
+Epoch : 922 Loss : 227616258936.000, Train time_consumed : 44.969s
+Epoch : 923 Loss : 211707909280.000, Train time_consumed : 45.013s
+Epoch : 924 Loss : 209021483960.000, Train time_consumed : 45.088s
+Epoch : 925 Loss : 192105381968.000, Train time_consumed : 45.135s
+micro_f1: 0.1843
+macro_f1: 0.0611
+Epoch : 926 Loss : 185163882704.000, Train time_consumed : 45.195s
+Epoch : 927 Loss : 205874431280.000, Train time_consumed : 45.242s
+Epoch : 928 Loss : 185554217184.000, Train time_consumed : 45.282s
+Epoch : 929 Loss : 199825484768.000, Train time_consumed : 45.322s
+Epoch : 930 Loss : 205220365144.000, Train time_consumed : 45.391s
+micro_f1: 0.1859
+macro_f1: 0.0644
+Epoch : 931 Loss : 222495284432.000, Train time_consumed : 45.442s
+Epoch : 932 Loss : 224732847768.000, Train time_consumed : 45.486s
+Epoch : 933 Loss : 210129698728.000, Train time_consumed : 45.531s
+Epoch : 934 Loss : 176841113208.000, Train time_consumed : 45.580s
+Epoch : 935 Loss : 193666281720.000, Train time_consumed : 45.630s
+micro_f1: 0.1791
+macro_f1: 0.0630
+Epoch : 936 Loss : 199772417272.000, Train time_consumed : 45.678s
+Epoch : 937 Loss : 197426703064.000, Train time_consumed : 45.725s
+Epoch : 938 Loss : 189666100768.000, Train time_consumed : 45.770s
+Epoch : 939 Loss : 229274773496.000, Train time_consumed : 45.809s
+Epoch : 940 Loss : 233053464096.000, Train time_consumed : 45.861s
+micro_f1: 0.1790
+macro_f1: 0.0604
+Epoch : 941 Loss : 194370278208.000, Train time_consumed : 45.916s
+Epoch : 942 Loss : 168128639928.000, Train time_consumed : 45.966s
+Epoch : 943 Loss : 169913218032.000, Train time_consumed : 46.015s
+Epoch : 944 Loss : 168251265520.000, Train time_consumed : 46.059s
+Epoch : 945 Loss : 184583000624.000, Train time_consumed : 46.111s
+micro_f1: 0.1815
+macro_f1: 0.0638
+Epoch : 946 Loss : 181919801624.000, Train time_consumed : 46.181s
+Epoch : 947 Loss : 185086664912.000, Train time_consumed : 46.232s
+Epoch : 948 Loss : 187373424152.000, Train time_consumed : 46.283s
+Epoch : 949 Loss : 231535224640.000, Train time_consumed : 46.331s
+Epoch : 950 Loss : 195847775040.000, Train time_consumed : 46.377s
+micro_f1: 0.1779
+macro_f1: 0.0583
+Epoch : 951 Loss : 193571586920.000, Train time_consumed : 46.430s
+Epoch : 952 Loss : 242330032992.000, Train time_consumed : 46.481s
+Epoch : 953 Loss : 205075229336.000, Train time_consumed : 46.530s
+Epoch : 954 Loss : 218312205552.000, Train time_consumed : 46.579s
+Epoch : 955 Loss : 226626310680.000, Train time_consumed : 46.627s
+micro_f1: 0.1799
+macro_f1: 0.0602
+Epoch : 956 Loss : 232655810400.000, Train time_consumed : 46.688s
+Epoch : 957 Loss : 166242004120.000, Train time_consumed : 46.741s
+Epoch : 958 Loss : 188964565696.000, Train time_consumed : 46.803s
+Epoch : 959 Loss : 190762440136.000, Train time_consumed : 46.864s
+Epoch : 960 Loss : 223905980696.000, Train time_consumed : 46.913s
+micro_f1: 0.1897
+macro_f1: 0.0621
+Epoch : 961 Loss : 210740179888.000, Train time_consumed : 46.969s
+Epoch : 962 Loss : 234065400544.000, Train time_consumed : 47.020s
+Epoch : 963 Loss : 155073614804.000, Train time_consumed : 47.077s
+Epoch : 964 Loss : 175410135736.000, Train time_consumed : 47.124s
+Epoch : 965 Loss : 196966283800.000, Train time_consumed : 47.178s
+micro_f1: 0.1875
+macro_f1: 0.0639
+Epoch : 966 Loss : 215325575288.000, Train time_consumed : 47.236s
+Epoch : 967 Loss : 188355280480.000, Train time_consumed : 47.286s
+Epoch : 968 Loss : 175422864184.000, Train time_consumed : 47.336s
+Epoch : 969 Loss : 174603337440.000, Train time_consumed : 47.388s
+Epoch : 970 Loss : 151274397184.000, Train time_consumed : 47.440s
+micro_f1: 0.1868
+macro_f1: 0.0649
+Epoch : 971 Loss : 172881827264.000, Train time_consumed : 47.492s
+Epoch : 972 Loss : 179546580432.000, Train time_consumed : 47.539s
+Epoch : 973 Loss : 209761943256.000, Train time_consumed : 47.593s
+Epoch : 974 Loss : 192777532448.000, Train time_consumed : 47.660s
+Epoch : 975 Loss : 162198033576.000, Train time_consumed : 47.724s
+micro_f1: 0.1807
+macro_f1: 0.0632
+Epoch : 976 Loss : 165542489760.000, Train time_consumed : 47.770s
+Epoch : 977 Loss : 199219091432.000, Train time_consumed : 47.825s
+Epoch : 978 Loss : 227291399360.000, Train time_consumed : 47.881s
+Epoch : 979 Loss : 178852131520.000, Train time_consumed : 47.933s
+Epoch : 980 Loss : 172637123248.000, Train time_consumed : 47.982s
+micro_f1: 0.1780
+macro_f1: 0.0621
+Epoch : 981 Loss : 155299416240.000, Train time_consumed : 48.031s
+Epoch : 982 Loss : 165138919936.000, Train time_consumed : 48.079s
+Epoch : 983 Loss : 167521379784.000, Train time_consumed : 48.135s
+Epoch : 984 Loss : 186138381880.000, Train time_consumed : 48.186s
+Epoch : 985 Loss : 207079084960.000, Train time_consumed : 48.233s
+micro_f1: 0.1964
+macro_f1: 0.0658
+Epoch : 986 Loss : 159829096840.000, Train time_consumed : 48.283s
+Epoch : 987 Loss : 163330775552.000, Train time_consumed : 48.333s
+Epoch : 988 Loss : 167305835696.000, Train time_consumed : 48.377s
+Epoch : 989 Loss : 158755875992.000, Train time_consumed : 48.425s
+Epoch : 990 Loss : 146973353520.000, Train time_consumed : 48.501s
+micro_f1: 0.1932
+macro_f1: 0.0671
+Epoch : 991 Loss : 185539998424.000, Train time_consumed : 48.554s
+Epoch : 992 Loss : 208321162056.000, Train time_consumed : 48.603s
+Epoch : 993 Loss : 172528753504.000, Train time_consumed : 48.653s
+Epoch : 994 Loss : 181024023316.000, Train time_consumed : 48.705s
+Epoch : 995 Loss : 191942139624.000, Train time_consumed : 48.758s
+micro_f1: 0.1844
+macro_f1: 0.0639
+Epoch : 996 Loss : 192916866568.000, Train time_consumed : 48.817s
+Epoch : 997 Loss : 194613953392.000, Train time_consumed : 48.867s
+Epoch : 998 Loss : 187359379672.000, Train time_consumed : 48.921s
+Epoch : 999 Loss : 179789137928.000, Train time_consumed : 48.985s
+Epoch : 1000 Loss : 193965934192.000, Train time_consumed : 49.041s
+micro_f1: 0.1852
+macro_f1: 0.0654
+Epoch : 1001 Loss : 196874952808.000, Train time_consumed : 49.096s
+exceed epochs limit terminating

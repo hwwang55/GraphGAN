@@ -38,6 +38,7 @@ if __name__ == "__main__":
     epochs = 0
     batch_n = 0
     while (True):
+        #graph_data.N = int(config.rN * graph_data.N)
         mini_batch = graph_data.sample(config.batch_size)
         st_time = time.time()
         model.fit(mini_batch)
@@ -47,6 +48,7 @@ if __name__ == "__main__":
             epochs += 1
             loss = 0
             embedding = None
+            graph_data.N = config.struct[0]
             while (True):
                 mini_batch = graph_data.sample(config.batch_size, do_shuffle = False)
                 loss += model.get_loss(mini_batch)

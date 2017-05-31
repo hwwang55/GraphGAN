@@ -81,6 +81,8 @@ class SDNE:
 
         
     def __make_loss(self, config):
+        def get_1st_loss_link_sample(self, Y1, Y2):
+            return tf.reduce_sum(tf.pow(Y1 - Y2, 2))
         def get_1st_loss(H, adj_mini_batch):
             D = tf.diag(tf.reduce_sum(adj_mini_batch,1))
             L = D - adj_mini_batch ## L is laplation-matriX
