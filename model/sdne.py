@@ -3,12 +3,13 @@ import tensorflow as tf
 import time
 import copy
 import random
+from rbm import *
 
 class SDNE:
     def __init__(self, config):
     
         self.is_variables_init = False
-    
+        self.config = config 
         ######### not running out gpu sources ##########
         tf_config = tf.ConfigProto()
         tf_config.gpu_options.allow_growth = True
@@ -100,12 +101,12 @@ class SDNE:
         #Loss function
         self.loss_2nd = get_2nd_loss(self.X, self.X_reconstruct, config.beta)
         self.loss_1st = get_1st_loss(self.H, self.adjacent_matriX)
-        
+        self.loss_xxx = tf.reduce_sum(tf.pow(self.X_reconstruct,2)) 
         # we don't need the regularizer term, since we have nagetive sampling.
         #self.loss_reg = get_reg_loss(self.W, self.b) 
         #return config.gamma * self.loss_1st + config.alpha * self.loss_2nd + config.reg * self.loss_reg
         
-        return config.gamma * self.loss_1st + config.alpha * self.loss_2nd
+        return config.gamma * self.loss_1st + config.alpha * self.loss_2nd +self.loss_xxx
 
     def save_model(self, path):
         saver = tf.train.Saver()
@@ -116,28 +117,25 @@ class SDNE:
         saver.restore(self.sess, path)
         self.is_Init = True
     
-    def do_variables_init(self, DBN_init = 0):
-        def __assign(a, b):
+    def do_variables_init(self, data, DBN_init):
+        def assign(a, b):
             op = a.assign(b)
             self.sess.run(op)
-        init = tf.global_variables_initializer()        
+        init = tf.global_variables_initializer()       
         self.sess.run(init)
         if DBN_init:
-            pass
-            ## TODO
-            # data = copy.copy(self.data["feature"])
-            # shape = self.shape
-            # for i in range(len(shape) - 1):
-                # myRBM = rbm([shape[i], shape[i+1]], {"epoch":0, "batch_size": 64, "learning_rate":0.1}, data)
-                # myRBM.doTrain()
-                # W, bv, bh = myRBM.getWb()
-                # name = "encoder" + str(i)
-                # self.assign(self.W[name], W)
-                # self.assign(self.b[name], bh)
-                # name = "decoder" + str(self.layers - i - 2)
-                # self.assign(self.W[name], W.transpose())
-                # self.assign(self.b[name], bv)
-                # data = myRBM.getH(data)
+            shape = self.struct
+            for i in range(len(shape) - 1):
+                myRBM = rbm([shape[i], shape[i+1]], {"epoch":500, "batch_size": 64, "learning_rate":0.1}, data)
+                myRBM.doTrain()
+                W, bv, bh = myRBM.getWb()
+                name = "encoder" + str(i)
+                assign(self.W[name], W)
+                assign(self.b[name], bh)
+                name = "decoder" + str(self.layers - i - 2)
+                assign(self.W[name], W.transpose())
+                assign(self.b[name], bv)
+                data = myRBM.getH(data)
         self.is_Init = True
 
     def __get_feed_dict(self, data):
@@ -146,21 +144,17 @@ class SDNE:
             X_ind = np.vstack(np.where(X)).astype(np.int64).T
             X_shape = np.array(X.shape).astype(np.int64)
             X_val = X[np.where(X)]
-            return {self.X_sp_indices: X_ind, self.X_sp_shape:X_shape, self.X_sp_ids_val: X_val, self.adjacent_matriX : adjacent_matriX}
+            return {self.X : data.X, self.X_sp_indices: X_ind, self.X_sp_shape:X_shape, self.X_sp_ids_val: X_val, self.adjacent_matriX : data.adjacent_matriX}
         else:
             return {self.X: data.X, self.adjacent_matriX: data.adjacent_matriX}
             
     def fit(self, data):
-        if (not self.is_Init):
-            print "Warning: the model isn't initialized, and will be initialized randomly"
-            self.do_variables_init()
         feed_dict = self.__get_feed_dict(data)
+        st = time.time()
         _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
+        return time.time() - st
     
     def get_loss(self, data):
-        if (not self.is_Init):
-            print "Warning: the model isn't initialized, and will be initialized randomly"
-            self.do_variables_init()
         feed_dict = self.__get_feed_dict(data)
         return self.sess.run(self.loss, feed_dict = feed_dict)
 
