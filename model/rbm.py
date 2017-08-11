@@ -1,6 +1,7 @@
 import tensorflow as tf
-from utils import getData
 import numpy as np
+from config import Config
+from graph import Graph
 class rbm:
     def __init__(self, shape, para, data):
         # shape[0] means the number of visible units
@@ -18,6 +19,7 @@ class rbm:
         self.buildModel()
         print "rbm init completely"
         pass
+
     def buildModel(self):
         self.h = self.sample(tf.sigmoid(tf.matmul(self.v, self.W) + self.bh))
         #gibbs_sample
@@ -29,17 +31,17 @@ class rbm:
         bh_adder = self.bh.assign_add(lr * tf.reduce_mean(self.h - h_sample, 0))
         self.upt = [W_adder, bv_adder, bh_adder]
         self.error = tf.reduce_sum(tf.pow(self.v - v_sample, 2))
+    
     def doTrain(self):
         for epoch in range(self.para["epoch"]):
             np.random.shuffle(self.data)
             for i in range(0, len(self.data), self.para["batch_size"]):
-                X = self.data[i:i + self.para["batch_size"]]
+                X = self.data[i: i + self.para["batch_size"] : ]
                 self.sess.run(self.upt, feed_dict = {self.v : X})
             error = self.sess.run(self.error, feed_dict = {self.v : self.data})
             print "epoch : ", epoch, ":", error
         pass
-	def getH(self, data):
-		return self.sess.run(self.h, feed_dict = {self.v : data})
+    
     def sample(self, probs):
         return tf.floor(probs + tf.random_uniform(tf.shape(probs), 0, 1))
     def getWb(self):
@@ -50,8 +52,7 @@ class rbm:
         return self.sess.close()
 
 if __name__ == "__main__":
-    dataSet = "ca-Grqc.txt"
-    data = getData(dataSet)["feature"]
+    data = Graph("GraphData/ca-Grqc.txt", 0)
     myRBM = rbm([data.shape[0], 200], {"epoch":200, "batch_size": 64, "learning_rate":0.1}, data)
     myRBM.doTrain()
     W, bv, bh = myRBM.getWb()
