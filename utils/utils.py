@@ -29,7 +29,7 @@ def check_link_reconstruction(embedding, graph_data, check_index):
             x = ind / data.N
             y = ind % data.N
             count += 1
-            if (data.adj_matrix[x][y] == 1 || x == y):
+            if (data.adj_matrix[x][y] == 1 or x == y):
                 cur += 1 
             precisionK.append(1.0 * cur / count)
             if count > max_index:

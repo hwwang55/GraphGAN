@@ -2,6 +2,7 @@ class Config(object):
     def __init__(self):
         ## graph data
         self.file_path = "GraphData/blogCatalog3.txt"
+        #self.file_path = "GraphData/ca-Grqc.txt"
         self.label_file_path = "GraphData/blogCatalog3-groups.txt"
         ## embedding data
         self.embedding_filename = "embeddingResult/blogCatalog" 
