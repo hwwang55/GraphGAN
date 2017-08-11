@@ -28,10 +28,8 @@ def check_link_reconstruction(embedding, graph_data, check_index):
         for ind in sortedInd:
             x = ind / data.N
             y = ind % data.N
-            if (x == y):
-                continue
             count += 1
-            if (data.adj_matrix[x][y] == 1):
+            if (data.adj_matrix[x][y] == 1 || x == y):
                 cur += 1 
             precisionK.append(1.0 * cur / count)
             if count > max_index:
