@@ -126,7 +126,7 @@ class SDNE:
         if DBN_init:
             shape = self.struct
             for i in range(len(shape) - 1):
-                myRBM = rbm([shape[i], shape[i+1]], {"epoch":500, "batch_size": 64, "learning_rate":0.1}, data)
+                myRBM = rbm([shape[i], shape[i+1]], {"epoch":self.config.dbn_epochs, "batch_size": self.config.dbn_batch_size, "learning_rate":self.config.dbn_learning_rate}, data)
                 myRBM.doTrain()
                 W, bv, bh = myRBM.getWb()
                 name = "encoder" + str(i)
@@ -150,9 +150,8 @@ class SDNE:
             
     def fit(self, data):
         feed_dict = self.__get_feed_dict(data)
-        st = time.time()
-        _ = self.sess.run(self.optimizer, feed_dict = feed_dict)
-        return time.time() - st
+        ret, _ = self.sess.run((self.loss, self.optimizer), feed_dict = feed_dict)
+        return ret
     
     def get_loss(self, data):
         feed_dict = self.__get_feed_dict(data)

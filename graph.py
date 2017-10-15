@@ -2,6 +2,9 @@ import numpy as np
 from utils.utils import *
 import random
 import copy
+from scipy.sparse import csr_matrix
+from scipy.sparse import dok_matrix
+
 class Graph(object):
     def __init__(self, file_path, ng_sample_ratio):
         suffix = file_path.split('.')[-1]
@@ -9,15 +12,15 @@ class Graph(object):
         self.is_epoch_end = False
         if suffix == "txt":
             fin = open(file_path, "r")
-            firstLine = fin.readline().strip().split(" ")
+            firstLine = fin.readline().strip().split()
             self.N = int(firstLine[0])
             self.E = int(firstLine[1])
             self.__is_epoch_end = False
-            self.adj_matrix = np.zeros([self.N, self.N], np.int_)
+            self.adj_matrix = dok_matrix((self.N, self.N), np.int_)
             self.links = np.zeros([self.E + int(ng_sample_ratio*self.N) , 3], np.int_)
             count = 0
             for line in fin.readlines():
-                line = line.strip().split(' ')
+                line = line.strip().split()
                 self.adj_matrix[int(line[0]),int(line[1])] += 1
                 self.adj_matrix[int(line[1]),int(line[0])] += 1
                 self.links[count][0] = int(line[0])
@@ -28,6 +31,7 @@ class Graph(object):
             if (ng_sample_ratio > 0):
                 self.__negativeSample(int(ng_sample_ratio*self.N), count, self.adj_matrix.copy())
             self.order = np.arange(self.N)
+            self.adj_matrix = self.adj_matrix.tocsr()
             print "getData done"
             print "Vertexes : %d  Edges : %d ngSampleRatio: %f" % (self.N, self.E, ng_sample_ratio)
         else:
@@ -72,8 +76,8 @@ class Graph(object):
         mini_batch = Dotdict()
         en = min(self.N, self.st + batch_size)
         index = self.order[self.st:en]     
-        mini_batch.X = self.adj_matrix[index]
-        mini_batch.adjacent_matriX = self.adj_matrix[index][:,index]
+        mini_batch.X = self.adj_matrix[index].toarray()
+        mini_batch.adjacent_matriX = self.adj_matrix[index].toarray()[:][:,index]
         if with_label:
             mini_batch.label = self.label[index]
         if (en == self.N):

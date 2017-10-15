@@ -29,7 +29,7 @@ def check_link_reconstruction(embedding, graph_data, check_index):
             x = ind / data.N
             y = ind % data.N
             count += 1
-            if (data.adj_matrix[x][y] == 1 or x == y):
+            if (data.adj_matrix[x].toarray()[0][y] == 1 or x == y):
                 cur += 1 
             precisionK.append(1.0 * cur / count)
             if count > max_index:
@@ -37,8 +37,12 @@ def check_link_reconstruction(embedding, graph_data, check_index):
         return precisionK
         
     precisionK = get_precisionK(embedding, graph_data, np.max(check_index))
+    ret = []
     for index in check_index:
         print "precisonK[%d] %.2f" % (index, precisionK[index - 1])
+        ret.append(precisionK[index - 1])
+    return ret
+
 
 def check_multi_label_classification(X, Y, test_ratio = 0.9):
     def small_trick(y_test, y_pred):
