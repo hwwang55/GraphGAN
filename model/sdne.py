@@ -125,9 +125,19 @@ class SDNE:
         self.sess.run(init)
         if DBN_init:
             shape = self.struct
+            myRBMs = []
             for i in range(len(shape) - 1):
-                myRBM = rbm([shape[i], shape[i+1]], {"epoch":self.config.dbn_epochs, "batch_size": self.config.dbn_batch_size, "learning_rate":self.config.dbn_learning_rate}, data)
-                myRBM.doTrain()
+                myRBM = rbm([shape[i], shape[i+1]], {"batch_size": self.config.dbn_batch_size, "learning_rate":self.config.dbn_learning_rate})
+                myRBMs.append(myRBM)
+                for epoch in range(self.config.dbn_epochs):
+                    error = 0
+                    for batch in range(0, data.N, self.config.dbn_batch_size):
+                        mini_batch = data.sample(self.config.dbn_batch_size).X
+                        for k in range(len(myRBMs) - 1):
+                            mini_batch = myRBMs[k].getH(mini_batch)
+                        error += myRBM.fit(mini_batch)
+                    print "rbm epochs:", epoch, "error : ", error
+
                 W, bv, bh = myRBM.getWb()
                 name = "encoder" + str(i)
                 assign(self.W[name], W)
@@ -135,7 +145,6 @@ class SDNE:
                 name = "decoder" + str(self.layers - i - 2)
                 assign(self.W[name], W.transpose())
                 assign(self.b[name], bv)
-                data = myRBM.getH(data)
         self.is_Init = True
 
     def __get_feed_dict(self, data):

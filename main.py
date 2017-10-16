@@ -31,7 +31,7 @@ if __name__ == "__main__":
     config.struct[0] = graph_data.N
     
     model = SDNE(config)    
-    model.do_variables_init(graph_data.sample(graph_data.N).X, config.DBN_init)
+    model.do_variables_init(graph_data, config.DBN_init)
 
     epochs = 0
     batch_n = 0
