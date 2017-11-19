@@ -1,34 +1,36 @@
-class Config(object):
-    def __init__(self):
-        ## graph data
-        #self.file_path = "../Data_SDNE/Flickr2_1.txt"
-        self.file_path = "GraphData/blogCatalog3.txt"
-        #self.label_file_path = "GraphData/blogCatalog3-groups.txt"
-        ## embedding data
-        self.embedding_filename = "embeddingResult/blogCatolog" 
-        ## hyperparameter
-        self.struct = [None, 1000, 128]
-        ## the loss func is  // gamma * L1 + alpha * L2 + reg * regularTerm // 
-        self.alpha = 500
-        self.gamma = 1
-        self.reg = 1
-        ## the weight balanced value to reconstruct non-zero element more.
-        self.beta = 10
-        
-        ## para for training
-        #self.rN = 0.9
-        self.batch_size = 64
-        self.epochs_limit = 10
-        self.learning_rate = 0.01
-        self.display = 1
-
-        self.DBN_init = True
-        self.dbn_epochs = 500
-        self.dbn_batch_size = 64
-        self.dbn_learning_rate = 0.1
-
-        self.sparse_dot = False
-        self.ng_sample_ratio = 0.0 # negative sample ratio
-        
-        #self.sample_ratio = 1
-        #self.sample_method = "node"
+n_embed = 20  # node embedding dimension
+batch_size_dis = 128  # batch size for discriminator
+batch_size_gen = 128  # batch size for generator
+lambda_dis = 1e-5  # l2 loss regulation factor for discriminator
+lambda_gen = 1e-5  # l2 loss regulation factor for generator
+n_sample_dis = 20  # sample num for generator
+n_sample_gen = 20  # sample num for discriminator
+lr_dis = 1e-4  # learning rate for discriminator
+lr_gen = 1e-3  # learning rate for discriminator
+update_ratio = 1    # updating ratio when choose the trees
+pretrain_emd_filename_d = "../pre_train/link_prediction/1.0/CA-GrQc_deepwalk_iters_3.emb"
+pretrain_emd_filename_g = "../pre_train/link_prediction/1.0/CA-GrQc_deepwalk_iters_1.emb"
+max_epochs = 300  # outer loop number
+max_epochs_gen = 30  # loop number for generator
+max_epochs_dis = 30  # loop number for discriminator
+save_steps = 2
+gen_for_d_iters = 10  # iteration numbers for generate new data for discriminator
+max_degree = 0  # the max node degree of the network
+app = 1  # choose the dataset, 0:"CA-AStroPh", 1:"CA-GrQc", 2:"ratings", 3:"blogcatalog", 4:"POS"
+model_log = "../log/iteration/"
+update_mode = "pair"  # when update generator, "pair" only update the nodes along the path, "softmax": also update the neighbors of the nodes along the path
+reward_factor = 2  # factor when compute the reward in discriminator
+# GAN_mode: "dis": only using discriminator, "gen": only using generator, "gan": both
+GAN_mode = "dis"
+# sample_mode  for discriminator: "just_pos": only use the neighborhoods, "exclude_pos": exclude the postive examples when sampling, "theory": dont not exclude any examples according to the theory
+sample_mode = "just_pos"
+# reward_mode: "constant": use some postive constant, "path_reward": all the pairs along the path have the same reward as <head, tail>,
+# reward_mode": "pair_reward": the pair along the path have the different reward
+reward_mode = "constant"
+reward = 1  # only used for reward_mode = 0
+use_mul = False # control if use the multiprocessing when constructing trees
+load_model = False  # if load the model for continual training
+gen_update_iter = 200
+window_size = 2
+walk_mode = None
+walk_length = None
