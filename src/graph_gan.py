@@ -609,10 +609,6 @@ class GraphGan(object):
                     filename = self.emb_filename_gen + "_" + str(epoch * config.max_epochs_gen + g_epoch) + ".txt"
                     self.save_emb(node_embed, filename)
 
-            print("Evaluation")
-            # self.write_emb_to_txt(epoch)
-            self.eval_test(epoch)  # evaluation
-
     def feed_dict(self, root_node_gen, reward, trace, is_pair):
         """trace:dict <key, val>
         """
@@ -698,46 +694,7 @@ class GraphGan(object):
             else:
                 np.savetxt(self.emb_filename_dis + "_1_" + str(epoch) + ".txt", node_embed, fmt="%10.5f", delimiter='\t')
 
-    def eval_test(self, epoch):
-        """
-        Args:
-             mode: "dis" or "gen"
-        """
 
-        log_dir = "../log/"
-        if self.app in [0, 1]:   # link prediction
-            import eval_link_prediction
-            mode = "gen"
-            link = eval_link_prediction.LinkPredictEval(log_dir, self.emb_filename_gen + "_1_" + str(epoch) + ".txt", self.train_filename, self.test_filename, self.result_filename[mode])
-            link.read_data()
-            test_dataset = link.gen_neg_samples()
-            link.test_evaluation(test_dataset)
-            mode = "dis"
-            link = eval_link_prediction.LinkPredictEval(log_dir, self.emb_filename_dis + "_1_" + str(epoch) + ".txt", self.train_filename, self.test_filename, self.result_filename[mode])
-            link.read_data()
-            test_dataset = link.gen_neg_samples()
-            link.test_evaluation(test_dataset)
-        elif self.app == 2:   # recommendation
-            import eval_recommendation
-            log_dir = "../log/"
-            mode = "gen"
-            link = eval_recommendation.RecomEval(log_dir, self.emb_filename_gen, self.train_filename, self.test_filename, self.result_filename[mode])
-            link.read_data()
-            link.simple_test()
-            mode = "dis"
-            link = eval_recommendation.RecomEval(log_dir, self.emb_filename_dis, self.train_filename, self.test_filename, self.result_filename[mode])
-            link.read_data()
-            link.simple_test()
-        elif self.app in [3, 4]:  # classification
-            import eval_classification
-            mode = "gen"
-            link = eval_classification.ClassificationEval(log_dir, self.train_filename, self.test_filename, self.emb_filename_gen, self.result_filename[mode])
-            x_train, y_train, x_test, y_test = link.read_data()
-            link.classification_evaluation(x_train, y_train, x_test, y_test)
-            mode = "dis"
-            link = eval_classification.ClassificationEval(log_dir, self.train_filename, self.test_filename, self.emb_filename_dis, self.result_filename[mode])
-            x_train, y_train, x_test, y_test = link.read_data()
-            link.classification_evaluation(x_train, y_train, x_test, y_test)
 
 import argparse
 def parse_args():
