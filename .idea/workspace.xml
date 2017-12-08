@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548a6d89-75bd-40f7-8cd5-53c606b36255" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/discriminator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/generator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/generator_pair.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/graph_gan.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils.py" afterPath="$PROJECT_DIR$/src/utils.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pre_train/link_prediction/CA-GrQc_dis_4391.emb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pre_train/link_prediction/CA-GrQc_gen_4391.emb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results/link_prediction/CA-GrQc_4391.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphGAN/config.py" afterPath="$PROJECT_DIR$/src/GraphGAN/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphGAN/graph_gan.py" afterPath="$PROJECT_DIR$/src/GraphGAN/graph_gan.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +20,8 @@
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GraphGAN/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="273">
+              <caret line="36" column="69" lean-forward="false" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -44,8 +42,8 @@
       <file leaf-file-name="graph_gan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphGAN/graph_gan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="318" column="54" lean-forward="false" selection-start-line="318" selection-start-column="54" selection-end-line="318" selection-end-column="54" />
+            <state relative-caret-position="408">
+              <caret line="374" column="10" lean-forward="true" selection-start-line="374" selection-start-column="10" selection-end-line="374" selection-end-column="10" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -94,8 +92,8 @@
       <find>walk_mode</find>
       <find>reward</find>
       <find>softmax</find>
-      <find>sample_mode</find>
       <find>generate_window_pairs</find>
+      <find>sample_mode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -299,14 +297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GraphGAN/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphGAN/discriminator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-465">
@@ -314,6 +304,14 @@
           <folding>
             <element signature="e#26#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GraphGAN/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="36" column="69" lean-forward="false" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -329,8 +327,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphGAN/graph_gan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="318" column="54" lean-forward="false" selection-start-line="318" selection-start-column="54" selection-end-line="318" selection-end-column="54" />
+        <state relative-caret-position="408">
+          <caret line="374" column="10" lean-forward="true" selection-start-line="374" selection-start-column="10" selection-end-line="374" selection-end-column="10" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

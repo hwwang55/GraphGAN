@@ -366,7 +366,7 @@ class GraphGan(object):
             for i in range(2):
                 LPE = elp.LinkPredictEval(config.emb_filenames[i], config.test_filename, config.test_neg_filename, config.n_node, config.n_embed)
                 result = LPE.eval_link_prediction()
-                results.append(str(result) + "\n")
+                results.append(config.modes[i] + ":" + str(result) + "\n")
 
 
         with open(config.result_filename, mode="a+") as f:

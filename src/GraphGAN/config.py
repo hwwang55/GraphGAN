@@ -32,7 +32,8 @@ n_embed = 50
 n_node = 5242
 pretrain_emd_filename_d = "../../pre_train/" + app + "/CA-GrQc_pre_train.emb"
 pretrain_emd_filename_g = "../../pre_train/" + app + "/CA-GrQc_pre_train.emb"
-emb_filenames = ["../../pre_train/" + app + "/CA-GrQc_dis_" + str(random_state) + ".emb",
-                 "../../pre_train/" + app + "/CA-GrQc_gen_" + str(random_state) + ".emb"]
+modes = ["dis", "gen"]
+emb_filenames = ["../../pre_train/" + app + "/CA-GrQc_" + modes[0] + "_" + str(random_state) + ".emb",
+                 "../../pre_train/" + app + "/CA-GrQc_" +  modes[1] + "_" + str(random_state) + ".emb"]
 result_filename = "../../results/" + app + "/CA-GrQc_" +  str(random_state) + ".txt"
 
