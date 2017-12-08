@@ -13,10 +13,8 @@ def file_len(fname):
 def str_list_to_float(str_list):
     return [float(item) for item in str_list]
 
-
 def str_list_to_int(str_list):
     return [int(item) for item in str_list]
-
 
 def node_id_map(edges):
     """map the original node id to [0, node_num)
@@ -89,7 +87,6 @@ def read_edges(train_filename, test_filename, mode=""):
     else:
         return len(start_nodes.union(end_nodes)), linked_nodes
 
-
 def read_edges_from_file(filename):
     with open(filename, "r") as f:
         lines = f.readlines()
@@ -123,15 +120,17 @@ def read_emd(filename, n_node, n_embed):
     node_embed = np.random.rand(n_node, n_embed)
     for line in lines:
         emd = line.split()
-        node_embed[int(emd[0]), :] = str_list_to_float(emd[1:])
+        node_embed[int(float(emd[0])), :] = str_list_to_float(emd[1:])
 
     return node_embed
 
-def generate_neg_links(embed_filename, train_filename, test_filename, ratio):
+def generate_neg_links(train_filename, test_filename, test_neg_filename):
     """
     generate neg links for link prediction evaluation
-    :param ratio: 0-1 float, control the ratio of choosing negative sample
-    :return:
+    Args:
+        train_filename: the training edges
+        test_filename: the test edges
+        test_neg_filename: the negative edges for test
     """
 
     train_edges = read_edges_from_file(train_filename)
@@ -146,147 +145,19 @@ def generate_neg_links(embed_filename, train_filename, test_filename, ratio):
         linked_nodes[edge[1]].append(edge[0])
     nodes = set([x for x in range(len(linked_nodes))])
 
-
-    # read the test dataset
-    test_edges = read_edges_from_file(test_filename)
-    # read the embeddings
-    with open(embed_filename, mode="r") as f:
-        lines = f.readlines()
-        node_embeddings = [str_list_to_float(line.split()) for line in lines]
-        n_node = len(node_embeddings)
-        n_emd = len(node_embeddings[0]) - 1
-    emd = np.random.rand(n_node, n_emd)
-    for item in node_embeddings:  # generate a emd dict with the format {id:[emd]}
-        emd[int(item[0])] = item[1:]
-
-    # compute the inner product
-    inner_prods = np.dot(emd, emd.transpose())
     # for each link in test dataset, find a neg sample
     neg_edges = []
 
-
     for i in range(len(test_edges)):
-        r = np.random.rand()
-        if r < ratio:
-            edge = test_edges[i]
-            start_node = edge[0]
-            end_node = edge[1]
-            neg_nodes = list(nodes.difference(set(linked_nodes[edge[0]])))
-            neg_edge = [start_node, neg_nodes[np.argmin(inner_prods[start_node, neg_nodes])]]
-            neg_edges.append(neg_edge)
-        else:
-            edge = test_edges[i]
-            start_node = edge[0]
-            end_node = edge[1]
-            neg_nodes = list(nodes.difference(set(linked_nodes[edge[0]])))
-            neg_node = np.random.choice(neg_nodes, size=1)[0]
-            neg_edges.append([start_node, neg_node])
+        edge = test_edges[i]
+        start_node = edge[0]
+        end_node = edge[1]
+        neg_nodes = list(nodes.difference(set(linked_nodes[edge[0]] + [edge[0]])))
+        neg_node = np.random.choice(neg_nodes, size=1)[0]
+        neg_edges.append([start_node, neg_node])
     neg_edges_str = [str(x[0]) + "\t" + str(x[1]) + "\n" for x in neg_edges]
-    with open("../data/link_prediction/CA-GrQc_neg.txt", "w+") as f:
+    with open(test_neg_filename, "w+") as f:
         f.writelines(neg_edges_str)
-
-def eval_link_prediction(embed_filename, train_filename, test_filename, test_neg_filename, log_dir, log_filename):
-    """choose the topK after removing the positive training links
-    Args:
-        test_dataset: Nx3, array
-    Returns:
-        accuracy:
-    """
-
-    # read the embeddings
-    train_edges = read_edges_from_file(train_filename)
-    test_edges = read_edges_from_file(test_filename)
-    edges = train_edges + test_edges
-    nodes = set()
-    for edge in edges:
-        nodes = nodes.union(set(edge))
-    n_node = len(nodes)
-
-    with open(embed_filename, mode="r") as f:
-        lines = f.readlines()[1:]
-        node_embeddings = [str_list_to_float(line.split()) for line in lines]
-        n_emd = len(node_embeddings[0]) - 1
-    emd = np.random.rand(n_node, n_emd)
-    for item in node_embeddings:  # generate a emd dict with the format {id:[emd]}
-        emd[int(item[0])] = item[1:]
-
-    # construct the test dataset
-    test_edges_pos = read_edges_from_file(test_filename)
-    test_edges_neg = read_edges_from_file(test_neg_filename)
-    test_edges_pos.extend(test_edges_neg)
-    test_edges = test_edges_pos
-    # may exists isolated point
-    score_res = []
-    for i in range(len(test_edges)):
-        score_res.append(np.dot(emd[test_edges[i][0]], emd[test_edges[i][1]]))
-    test_label = np.array(score_res)
-    bar = np.median(test_label)  #
-    ind_pos = test_label >= bar
-    ind_neg = test_label < bar
-    test_label[ind_pos] = 1
-    test_label[ind_neg] = 0
-    true_label = np.zeros(test_label.shape)
-    true_label[0:len(true_label)//2] = 1
-
-    precision = precision_score(true_label, test_label, average='micro')
-    recall = recall_score(true_label, test_label, average='micro')
-    f1 = f1_score(true_label, test_label, average='micro')
-    accuracy = accuracy_score(true_label, test_label)
-    # print("f1:", f1)
-    # print("accuracy:", accuracy)
-    # print(precision, recall, f1, accuracy)
-    # gen_log = open(log_dir + log_filename, 'a+')
-    # gen_log.write("accuracy" + '\t' + str(accuracy) + '\n')
-    # gen_log.write("recall" + '\t' + str(recall) + '\n')
-    # gen_log.write("precision" + '\t' + str(precision) + '\n')
-    # gen_log.write("f1" + '\t' + str(f1) + '\n')
-    # gen_log.flush()
-    # gen_log.close()
-    return accuracy, f1
-
-
-if __name__ == "__main__":
-    #generate_neg_links("../pre_train/GraphGAN/CA-GrQc_pair_gan_theory_pair_reward_2_back_0_57902_gen_120.txt", "../data/link_prediction/CA-GrQc_undirected_train.txt", "../data/link_prediction/CA-GrQc_test.txt", ratio=0.8)
-    filenames = ["../pre_train/link_prediction/1.0/CA-GrQc_deepwalk_iters_9.emb", "../pre_train/link_prediction/1.0/CA-GrQc_LINE_iters_100.emb",
-                 "../pre_train/link_prediction/1.0/CA-GrQc_node2vec_iters_1.emb", "../pre_train/link_prediction/1.0/CA-GrQc_struc2vec_iters_9.emb"]
-    for filename in filenames:
-        acc, f1 = eval_link_prediction(filename, "../data/link_prediction/CA-GrQc_undirected_train.txt",
-                                       "../data/link_prediction/CA-GrQc_test.txt",
-                                       "../data/link_prediction/CA-GrQc_neg.txt", "../log/", "CA-GrQc.txt")
-        print(acc)
-    #print(f1_res)
-    # ids = [30681, 57565, 57902, 76134]
-    # #ids = [57902]
-    # for mode in ["gen", "dis"]:
-    #     for id in ids:
-    #         f1_res = []
-    #         acc_res = []
-    #         import tqdm
-    #         filename = "../pre_train/link_prediction/1.0/CA-GrQc_deepwalk_iters_1.emb"
-    #         acc, f1 = eval_link_prediction(filename, "../data/link_prediction/CA-GrQc_undirected_train.txt",
-    #                                        "../data/link_prediction/CA-GrQc_test.txt",
-    #                                        "../data/link_prediction/CA-GrQc_neg.txt", "../log/", "CA-GrQc.txt")
-    #         f1_res.append(f1)
-    #         acc_res.append(acc)
-    #         for k in tqdm.tqdm(range(400)):
-    #             i = 5*k
-    #             #i = k
-    #             filename = "../pre_train/GraphGAN/CA-GrQc_pair_gan_theory_pair_reward_2_back_0_" +  str(id) + "_"+ mode +"_" + str(i) + ".txt"
-    #             acc, f1 = eval_link_prediction(filename, "../data/link_prediction/CA-GrQc_undirected_train.txt", "../data/link_prediction/CA-GrQc_test.txt", "../data/link_prediction/CA-GrQc_neg.txt", "../log/", "CA-GrQc.txt")
-    #             f1_res.append(f1)
-    #             acc_res.append(acc)
-    #         #plt.plot([i for i in range(len(f1_res))], f1_res)
-    #         #plt.show()
-    #         f1_res_str = [str(x) + "\n" for x in f1_res]
-    #         acc_res_str = [str(x) + "\n" for x in acc_res]
-    #         f1_res_f = mode + "_5_f1_" + str(id) + ".txt"
-    #         acc_res_f = mode + "_5_acc_" + str(id) + ".txt"
-    #         with open(f1_res_f, "w+")  as f:
-    #             f.writelines(f1_res_str)
-    #         with open(acc_res_f, "w+")  as f:
-    #             f.writelines(acc_res_str)
-
-
 
 
 
