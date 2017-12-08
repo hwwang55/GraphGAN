@@ -26,5 +26,7 @@
 
 #### Run
 
+```cd src/GraphGAN```
+
 ```python graph_gan.py```
 
