@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="548a6d89-75bd-40f7-8cd5-53c606b36255" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pre_train/link_prediction/CA-GrQc_dis_4391.emb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pre_train/link_prediction/CA-GrQc_gen_4391.emb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/results/link_prediction/CA-GrQc_4391.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphGAN/config.py" afterPath="$PROJECT_DIR$/src/GraphGAN/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphGAN/graph_gan.py" afterPath="$PROJECT_DIR$/src/GraphGAN/graph_gan.py" />
-    </list>
+    <list default="true" id="548a6d89-75bd-40f7-8cd5-53c606b36255" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +36,8 @@
       <file leaf-file-name="graph_gan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphGAN/graph_gan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="374" column="10" lean-forward="true" selection-start-line="374" selection-start-column="10" selection-end-line="374" selection-end-column="10" />
+            <state relative-caret-position="1758">
+              <caret line="367" column="51" lean-forward="true" selection-start-line="367" selection-start-column="51" selection-end-line="367" selection-end-column="51" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -327,8 +321,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphGAN/graph_gan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="374" column="10" lean-forward="true" selection-start-line="374" selection-start-column="10" selection-end-line="374" selection-end-column="10" />
+        <state relative-caret-position="1758">
+          <caret line="367" column="51" lean-forward="true" selection-start-line="367" selection-start-column="51" selection-end-line="367" selection-end-column="51" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

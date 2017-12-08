@@ -22,7 +22,15 @@
 - tqdm(display the running progress)
 
 
+#### data
 
+undirected graph whose file format is as follows(from 0 to N(number of nodes)):
+
+0	1
+
+3	2
+
+...
 
 #### Run
 
