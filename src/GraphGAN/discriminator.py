@@ -1,4 +1,4 @@
-# the discriminator class
+# implementation of the discriminator
 import tensorflow as tf
 import config
 
