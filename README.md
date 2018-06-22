@@ -6,39 +6,30 @@ Hongwei Wang, Jia Wang, Jialin Wang, Miao Zhao, Weinan Zhang, Fuzheng Zhang, Xin
 32nd AAAI Conference on Artificial Intelligence, 2018
 
 
-
-
-#### Files in the folder
-
+### Files in the folder
 - data: training and test data
-
 - pre_train: pre_trained node embeddings
-> Note: the dimension of pre_trained node embeddings should equal n_emb in src/GraphGAN/config.py
-
+  > Note: the dimension of pre_trained node embeddings should equal n_emb in src/GraphGAN/config.py
 - results: evaluation results and the learned embeddings of the generator and the discriminator
-
 - src: source codes
 
-  ​
 
-#### Requirements:
-
+### Requirements:
 - tensorflow
-- tqdm(for displaying the progress bar)
+- tqdm (for displaying the progress bar)
 
 
-#### Input
-
+### Input
 The input data should be an undirected graph in which node IDs start from 0 to *N-1* (*N* is the number of nodes in the graph). Each line contains two node IDs indicating an edge in the graph.
 
-txt file sample
+##### txt file sample
 
 ```0	1```  
 ```3	2```  
 ```...```
 
-#### Usage
 
+### Usage
 ```mkdir cache```   
 ```cd src/GraphGAN```  
 ```python graph_gan.py```
