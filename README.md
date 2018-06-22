@@ -8,8 +8,8 @@ Hongwei Wang, Jia Wang, Jialin Wang, Miao Zhao, Weinan Zhang, Fuzheng Zhang, Xin
 
 ### Files in the folder
 - data: training and test data
-- pre_train: pre_trained node embeddings
-  > Note: the dimension of pre_trained node embeddings should equal n_emb in src/GraphGAN/config.py
+- pre_train: pre-trained node embeddings
+  > Note: the dimension of pre-trained node embeddings should equal n_emb in src/GraphGAN/config.py
 - results: evaluation results and the learned embeddings of the generator and the discriminator
 - src: source codes
 
@@ -29,7 +29,7 @@ The input data should be an undirected graph in which node IDs start from 0 to *
 ```...```
 
 
-### Usage
+### Basic usage
 ```mkdir cache```   
 ```cd src/GraphGAN```  
 ```python graph_gan.py```
