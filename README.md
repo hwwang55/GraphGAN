@@ -14,7 +14,7 @@ Hongwei Wang, Jia Wang, Jialin Wang, Miao Zhao, Weinan Zhang, Fuzheng Zhang, Xin
 - src: source codes
 
 
-### Requirements:
+### Requirements
 - tensorflow
 - tqdm (for displaying the progress bar)
 
