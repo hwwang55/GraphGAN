@@ -54,21 +54,6 @@ def read_edges_from_file(filename):
     return edges
 
 
-def get_max_degree(linked_nodes):
-    """get the max degree of nodes in the graph
-
-    Args:
-         linked_nodes: dict, <node_id, neighbor_nodes>
-    Returns:
-        max_degree: int
-    """
-
-    max_degree = 0
-    for key, val in linked_nodes.items():
-        max_degree = max(max_degree, len(val))
-    return max_degree
-
-
 def read_embeddings(filename, n_node, n_embed):
     """read pretrained node embeddings
     """

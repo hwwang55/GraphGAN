@@ -44,7 +44,6 @@ class GraphGAN(object):
                 self.trees = self.construct_trees(self.root_nodes)
             pickle.dump(self.trees, pickle_file)
             pickle_file.close()
-        config.max_degree = utils.get_max_degree(self.graph)
 
         print("building GAN model...")
         self.discriminator = None

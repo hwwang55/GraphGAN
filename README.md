@@ -17,10 +17,13 @@ Hongwei Wang, Jia Wang, Jialin Wang, Miao Zhao, Weinan Zhang, Fuzheng Zhang, Xin
 ### Requirements
 - tensorflow
 - tqdm (for displaying the progress bar)
+- pickle
+- numpy
+- sklearn
 
 
 ### Input
-The input data should be an undirected graph in which node IDs start from 0 to *N-1* (*N* is the number of nodes in the graph). Each line contains two node IDs indicating an edge in the graph.
+The input data should be an undirected graph in which node IDs start from *0* to *N-1* (*N* is the number of nodes in the graph). Each line contains two node IDs indicating an edge in the graph.
 
 ##### txt file sample
 
