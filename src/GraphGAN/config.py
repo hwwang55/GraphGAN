@@ -13,7 +13,7 @@ n_epochs_gen = 30  # number of inner loops for the generator
 n_epochs_dis = 30  # number of inner loops for the discriminator
 gen_interval = n_epochs_gen  # sample new nodes for the generator for every gen_interval iterations
 dis_interval = n_epochs_dis  # sample new nodes for the discriminator for every dis_interval iterations
-update_ratio = 0.1    # updating ratio when choose the trees
+update_ratio = 1    # updating ratio when choose the trees
 
 # model saving
 load_model = False  # whether loading existing model for initialization
