@@ -5,6 +5,12 @@
 Hongwei Wang, Jia Wang, Jialin Wang, Miao Zhao, Weinan Zhang, Fuzheng Zhang, Xing Xie, Minyi Guo  
 32nd AAAI Conference on Artificial Intelligence, 2018
 
+![](https://github.com/hwwang55/GraphGAN/blob/master/framework.jpg)
+
+GraphGAN unifies two schools of graph representation learning methodologies: generative methods and discriminative methods, via adversarial training in a minimax game.
+The generator is guided by the signals from the discriminator and improves its generating performance, while the discriminator is pushed by the generator to better distinguish ground truth from generated samples.
+	
+
 
 ### Files in the folder
 - `data/`: training and test data
