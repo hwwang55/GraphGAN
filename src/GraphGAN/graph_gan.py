@@ -219,7 +219,7 @@ class GraphGAN(object):
             for pair in node_pairs[i]:
                 node_1.append(pair[0])
                 node_2.append(pair[1])
-        reward = self.sess.run(self.discriminator.score,
+        reward = self.sess.run(self.discriminator.reward,
                                feed_dict={self.discriminator.node_id: np.array(node_1),
                                           self.discriminator.node_neighbor_id: np.array(node_2)})
         return node_1, node_2, reward
